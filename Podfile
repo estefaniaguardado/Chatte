@@ -5,8 +5,6 @@
 
 target 'xmpp' do
     
-    pod 'XMPPFramework'
-
 end
 
 target 'xmppTests' do
