@@ -4,6 +4,8 @@
 # use_frameworks!
 
 target 'xmpp' do
+    
+    pod 'XMPPFramework'
 
 end
 
