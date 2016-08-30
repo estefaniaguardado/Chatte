@@ -1958,6 +1958,11 @@
 			baseConfigurationReference = 457AE37134F2AF825E6BEC43 /* Pods-xmpp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${SDKROOT}/usr/include/libxml2\"",
+				);
 				INFOPLIST_FILE = xmpp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1974,6 +1979,11 @@
 			baseConfigurationReference = 21A9C6146E5A48FDFBB63725 /* Pods-xmpp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${SDKROOT}/usr/include/libxml2\"",
+				);
 				INFOPLIST_FILE = xmpp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
