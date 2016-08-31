@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "XMPPFramework.h"
+#import "CocoaLumberjack_Constants.h"
 
 @interface AppDelegate ()
 
@@ -14,15 +16,28 @@
 
 @implementation AppDelegate
 
+- (id) init{
+    
+    self = [super init];
+    
+    self.xmppStream = [XMPPStream new];
+    self.xmppRosterStorage = [XMPPRosterCoreDataStorage new];
+    self.xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:self.xmppRosterStorage];
+    
+    return self;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    
+    [self setupStream];
+
     return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    [self disconnect];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -35,11 +50,117 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [self connect];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+//MARK: Private Methods
+-(void) setupStream {
+    //xmppRoster = XMPPRoster(rosterStorage: xmppRosterStorage)
+    
+    
+    [self.xmppRoster activate:self.xmppStream];
+    [self.xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    [self.xmppRoster addDelegate:self delegateQueue: dispatch_get_main_queue()];
+}
+
+-(void) goOnline {
+    XMPPPresence * presence = [XMPPPresence new];
+    NSString * domain = [NSString stringWithString:self.xmppStream.myJID.domain];
+    
+    if ([domain isEqualToString:@"gmail.com"] || [domain isEqualToString:@"gtalk.com"] || [domain isEqualToString:@"talk.google.com"]) {
+        NSXMLElement *priority = [NSXMLElement elementWithName:@"priority" stringValue:@"24"];
+        [presence addChild:priority];
+    }
+    
+    [self.xmppStream sendElement:presence];
+}
+
+- (void)goOffline {
+    XMPPPresence *presence = [XMPPPresence presenceWithType:@"unavailable"];
+    [self.xmppStream sendElement:presence];
+}
+
+- (BOOL) connect {
+    [self setupStream];
+    if (![self.xmppStream isDisconnected]) return YES;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *jabberID = [defaults stringForKey:@"userID"];
+    NSString * myPassword = [defaults stringForKey:@"userPassword"];
+    
+    if (![self.xmppStream isDisconnected]) {
+        return YES;
+    }
+    if ([jabberID isEqual: nil] && [myPassword isEqual: nil]) {
+        return NO;
+    }
+    
+    [self.xmppStream setMyJID:[XMPPJID jidWithString:jabberID]];
+    self.userPassword = [NSString stringWithString:myPassword];
+    
+    NSError *error = nil;
+    if (![self.xmppStream connectWithTimeout:20 error:&error]) {
+        NSLog(@"Impossible to connect %@", error.localizedDescription);
+        return NO;
+    }
+    
+    NSLog(@"connected");
+    return YES;
+}
+
+- (void) disconnect {
+    [self goOffline];
+    [self.xmppStream disconnect];
+}
+
+//MARK: XMPP Delegates
+
+- (void)xmppStreamDidConnect:(XMPPStream *)sender {
+    // connection to the server successful
+    //self.chatIsOpen = YES;
+    NSError *error;
+    
+    if (![[self xmppStream] authenticateWithPassword:self.userPassword error:&error]) {
+        NSLog(@"Error authenticating: %@", error);
+    }
+}
+
+- (void)xmppStreamDidAuthenticate:(XMPPStream *)sender {
+    // authentication successful
+    [self goOnline];
+}
+
+- (BOOL) xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq{
+    NSLog(@"Did receive IQ");
+    return NO;
+}
+
+- (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message{
+    NSLog(@"Did receive message");
+}
+
+- (void)xmppStream:(XMPPStream *)sender didSendMessage:(XMPPMessage *)message{
+    NSLog(@"Did receive message: %@", message);
+}
+
+- (void)xmppStream:(XMPPStream *)sender didReceivePresence:(XMPPPresence *)presence{
+    NSString * presenceType = [NSString stringWithString:presence.type];
+    NSString * myUserName = [NSString stringWithString:sender.myJID.user];
+    NSString * presenceFromUser = [NSString stringWithString:presence.from.user];
+    
+    if (presenceFromUser != myUserName) {
+        NSLog(@"Did receive presence from: %@", presenceFromUser);
+        if ([presenceType isEqualToString: @"available"]) {
+            [self.delegate buddyWentOnline:@"%@@gmail.com"];
+        } else if ([presenceType isEqualToString: @"unavailable"]){
+            [self.delegate buddyWentOffline:@"%@@gmail.com"];
+        }
+    }
+
 }
 
 @end

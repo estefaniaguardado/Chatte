@@ -21,9 +21,10 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (weak) id<ChatDelegate> delegate; //var delegate:ChatDelegate! = nil
-@property (weak) XMPPStream * xmppStrem;
-@property (weak) XMPPRosterCoreDataStorage * xmppRosterStorage;
-@property (weak) XMPPRoster * xmppRoster;
+@property (strong, retain) XMPPStream * xmppStream;
+@property (strong, retain) XMPPRosterCoreDataStorage * xmppRosterStorage;
+@property (strong, retain) XMPPRoster * xmppRoster;
+@property (strong, nonatomic) NSString * userPassword;
 
 @end
 

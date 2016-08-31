@@ -198,6 +198,7 @@
 		7C6FB1C81D74295D00BAB1C6 /* xmppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xmppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C6FB1CC1D74295D00BAB1C6 /* xmppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xmppTests.m; sourceTree = "<group>"; };
 		7C6FB1CE1D74295D00BAB1C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C73CB8C1D7728590092D33C /* CocoaLumberjack_Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CocoaLumberjack_Constants.h; sourceTree = "<group>"; };
 		7C7E6E9E1D75FE9E007BDB38 /* XMPPAnonymousAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPAnonymousAuthentication.h; sourceTree = "<group>"; };
 		7C7E6E9F1D75FE9E007BDB38 /* XMPPAnonymousAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPAnonymousAuthentication.m; sourceTree = "<group>"; };
 		7C7E6EA11D75FE9E007BDB38 /* XMPPDeprecatedDigestAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPDeprecatedDigestAuthentication.h; sourceTree = "<group>"; };
@@ -569,6 +570,7 @@
 				7C6FB1C01D74295D00BAB1C6 /* LaunchScreen.storyboard */,
 				7C6FB1C31D74295D00BAB1C6 /* Info.plist */,
 				7C6FB1B21D74295D00BAB1C6 /* Supporting Files */,
+				7C73CB8C1D7728590092D33C /* CocoaLumberjack_Constants.h */,
 			);
 			path = xmpp;
 			sourceTree = "<group>";
