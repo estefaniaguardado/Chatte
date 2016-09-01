@@ -90,8 +90,8 @@
     if (![self.xmppStream isDisconnected]) return YES;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *jabberID = [defaults stringForKey:@"userID"];
-    NSString * myPassword = [defaults stringForKey:@"userPassword"];
+    NSString *jabberID = [defaults objectForKey:@"userID"];
+    NSString * myPassword = [defaults objectForKey:@"userPassword"];
     
     if (![self.xmppStream isDisconnected]) {
         return YES;
