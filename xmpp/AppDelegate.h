@@ -26,5 +26,7 @@
 @property (strong, retain) XMPPRoster * xmppRoster;
 @property (strong, nonatomic) NSString * userPassword;
 
+- (BOOL) connect;
+
 @end
 

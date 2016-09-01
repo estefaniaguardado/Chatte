@@ -22,7 +22,7 @@
     
     self.xmppStream = [XMPPStream new];
     self.xmppRosterStorage = [XMPPRosterCoreDataStorage new];
-    self.xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:self.xmppRosterStorage];
+    //self.xmppRoster = [[XMPPRoster new] initWithRosterStorage:self.xmppRosterStorage];
     
     return self;
 }
@@ -32,6 +32,7 @@
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
     [self setupStream];
+    //[self connect];
 
     return YES;
 }

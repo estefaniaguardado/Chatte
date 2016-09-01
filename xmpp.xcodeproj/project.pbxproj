@@ -19,6 +19,7 @@
 		7C6FB1BF1D74295D00BAB1C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C6FB1BE1D74295D00BAB1C6 /* Assets.xcassets */; };
 		7C6FB1C21D74295D00BAB1C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C6FB1C01D74295D00BAB1C6 /* LaunchScreen.storyboard */; };
 		7C6FB1CD1D74295D00BAB1C6 /* xmppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6FB1CC1D74295D00BAB1C6 /* xmppTests.m */; };
+		7C73CB8F1D7827C10092D33C /* RosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C73CB8E1D7827C10092D33C /* RosterViewController.m */; };
 		7C7E700F1D75FE9F007BDB38 /* XMPPAnonymousAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E6E9F1D75FE9E007BDB38 /* XMPPAnonymousAuthentication.m */; };
 		7C7E70101D75FE9F007BDB38 /* XMPPDeprecatedDigestAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E6EA21D75FE9E007BDB38 /* XMPPDeprecatedDigestAuthentication.m */; };
 		7C7E70111D75FE9F007BDB38 /* XMPPDeprecatedPlainAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E6EA51D75FE9E007BDB38 /* XMPPDeprecatedPlainAuthentication.m */; };
@@ -199,6 +200,8 @@
 		7C6FB1CC1D74295D00BAB1C6 /* xmppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xmppTests.m; sourceTree = "<group>"; };
 		7C6FB1CE1D74295D00BAB1C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C73CB8C1D7728590092D33C /* CocoaLumberjack_Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CocoaLumberjack_Constants.h; sourceTree = "<group>"; };
+		7C73CB8D1D7827C10092D33C /* RosterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RosterViewController.h; sourceTree = "<group>"; };
+		7C73CB8E1D7827C10092D33C /* RosterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RosterViewController.m; sourceTree = "<group>"; };
 		7C7E6E9E1D75FE9E007BDB38 /* XMPPAnonymousAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPAnonymousAuthentication.h; sourceTree = "<group>"; };
 		7C7E6E9F1D75FE9E007BDB38 /* XMPPAnonymousAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPAnonymousAuthentication.m; sourceTree = "<group>"; };
 		7C7E6EA11D75FE9E007BDB38 /* XMPPDeprecatedDigestAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPDeprecatedDigestAuthentication.h; sourceTree = "<group>"; };
@@ -565,6 +568,8 @@
 				7C6FB1B61D74295D00BAB1C6 /* AppDelegate.m */,
 				7C6FB1B81D74295D00BAB1C6 /* ViewController.h */,
 				7C6FB1B91D74295D00BAB1C6 /* ViewController.m */,
+				7C73CB8D1D7827C10092D33C /* RosterViewController.h */,
+				7C73CB8E1D7827C10092D33C /* RosterViewController.m */,
 				7C6FB1BB1D74295D00BAB1C6 /* Main.storyboard */,
 				7C6FB1BE1D74295D00BAB1C6 /* Assets.xcassets */,
 				7C6FB1C01D74295D00BAB1C6 /* LaunchScreen.storyboard */,
@@ -1761,6 +1766,7 @@
 				7C7E70631D75FE9F007BDB38 /* NSString+XEP_0106.m in Sources */,
 				7C7E70701D75FE9F007BDB38 /* XMPPMessage+XEP_0172.m in Sources */,
 				7C7E70941D75FE9F007BDB38 /* DDDispatchQueueLogFormatter.m in Sources */,
+				7C73CB8F1D7827C10092D33C /* RosterViewController.m in Sources */,
 				7C7E70921D75FE9F007BDB38 /* DDTTYLogger.m in Sources */,
 				7C7E70591D75FE9F007BDB38 /* XMPPPubSub.m in Sources */,
 				7C7E708D1D75FE9F007BDB38 /* GCDAsyncSocket.m in Sources */,

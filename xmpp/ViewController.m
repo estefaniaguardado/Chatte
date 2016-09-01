@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
 
 @interface ViewController ()
 
@@ -16,12 +17,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
+    self.logTextField.text = @"yourLogin@gmail.com";
+    self.passTextField.text = @"yourPassword";
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)login:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setObject:self.logTextField.text forKey:@"userID"];
+    [[NSUserDefaults standardUserDefaults] setObject:self.passTextField.text forKey:@"userPassword"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    if ([appDelegate connect]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+- (IBAction)done:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
