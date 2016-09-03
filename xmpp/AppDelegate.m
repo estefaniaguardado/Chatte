@@ -21,7 +21,7 @@
     self = [super init];
     
     self.xmppStream = [XMPPStream new];
-    self.xmppRosterStorage = [XMPPRosterCoreDataStorage new];
+    self.xmppRosterStorage = [[XMPPRosterCoreDataStorage alloc] initWithDatabaseFilename:nil storeOptions:nil];
     //self.xmppRoster = [[XMPPRoster new] initWithRosterStorage:self.xmppRosterStorage];
     
     return self;
@@ -69,12 +69,14 @@
 }
 
 -(void) goOnline {
-    XMPPPresence * presence = [XMPPPresence new];
+    NSXMLElement *presence = [NSXMLElement elementWithName:@"presence"];
     NSString * domain = [NSString stringWithString:self.xmppStream.myJID.domain];
     
     if ([domain isEqualToString:@"gmail.com"] || [domain isEqualToString:@"gtalk.com"] || [domain isEqualToString:@"talk.google.com"]) {
         NSXMLElement *priority = [NSXMLElement elementWithName:@"priority" stringValue:@"24"];
+        NSXMLElement *available = [NSXMLElement elementWithName:@"type" stringValue:@"available"];
         [presence addChild:priority];
+        [presence addChild:available];
     }
     
     [self.xmppStream sendElement:presence];
@@ -141,7 +143,7 @@
 }
 
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message{
-    NSLog(@"Did receive message");
+    NSLog(@"Did receive message: %@", message);
 }
 
 - (void)xmppStream:(XMPPStream *)sender didSendMessage:(XMPPMessage *)message{

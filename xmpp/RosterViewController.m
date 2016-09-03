@@ -21,6 +21,8 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *jabberID = [defaults objectForKey:@"userID"];
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userID"] != nil) {
         if ([self.appDelegate connect]) {
             self.title = [[[self.appDelegate xmppStream] myJID] bare];
@@ -76,6 +78,23 @@
     
     [self presentViewController:alertController animated:YES completion:nil];
     
+}
+
+- (void)buddyWentOnline:(NSString *)name{
+    if (![self.onlineBuddies containsObject:name]) {
+        [self.onlineBuddies addObject:name];
+        [self.tableView reloadData];
+    }
+}
+
+- (void)buddyWentOffline:(NSString *)name{
+    [self.onlineBuddies removeObject:name];
+    [self.tableView reloadData];
+}
+
+- (void)didDisconnect{
+    [self.onlineBuddies removeAllObjects];
+    [self.tableView reloadData];
 }
 
 @end

@@ -10,7 +10,7 @@
 #import "XMPPFramework.h"
 #import "AppDelegate.h"
 
-@interface RosterViewController : UITableViewController <ChatDelegate>
+@interface RosterViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, ChatDelegate>
 
 @property (weak) NSMutableArray * onlineBuddies;
 @property (weak) AppDelegate *appDelegate;
