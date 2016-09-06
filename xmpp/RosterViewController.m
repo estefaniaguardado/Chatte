@@ -14,6 +14,9 @@
     [super viewDidLoad];
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.appDelegate.delegate = self;
+    self.appDelegate.infoMessage = self;
+    //self.appDelegate = [AppDelegate new];
+
     
     self.onlineBuddies = [NSMutableArray array];
 }
@@ -31,6 +34,12 @@
         [self performSegueWithIdentifier:@"Home.To.Login" sender:self];
     }
     
+}
+
+- (void)receive:(XMPPMessage *)message{
+    NSLog(@"%@", message.body);
+    NSLog(@"%@", message.elementID);
+
 }
 
 //- (void) getListRooms{

@@ -499,6 +499,7 @@
 		7C7E700E1D75FE9F007BDB38 /* XMPPFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPFramework.h; sourceTree = "<group>"; };
 		7C7E709D1D75FF5C007BDB38 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
 		7C7E709F1D75FF7A007BDB38 /* libresolv.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.9.dylib; path = ../../../../usr/lib/libresolv.9.dylib; sourceTree = "<group>"; };
+		7CD2840F1D7EBC580036437D /* IMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IMessage.h; path = Protocols/IMessage.h; sourceTree = "<group>"; };
 		96E8F2D61271EBBE08B5FE7A /* libPods-xmppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-xmppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8C13E86C1915FBB7C1F1C3F /* libPods-xmpp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-xmpp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -564,6 +565,7 @@
 		7C6FB1B11D74295C00BAB1C6 /* xmpp */ = {
 			isa = PBXGroup;
 			children = (
+				7CD2840D1D7EBBFC0036437D /* Protocol */,
 				7C6FB1B51D74295D00BAB1C6 /* AppDelegate.h */,
 				7C6FB1B61D74295D00BAB1C6 /* AppDelegate.m */,
 				7C6FB1B81D74295D00BAB1C6 /* ViewController.h */,
@@ -1474,6 +1476,14 @@
 				7C7E700D1D75FE9F007BDB38 /* stringprep.h */,
 			);
 			path = libidn;
+			sourceTree = "<group>";
+		};
+		7CD2840D1D7EBBFC0036437D /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7CD2840F1D7EBC580036437D /* IMessage.h */,
+			);
+			name = Protocol;
 			sourceTree = "<group>";
 		};
 		8E38C0D402C5E2CF35D15FA7 /* Frameworks */ = {
