@@ -21,18 +21,33 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *jabberID = [defaults objectForKey:@"userID"];
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userID"] != nil) {
         if ([self.appDelegate connect]) {
             self.title = [[[self.appDelegate xmppStream] myJID] bare];
             [[self.appDelegate xmppRoster] fetchRoster];
+            //[self getListRooms];
         }
     } else {
         [self performSegueWithIdentifier:@"Home.To.Login" sender:self];
     }
     
 }
+
+//- (void) getListRooms{
+//
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSString *jabberID = [defaults objectForKey:@"userID"];
+//    NSString* server = @"gmail.com"; //or whatever the server address for muc is
+//    XMPPJID *serverJID = [XMPPJID jidWithString:server];
+//    XMPPIQ *iq = [XMPPIQ iqWithType:@"get" to:serverJID];
+//    [iq addAttributeWithName:@"id" stringValue:@"124f35"];
+//    [iq addAttributeWithName:@"from" stringValue:[[self.appDelegate xmppStream] myJID].full];
+//    NSXMLElement *query = [NSXMLElement elementWithName:@"query"];
+//    [query addAttributeWithName:@"xmlns" stringValue:@"http://jabber.org/protocol/disco#items"];
+//    [iq addChild:query];
+//    [[self.appDelegate xmppStream] sendElement:iq];
+//
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier" forIndexPath:indexPath];
