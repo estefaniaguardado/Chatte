@@ -159,9 +159,9 @@
     if (presenceFromUser != myUserName) {
         NSLog(@"Did receive presence from: %@", presenceFromUser);
         if ([presenceType isEqualToString: @"available"]) {
-            [self.delegate buddyWentOnline:@"%@@gmail.com"];
+            [self.delegate buddyWentOnline:[presenceFromUser stringByAppendingString:@"@gmail.com"]];
         } else if ([presenceType isEqualToString: @"unavailable"]){
-            [self.delegate buddyWentOffline:@"%@@gmail.com"];
+            [self.delegate buddyWentOffline:[presenceFromUser stringByAppendingString:@"@gmail.com"]];
         }
     }
 

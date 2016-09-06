@@ -18,7 +18,7 @@
     //self.appDelegate = [AppDelegate new];
 
     self.viewModel = [NSArray array];
-    self.onlineBuddies = [NSMutableArray array];
+    self.onlineBuddies = [NSMutableSet set];
     self.messagesArray = [NSMutableArray array];
     self.messagesRegistered = [NSMutableSet set];
 
@@ -168,48 +168,14 @@
     return [cellViewModel[@"height"] floatValue];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    UIAlertController * alertController = [UIAlertController
-                                            alertControllerWithTitle:@"Warning!"
-                                            message:@"It will send Yo! to the recipient, continue ?"
-                                            preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* cancel = [UIAlertAction
-                         actionWithTitle:@"Cancel"
-                         style:UIAlertActionStyleCancel
-                         handler:^(UIAlertAction * action){
-                             [alertController dismissViewControllerAnimated:YES completion:nil];
-                         }];
-    
-    UIAlertAction* ok = [UIAlertAction
-                             actionWithTitle:@"ok"
-                             style:UIAlertActionStyleDefault
-                             handler:^(UIAlertAction * action){
-                                 NSString * message = @"Yo!";
-                                 XMPPJID * senderJID = [XMPPJID jidWithString:
-                                                        [self.onlineBuddies[indexPath.row] string]];
-                                 XMPPMessage* xmppMessage = [[XMPPMessage new] initWithType:@"chat" to:senderJID];
-                                 [xmppMessage addBody:message];
-                                 [[self.appDelegate xmppStream] sendElement:xmppMessage];
-                             }];
-    
-    [alertController addAction:cancel];
-    [alertController addAction:ok];
-    
-    [self presentViewController:alertController animated:YES completion:nil];
-    
-}
-
 - (void)buddyWentOnline:(NSString *)name{
-    if (![self.onlineBuddies containsObject:name]) {
-        [self.onlineBuddies addObject:name];
-        [self.tableView reloadData];
-    }
+    [self.onlineBuddies addObject:[NSString stringWithString:name]];
+    //[self.tableView reloadData];
 }
 
 - (void)buddyWentOffline:(NSString *)name{
     [self.onlineBuddies removeObject:name];
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
 }
 
 - (void)didDisconnect{
