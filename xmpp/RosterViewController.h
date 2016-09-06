@@ -16,6 +16,8 @@
 @property (weak) NSMutableArray * onlineBuddies;
 @property (strong) NSMutableArray * messagesArray;
 @property (strong) NSArray *viewModel;
+@property (strong) NSMutableSet * messagesRegistered;
+
 
 @property (weak) AppDelegate *appDelegate;
 

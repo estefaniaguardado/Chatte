@@ -20,6 +20,7 @@
     self.viewModel = [NSArray array];
     self.onlineBuddies = [NSMutableArray array];
     self.messagesArray = [NSMutableArray array];
+    self.messagesRegistered = [NSMutableSet set];
 
     [self updateViewModel];
 }
@@ -81,20 +82,31 @@
 - (void)receive:(XMPPMessage *)message{
     //NSLog(@"%@", message.body);
     //NSLog(@"%@", message.elementID);
-    
-    if (![[message elementsForName:@"body"] isEqualToArray:@[]]) {
+
+    if ([self isValid:message]) {
+        [self.messagesRegistered addObject:[[message attributeForName:@"id"] stringValue]];
+        
         NSDictionary * detailMessage = @{
                                          @"id": [[message attributeForName:@"id"] stringValue],
                                          @"from": [[message attributeForName:@"from"] stringValue],
                                          @"body": [[message elementForName:@"body"] stringValue]
-                                        };
-        
+                                         };
         [self.messagesArray addObject:detailMessage];
         
         [self updateViewModel];
     }
 }
 
+- (BOOL) isValid: (XMPPMessage *) message{
+    BOOL messageNotRegistered = [self.messagesRegistered
+                                  containsObject:[[message attributeForName:@"id"]
+                                                  stringValue]] ? NO : YES;
+    
+    BOOL messageNotNill = [[message elementsForName:@"body"]
+                           isEqualToArray:@[]] ? NO : YES;
+    
+    return messageNotRegistered && messageNotNill;
+}
 //- (void) getListRooms{
 //
 //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
