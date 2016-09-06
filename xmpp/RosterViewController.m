@@ -17,8 +17,11 @@
     self.appDelegate.infoMessage = self;
     //self.appDelegate = [AppDelegate new];
 
-    
+    self.viewModel = [NSArray array];
     self.onlineBuddies = [NSMutableArray array];
+    self.messagesArray = [NSMutableArray array];
+
+    [self updateViewModel];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -36,10 +39,60 @@
     
 }
 
-- (void)receive:(XMPPMessage *)message{
-    NSLog(@"%@", message.body);
-    NSLog(@"%@", message.elementID);
+- (void) updateViewModel {
+    NSMutableArray * viewModel = [NSMutableArray array];
+    [self.messagesArray enumerateObjectsUsingBlock:^(id message, NSUInteger idx, BOOL * stop) {
+        
+        NSMutableDictionary * cellModel = [NSMutableDictionary dictionaryWithDictionary:message];
+        
+        [viewModel addObject:@{
+                               @"nib" : @"MessageTableViewCell",
+                               @"height" : @(70),
+                               @"data":cellModel }];
+    }];
+    
+    self.viewModel = [NSArray arrayWithArray:viewModel];
+    
+    [self registerNibs];
+    
+    [self.tableView beginUpdates];
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.messagesArray.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView endUpdates];
+    
+}
 
+- (void) registerNibs{
+    __weak UITableView * tableView = self.tableView;
+    NSMutableSet * registeredNibs = [NSMutableSet set];
+    
+    [self.viewModel enumerateObjectsUsingBlock:^(NSDictionary * cellViewModel, NSUInteger idx, BOOL * stop) {
+        
+        NSString * nibFile = cellViewModel[@"nib"];
+        
+        if(![registeredNibs containsObject: nibFile]) {
+            [registeredNibs addObject: nibFile];
+            
+            UINib * nib = [UINib nibWithNibName:nibFile bundle:nil];
+            [tableView registerNib:nib forCellReuseIdentifier:nibFile];
+        }
+    }];
+}
+
+- (void)receive:(XMPPMessage *)message{
+    //NSLog(@"%@", message.body);
+    //NSLog(@"%@", message.elementID);
+    
+    if (![[message elementsForName:@"body"] isEqualToArray:@[]]) {
+        NSDictionary * detailMessage = @{
+                                         @"id": [[message attributeForName:@"id"] stringValue],
+                                         @"from": [[message attributeForName:@"from"] stringValue],
+                                         @"body": [[message elementForName:@"body"] stringValue]
+                                        };
+        
+        [self.messagesArray addObject:detailMessage];
+        
+        [self updateViewModel];
+    }
 }
 
 //- (void) getListRooms{
@@ -58,18 +111,33 @@
 //
 //}
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier" forIndexPath:indexPath];
-    cell.textLabel.text = [self.onlineBuddies[indexPath.row] string];
-    return cell;
-}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.onlineBuddies.count;
+    //return self.onlineBuddies.count;
+    return [self.viewModel count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier" forIndexPath:indexPath];
+    //cell.textLabel.text = [self.onlineBuddies[indexPath.row] string];
+    
+    NSDictionary * cellViewModel = self.viewModel[indexPath.row];
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier: cellViewModel[@"nib"]];
+    
+    if([cell respondsToSelector:@selector(setData:)]) {
+        [cell performSelector:@selector(setData:) withObject:cellViewModel[@"data"]];
+    }
+    
+    return cell;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary * cellViewModel = self.viewModel[indexPath.row];
+    return [cellViewModel[@"height"] floatValue];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
