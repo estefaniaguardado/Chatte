@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "XMPPFramework.h"
 #import "AppDelegate.h"
+#import "IMessage.h"
 
-@interface RosterViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, ChatDelegate>
+@interface RosterViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, ChatDelegate, IMessage>
 
-@property (weak) NSMutableArray * onlineBuddies;
+@property (strong) NSMutableSet * onlineBuddies;
+@property (strong) NSMutableArray * messagesArray;
+@property (strong) NSArray *viewModel;
+@property (strong) NSMutableSet * messagesRegistered;
+
 @property (weak) AppDelegate *appDelegate;
 
 @end
