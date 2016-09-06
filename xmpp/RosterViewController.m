@@ -79,7 +79,7 @@
     }];
 }
 
-- (void)receive:(XMPPMessage *)message{
+- (void) handler:(XMPPMessage *)message{
     //NSLog(@"%@", message.body);
     //NSLog(@"%@", message.elementID);
 
@@ -94,6 +94,8 @@
         [self.messagesArray addObject:detailMessage];
         
         [self updateViewModel];
+        
+        [self send:message to:[message from]];
     }
 }
 
@@ -107,6 +109,20 @@
     
     return messageNotRegistered && messageNotNill;
 }
+
+- (void) send:(XMPPMessage *)message to: (XMPPJID *) receiver{
+    
+    NSXMLElement *body = [NSXMLElement elementWithName:@"body"];
+    [body setStringValue:[[message elementForName:@"body"] stringValue]];
+    
+    NSXMLElement *xmppMessage = [NSXMLElement elementWithName:@"message"];
+    [xmppMessage addAttributeWithName:@"type" stringValue:@"chat"];
+    [xmppMessage addAttributeWithName:@"to" stringValue:[receiver full]];
+    [xmppMessage addChild:body];
+    
+    [[self.appDelegate xmppStream] sendElement:xmppMessage];
+}
+
 //- (void) getListRooms{
 //
 //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

@@ -13,7 +13,6 @@
 
 @optional
 
-- (void) send: (XMPPMessage *) message;
-- (void) receive: (XMPPMessage *) message;
+- (void) handler: (XMPPMessage *) message;
 
 @end

@@ -18,7 +18,6 @@
 @property (strong) NSArray *viewModel;
 @property (strong) NSMutableSet * messagesRegistered;
 
-
 @property (weak) AppDelegate *appDelegate;
 
 @end

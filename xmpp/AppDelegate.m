@@ -143,7 +143,7 @@
 }
 
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message{
-    [self.infoMessage receive:message];
+    [self.infoMessage handler:message];
     //NSLog(@"Did receive message: %@", message);
 }
 
