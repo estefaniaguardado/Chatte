@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
-@interface ViewController : UIViewController <ChatDelegate>
+@interface ViewController : UIViewController
 
 @property (weak) AppDelegate *appDelegate;
 

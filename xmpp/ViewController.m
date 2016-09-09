@@ -20,7 +20,6 @@
     [super viewDidLoad];
 
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.appDelegate.delegate = self;
     
     self.logTextField.text = @"yourLogin@gmail.com";
     self.passTextField.text = @"yourPassword";
@@ -51,17 +50,6 @@
         return NO;
     }
     return NO;
-}
-
-- (void)buddyWentOnline:(NSString *)name{
-
-}
-
-- (void)buddyWentOffline:(NSString *)name{
-}
-
-- (void)didDisconnect{
-    
 }
 
 @end

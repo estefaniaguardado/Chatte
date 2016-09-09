@@ -12,7 +12,7 @@
 #import "IMessage.h"
 
 @interface MessagesTableViewController : UITableViewController
-<UITableViewDelegate, UITableViewDataSource, ChatDelegate, IMessage>
+<UITableViewDelegate, UITableViewDataSource, IMessage>
 
 @property (weak) AppDelegate *appDelegate;
 

@@ -18,7 +18,6 @@
     [super viewDidLoad];
     
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.appDelegate.delegate = self;
     self.appDelegate.infoMessage = self;
     //self.appDelegate = [AppDelegate new];
     

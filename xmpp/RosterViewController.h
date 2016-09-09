@@ -12,7 +12,7 @@
 #import "IQuery.h"
 
 @interface RosterViewController : UITableViewController
-<UITableViewDelegate, UITableViewDataSource, ChatDelegate, IQuery>
+<UITableViewDelegate, UITableViewDataSource, IQuery>
 
 @property (strong) NSArray *viewModel;
 @property (strong) NSMutableArray * contactRoster;

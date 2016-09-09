@@ -13,7 +13,6 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.appDelegate.delegate = self;
     self.appDelegate.resultIQ = self;
     
     self.contactRoster = [NSMutableArray array];
@@ -27,19 +26,6 @@
     
     self.title = [[[self.appDelegate xmppStream] myJID] bare];
     
-}
-
-
-- (void)buddyWentOnline:(NSString *)name{
-    //[self.tableView reloadData];
-}
-
-- (void)buddyWentOffline:(NSString *)name{
-    //[self.tableView reloadData];
-}
-
-- (void)didDisconnect{
-    [self.tableView reloadData];
 }
 
 - (void)didReceiveIQ:(XMPPIQ *)iq{
