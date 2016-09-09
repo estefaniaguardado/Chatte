@@ -12,6 +12,7 @@
 		7C44AF091D75FBD200B85D18 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C44AF081D75FBD200B85D18 /* Security.framework */; };
 		7C44AF0B1D75FBD800B85D18 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C44AF0A1D75FBD800B85D18 /* CoreData.framework */; };
 		7C44AF0D1D75FBE600B85D18 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C44AF0C1D75FBE600B85D18 /* SystemConfiguration.framework */; };
+		7C66FD561D82EBAA00D2B897 /* MessagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C66FD551D82EBAA00D2B897 /* MessagesTableViewController.m */; };
 		7C6FB1B41D74295D00BAB1C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6FB1B31D74295D00BAB1C6 /* main.m */; };
 		7C6FB1B71D74295D00BAB1C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6FB1B61D74295D00BAB1C6 /* AppDelegate.m */; };
 		7C6FB1BA1D74295D00BAB1C6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6FB1B91D74295D00BAB1C6 /* ViewController.m */; };
@@ -188,6 +189,8 @@
 		7C44AF081D75FBD200B85D18 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7C44AF0A1D75FBD800B85D18 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		7C44AF0C1D75FBE600B85D18 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		7C66FD541D82EBAA00D2B897 /* MessagesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesTableViewController.h; sourceTree = "<group>"; };
+		7C66FD551D82EBAA00D2B897 /* MessagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesTableViewController.m; sourceTree = "<group>"; };
 		7C6FB1AF1D74295C00BAB1C6 /* xmpp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xmpp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C6FB1B31D74295D00BAB1C6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7C6FB1B51D74295D00BAB1C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -578,6 +581,8 @@
 				7C6FB1B91D74295D00BAB1C6 /* ViewController.m */,
 				7C73CB8D1D7827C10092D33C /* RosterViewController.h */,
 				7C73CB8E1D7827C10092D33C /* RosterViewController.m */,
+				7C66FD541D82EBAA00D2B897 /* MessagesTableViewController.h */,
+				7C66FD551D82EBAA00D2B897 /* MessagesTableViewController.m */,
 				7C6FB1BB1D74295D00BAB1C6 /* Main.storyboard */,
 				7C6FB1BE1D74295D00BAB1C6 /* Assets.xcassets */,
 				7C6FB1C01D74295D00BAB1C6 /* LaunchScreen.storyboard */,
@@ -1750,6 +1755,7 @@
 				7C6FB1BA1D74295D00BAB1C6 /* ViewController.m in Sources */,
 				7C7E70181D75FE9F007BDB38 /* NSNumber+XMPP.m in Sources */,
 				7C7E709A1D75FE9F007BDB38 /* DDXMLNode.m in Sources */,
+				7C66FD561D82EBAA00D2B897 /* MessagesTableViewController.m in Sources */,
 				7C7E70211D75FE9F007BDB38 /* XMPPPresence.m in Sources */,
 				7C7E70951D75FE9F007BDB38 /* DDMultiFormatter.m in Sources */,
 				7C6FB1B71D74295D00BAB1C6 /* AppDelegate.m in Sources */,
