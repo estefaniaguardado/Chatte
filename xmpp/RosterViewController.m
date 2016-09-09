@@ -17,6 +17,8 @@
     
     self.contactRoster = [NSMutableArray array];
     
+    self.tableView.tableFooterView = [UIView new];
+    
     [self getRoster];
 
 }

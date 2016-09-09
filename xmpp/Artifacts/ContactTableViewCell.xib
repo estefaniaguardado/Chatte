@@ -20,7 +20,7 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c1u-do-UiV">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="contact" translatesAutoresizingMaskIntoConstraints="NO" id="c1u-do-UiV">
                         <rect key="frame" x="8" y="8" width="48" height="48"/>
                     </imageView>
                 </subviews>
@@ -32,4 +32,7 @@
             <point key="canvasLocation" x="395" y="429"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="contact" width="256" height="256"/>
+    </resources>
 </document>
