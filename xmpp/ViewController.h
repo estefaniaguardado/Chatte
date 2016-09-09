@@ -7,14 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <ChatDelegate>
+
+@property (weak) AppDelegate *appDelegate;
 
 @property (weak, nonatomic) IBOutlet UITextField *logTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passTextField;
 
 - (IBAction)login:(id)sender;
-- (IBAction)done:(id)sender;
 
 @end
 

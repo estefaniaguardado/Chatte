@@ -28,15 +28,7 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
     
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userID"] != nil) {
-        if ([self.appDelegate connect]) {
-            self.title = [[[self.appDelegate xmppStream] myJID] bare];
-            [[self.appDelegate xmppRoster] fetchRoster];
-            //[self getListRooms];
-        }
-    } else {
-        [self performSegueWithIdentifier:@"Home.To.Login" sender:self];
-    }
+    self.title = [[[self.appDelegate xmppStream] myJID] bare];
     
 }
 
