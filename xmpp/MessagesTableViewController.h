@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XMPPFramework.h"
+#import "AppDelegate.h"
+#import "IMessage.h"
 
 @interface MessagesTableViewController : UITableViewController
+<UITableViewDelegate, UITableViewDataSource, ChatDelegate, IMessage>
+
+@property (weak) AppDelegate *appDelegate;
+
+@property (strong) NSMutableArray * messagesArray;
+@property (strong) NSArray *viewModel;
+@property (strong) NSMutableSet * messagesRegistered;
 
 @end

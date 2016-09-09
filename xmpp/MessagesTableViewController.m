@@ -17,82 +17,127 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.appDelegate.delegate = self;
+    self.appDelegate.infoMessage = self;
+    //self.appDelegate = [AppDelegate new];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.viewModel = [NSArray array];
+    self.messagesArray = [NSMutableArray array];
+    self.messagesRegistered = [NSMutableSet set];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) updateViewModel {
+    NSMutableArray * viewModel = [NSMutableArray array];
+    [self.messagesArray enumerateObjectsUsingBlock:^(id message, NSUInteger idx, BOOL * stop) {
+        
+        NSMutableDictionary * cellModel = [NSMutableDictionary dictionaryWithDictionary:message];
+        
+        [viewModel addObject:@{
+                               @"nib" : @"MessageTableViewCell",
+                               @"height" : @(70),
+                               @"data":cellModel }];
+    }];
+    
+    self.viewModel = [NSArray arrayWithArray:viewModel];
+    
+    [self registerNibs];
+    
+    [self.tableView beginUpdates];
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.messagesArray.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView endUpdates];
+    
+}
+
+- (void) registerNibs{
+    __weak UITableView * tableView = self.tableView;
+    NSMutableSet * registeredNibs = [NSMutableSet set];
+    
+    [self.viewModel enumerateObjectsUsingBlock:^(NSDictionary * cellViewModel, NSUInteger idx, BOOL * stop) {
+        
+        NSString * nibFile = cellViewModel[@"nib"];
+        
+        if(![registeredNibs containsObject: nibFile]) {
+            [registeredNibs addObject: nibFile];
+            
+            UINib * nib = [UINib nibWithNibName:nibFile bundle:nil];
+            [tableView registerNib:nib forCellReuseIdentifier:nibFile];
+        }
+    }];
+}
+
+- (void) handler:(XMPPMessage *)message{
+    //NSLog(@"%@", message.body);
+    //NSLog(@"%@", message.elementID);
+    
+    if ([self isValid:message]) {
+        [self.messagesRegistered addObject:[[message attributeForName:@"id"] stringValue]];
+        
+        NSDictionary * detailMessage = @{
+                                         @"id": [[message attributeForName:@"id"] stringValue],
+                                         @"from": [[message attributeForName:@"from"] stringValue],
+                                         @"body": [[message elementForName:@"body"] stringValue]
+                                         };
+        [self.messagesArray addObject:detailMessage];
+        
+        [self updateViewModel];
+        
+        [self send:message to:[message from]];
+    }
+}
+
+- (BOOL) isValid: (XMPPMessage *) message{
+    BOOL messageNotRegistered = [self.messagesRegistered
+                                 containsObject:[[message attributeForName:@"id"]
+                                                 stringValue]] ? NO : YES;
+    
+    BOOL messageNotNill = [[message elementsForName:@"body"]
+                           isEqualToArray:@[]] ? NO : YES;
+    
+    return messageNotRegistered && messageNotNill;
+}
+
+- (void) send:(XMPPMessage *)message to: (XMPPJID *) receiver{
+    
+    NSXMLElement *body = [NSXMLElement elementWithName:@"body"];
+    [body setStringValue:[[message elementForName:@"body"] stringValue]];
+    
+    NSXMLElement *xmppMessage = [NSXMLElement elementWithName:@"message"];
+    [xmppMessage addAttributeWithName:@"type" stringValue:@"chat"];
+    [xmppMessage addAttributeWithName:@"to" stringValue:[receiver full]];
+    [xmppMessage addChild:body];
+    
+    [[self.appDelegate xmppStream] sendElement:xmppMessage];
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    //return self.onlineBuddies.count;
+    return [self.viewModel count];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier" forIndexPath:indexPath];
+    //cell.textLabel.text = [self.onlineBuddies[indexPath.row] string];
     
-    // Configure the cell...
+    NSDictionary * cellViewModel = self.viewModel[indexPath.row];
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier: cellViewModel[@"nib"]];
+    
+    if([cell respondsToSelector:@selector(setData:)]) {
+        [cell performSelector:@selector(setData:) withObject:cellViewModel[@"data"]];
+    }
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary * cellViewModel = self.viewModel[indexPath.row];
+    return [cellViewModel[@"height"] floatValue];
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
