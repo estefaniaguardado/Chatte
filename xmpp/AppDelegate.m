@@ -61,8 +61,6 @@
 //MARK: Private Methods
 -(void) setupStream {
     //xmppRoster = XMPPRoster(rosterStorage: xmppRosterStorage)
-    
-    
     [self.xmppRoster activate:self.xmppStream];
     [self.xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
     [self.xmppRoster addDelegate:self delegateQueue: dispatch_get_main_queue()];
@@ -138,7 +136,10 @@
 }
 
 - (BOOL) xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq{
-    NSLog(@"Did receive IQ");
+    if ([iq.elementID isEqualToString:@"v1"] && !self.didReceivedIQRoster) {
+        self.didReceivedIQRoster = YES;
+        [self.resultIQ didReceiveIQ:iq];
+    }
     return NO;
 }
 
@@ -152,18 +153,6 @@
 }
 
 - (void)xmppStream:(XMPPStream *)sender didReceivePresence:(XMPPPresence *)presence{
-    NSString * presenceType = [NSString stringWithString:presence.type];
-    NSString * myUserName = [NSString stringWithString:sender.myJID.user];
-    NSString * presenceFromUser = [NSString stringWithString:presence.from.user];
-    
-    if (presenceFromUser != myUserName) {
-        NSLog(@"Did receive presence from: %@", presenceFromUser);
-        if ([presenceType isEqualToString: @"available"]) {
-            [self.delegate buddyWentOnline:[presenceFromUser stringByAppendingString:@"@gmail.com"]];
-        } else if ([presenceType isEqualToString: @"unavailable"]){
-            [self.delegate buddyWentOffline:[presenceFromUser stringByAppendingString:@"@gmail.com"]];
-        }
-    }
 
 }
 

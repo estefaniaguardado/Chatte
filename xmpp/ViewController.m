@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "AppDelegate.h"
+#import "RosterViewController.h"
 
 @interface ViewController ()
 
@@ -18,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     self.logTextField.text = @"yourLogin@gmail.com";
     self.passTextField.text = @"yourPassword";
 }
@@ -35,12 +38,18 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
     if ([appDelegate connect]) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self performSegueWithIdentifier:@"rosterVC" sender:self];
     }
 }
 
-- (IBAction)done:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userID"] != nil) {
+        if ([self.appDelegate connect]) {
+            return YES;
+        }
+        return NO;
+    }
+    return NO;
 }
 
 @end

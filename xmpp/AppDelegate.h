@@ -9,25 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "XMPPFramework.h"
 #import "IMessage.h"
-
-@protocol ChatDelegate
-
-- (void) buddyWentOnline: (NSString *) name;
-- (void) buddyWentOffline: (NSString *) name;
-- (void) didDisconnect;
-
-@end
+#import "IQuery.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, XMPPRosterDelegate, XMPPStreamDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (weak) id<ChatDelegate> delegate; //var delegate:ChatDelegate! = nil
 @property (strong, retain) XMPPStream * xmppStream;
 @property (strong, retain) XMPPRosterCoreDataStorage * xmppRosterStorage;
 @property (strong, retain) XMPPRoster * xmppRoster;
 @property (strong, nonatomic) NSString * userPassword;
-@property (weak) id<IMessage> infoMessage;
 
+@property (nonatomic, assign) BOOL didReceivedIQRoster;
+@property (weak) id<IMessage> infoMessage;
+@property (weak) id<IQuery> resultIQ;
 
 - (BOOL) connect;
 
