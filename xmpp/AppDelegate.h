@@ -19,6 +19,7 @@
 @property (strong, retain) XMPPRoster * xmppRoster;
 @property (strong, nonatomic) NSString * userPassword;
 
+@property (nonatomic, assign) BOOL didReceivedIQRoster;
 @property (weak) id<IMessage> infoMessage;
 @property (weak) id<IQuery> resultIQ;
 

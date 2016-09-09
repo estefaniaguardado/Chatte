@@ -61,8 +61,6 @@
 //MARK: Private Methods
 -(void) setupStream {
     //xmppRoster = XMPPRoster(rosterStorage: xmppRosterStorage)
-    
-    
     [self.xmppRoster activate:self.xmppStream];
     [self.xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
     [self.xmppRoster addDelegate:self delegateQueue: dispatch_get_main_queue()];
@@ -138,7 +136,10 @@
 }
 
 - (BOOL) xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq{
-    [self.resultIQ didReceiveIQ:iq];
+    if ([iq.elementID isEqualToString:@"v1"] && !self.didReceivedIQRoster) {
+        self.didReceivedIQRoster = YES;
+        [self.resultIQ didReceiveIQ:iq];
+    }
     return NO;
 }
 
