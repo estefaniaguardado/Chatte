@@ -41,6 +41,8 @@
         //XMPPJID *jid = [XMPPJID jidWithString:jidString];
         [self.contactRoster addObject:contact];
     }
+    
+    [self updateViewModel];
 }
 
 - (void) getRoster {
@@ -60,6 +62,45 @@
     [[self.appDelegate xmppStream] sendElement:iq];
 }
 
+- (void) updateViewModel {
+    NSMutableArray * viewModel = [NSMutableArray array];
+    [self.contactRoster enumerateObjectsUsingBlock:^(id contact, NSUInteger idx, BOOL * stop) {
+        
+        NSMutableDictionary * cellModel = [NSMutableDictionary
+                                           dictionaryWithDictionary:contact];
+        
+        [viewModel addObject:@{
+                               @"nib" : @"ContactTableViewCell",
+                               @"height" : @(70),
+                               @"data":cellModel }];
+    }];
+    
+    self.viewModel = [NSArray arrayWithArray:viewModel];
+    
+    [self registerNibs];
+    
+    [self.tableView reloadData];
+    
+}
+
+- (void) registerNibs{
+    __weak UITableView * tableView = self.tableView;
+    NSMutableSet * registeredNibs = [NSMutableSet set];
+    
+    [self.viewModel enumerateObjectsUsingBlock:^(NSDictionary * cellViewModel, NSUInteger idx, BOOL * stop) {
+        
+        NSString * nibFile = cellViewModel[@"nib"];
+        
+        if(![registeredNibs containsObject: nibFile]) {
+            [registeredNibs addObject: nibFile];
+            
+            UINib * nib = [UINib nibWithNibName:nibFile bundle:nil];
+            [tableView registerNib:nib forCellReuseIdentifier:nibFile];
+        }
+    }];
+}
+
+#pragma mark - Table view data source
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     //return self.onlineBuddies.count;

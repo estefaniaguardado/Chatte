@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7987383CB32AD6E9C8A3CE21 /* libPods-xmppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96E8F2D61271EBBE08B5FE7A /* libPods-xmppTests.a */; };
+		7C11417D1D82F9DC00231EC6 /* ContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C11417B1D82F9DC00231EC6 /* ContactTableViewCell.m */; };
+		7C11417E1D82F9DC00231EC6 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C11417C1D82F9DC00231EC6 /* ContactTableViewCell.xib */; };
 		7C44AF071D75FBCD00B85D18 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C44AF061D75FBCD00B85D18 /* CFNetwork.framework */; };
 		7C44AF091D75FBD200B85D18 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C44AF081D75FBD200B85D18 /* Security.framework */; };
 		7C44AF0B1D75FBD800B85D18 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C44AF0A1D75FBD800B85D18 /* CoreData.framework */; };
@@ -185,6 +187,9 @@
 		457AE37134F2AF825E6BEC43 /* Pods-xmpp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xmpp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xmpp/Pods-xmpp.debug.xcconfig"; sourceTree = "<group>"; };
 		69E4A5374BE8C39C2ECD5237 /* Pods-xmppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xmppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xmppTests/Pods-xmppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		781C5D6123D25C86186E858D /* Pods-xmppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xmppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-xmppTests/Pods-xmppTests.release.xcconfig"; sourceTree = "<group>"; };
+		7C11417A1D82F9DC00231EC6 /* ContactTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactTableViewCell.h; path = Artifacts/ContactTableViewCell.h; sourceTree = "<group>"; };
+		7C11417B1D82F9DC00231EC6 /* ContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactTableViewCell.m; path = Artifacts/ContactTableViewCell.m; sourceTree = "<group>"; };
+		7C11417C1D82F9DC00231EC6 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContactTableViewCell.xib; path = Artifacts/ContactTableViewCell.xib; sourceTree = "<group>"; };
 		7C44AF061D75FBCD00B85D18 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		7C44AF081D75FBD200B85D18 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7C44AF0A1D75FBD800B85D18 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -1505,6 +1510,9 @@
 				7CD284111D7EF2650036437D /* MessageTableViewCell.h */,
 				7CD284121D7EF2650036437D /* MessageTableViewCell.m */,
 				7CD284131D7EF2650036437D /* MessageTableViewCell.xib */,
+				7C11417A1D82F9DC00231EC6 /* ContactTableViewCell.h */,
+				7C11417B1D82F9DC00231EC6 /* ContactTableViewCell.m */,
+				7C11417C1D82F9DC00231EC6 /* ContactTableViewCell.xib */,
 			);
 			name = Artifacts;
 			sourceTree = "<group>";
@@ -1613,6 +1621,7 @@
 			files = (
 				7C7E709B1D75FE9F007BDB38 /* build-libidn.sh in Resources */,
 				7CD284151D7EF2650036437D /* MessageTableViewCell.xib in Resources */,
+				7C11417E1D82F9DC00231EC6 /* ContactTableViewCell.xib in Resources */,
 				7C6FB1C21D74295D00BAB1C6 /* LaunchScreen.storyboard in Resources */,
 				7C6FB1BF1D74295D00BAB1C6 /* Assets.xcassets in Resources */,
 				7C7E70961D75FE9F007BDB38 /* README.txt in Resources */,
@@ -1859,6 +1868,7 @@
 				7C7E706D1D75FE9F007BDB38 /* XMPPMessageArchiving.m in Sources */,
 				7C7E70271D75FE9F007BDB38 /* XMPPOutgoingFileTransfer.m in Sources */,
 				7C7E70521D75FE9F007BDB38 /* XMPPvCardTempEmail.m in Sources */,
+				7C11417D1D82F9DC00231EC6 /* ContactTableViewCell.m in Sources */,
 				7C7E70511D75FE9F007BDB38 /* XMPPvCardTempBase.m in Sources */,
 				7C7E70141D75FE9F007BDB38 /* XMPPSCRAMSHA1Authentication.m in Sources */,
 				7C7E70751D75FE9F007BDB38 /* XMPPStreamManagementMemoryStorage.m in Sources */,
