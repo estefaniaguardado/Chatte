@@ -138,7 +138,7 @@
 }
 
 - (BOOL) xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq{
-    NSLog(@"Did receive IQ");
+    NSLog(@"Did receive IQ %@", iq);
     return NO;
 }
 
@@ -159,12 +159,13 @@
     if (presenceFromUser != myUserName) {
         NSLog(@"Did receive presence from: %@", presenceFromUser);
         if ([presenceType isEqualToString: @"available"]) {
-            [self.delegate buddyWentOnline:[presenceFromUser stringByAppendingString:@"@gmail.com"]];
+            [self.delegate buddyWentOnline:[[presenceFromUser stringByAppendingString:@"@"]
+                                              stringByAppendingString:sender.myJID.domain]];
         } else if ([presenceType isEqualToString: @"unavailable"]){
-            [self.delegate buddyWentOffline:[presenceFromUser stringByAppendingString:@"@gmail.com"]];
+            [self.delegate buddyWentOffline:[[presenceFromUser stringByAppendingString:@"@"]
+                                               stringByAppendingString:sender.myJID.domain]];
         }
     }
-
 }
 
 @end

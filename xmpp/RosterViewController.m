@@ -183,4 +183,46 @@
     [self.tableView reloadData];
 }
 
+
+- (void) getRoster: (NSString *) user{
+    
+    
+    NSXMLElement *xmlns = [NSXMLElement elementWithName:@"query"];
+    [xmlns addAttributeWithName:@"xmlns" stringValue:@"jabber:iq:roster"];
+    [xmlns addAttributeWithName:@"xmlns:gr" stringValue:@"google:roster"];
+    [xmlns addAttributeWithName:@"gr:ext" stringValue:@"2"];
+
+
+    NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
+    //[iq addAttributeWithName:@"to" stringValue:user];
+    [iq addAttributeWithName:@"from" stringValue:[[[self.appDelegate xmppStream] myJID] full]];
+    [iq addAttributeWithName:@"id" stringValue:@"v1"];
+    [iq addAttributeWithName:@"type" stringValue:@"get"];
+    [iq addChild:xmlns];
+    
+    [[self.appDelegate xmppStream] sendElement:iq];
+
+//    <iq type='get'
+//    from='romeo@gmail.com/orchard'
+//    id='google-roster-1'>
+//    <query xmlns='jabber:iq:roster' xmlns:gr='google:roster' gr:ext='2'/>
+//    </iq>
+    
+//    NSXMLElement *xmlns = [NSXMLElement elementWithName:@"vCard" xmlns:@"vcard-temp"];
+//    NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
+//    [iq addAttributeWithName:@"to" stringValue:user];
+//    [iq addAttributeWithName:@"from" stringValue:[[[self.appDelegate xmppStream] myJID] full]];
+//    [iq addAttributeWithName:@"id" stringValue:@"v1"];
+//    [iq addAttributeWithName:@"type" stringValue:@"get"];
+//    [iq addChild:xmlns];
+//    
+//    [[self.appDelegate xmppStream] sendElement:iq];
+    
+    //        <iq from='stpeter@jabber.org/roundabout'
+    //        id='v1'
+    //        type='get'>
+    //        <vCard xmlns='vcard-temp'/>
+    //        </iq>
+}
+
 @end
