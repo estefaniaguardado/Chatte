@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "XMPPFramework.h"
 #import "IMessage.h"
+#import "IQuery.h"
 
 @protocol ChatDelegate
 
@@ -26,8 +27,9 @@
 @property (strong, retain) XMPPRosterCoreDataStorage * xmppRosterStorage;
 @property (strong, retain) XMPPRoster * xmppRoster;
 @property (strong, nonatomic) NSString * userPassword;
-@property (weak) id<IMessage> infoMessage;
 
+@property (weak) id<IMessage> infoMessage;
+@property (weak) id<IQuery> resultIQ;
 
 - (BOOL) connect;
 

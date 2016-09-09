@@ -191,6 +191,7 @@
 		7C44AF0C1D75FBE600B85D18 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7C66FD541D82EBAA00D2B897 /* MessagesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesTableViewController.h; sourceTree = "<group>"; };
 		7C66FD551D82EBAA00D2B897 /* MessagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesTableViewController.m; sourceTree = "<group>"; };
+		7C66FD571D82ED6100D2B897 /* IQuery.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IQuery.h; path = Protocols/IQuery.h; sourceTree = "<group>"; };
 		7C6FB1AF1D74295C00BAB1C6 /* xmpp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xmpp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C6FB1B31D74295D00BAB1C6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7C6FB1B51D74295D00BAB1C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1493,6 +1494,7 @@
 			isa = PBXGroup;
 			children = (
 				7CD2840F1D7EBC580036437D /* IMessage.h */,
+				7C66FD571D82ED6100D2B897 /* IQuery.h */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";

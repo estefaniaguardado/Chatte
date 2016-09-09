@@ -14,13 +14,11 @@
     [super viewDidLoad];
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.appDelegate.delegate = self;
-    self.appDelegate.infoMessage = self;
-    //self.appDelegate = [AppDelegate new];
-
-    self.viewModel = [NSArray array];
-    self.onlineBuddies = [NSMutableSet set];
-    self.messagesArray = [NSMutableArray array];
-    self.messagesRegistered = [NSMutableSet set];
+    self.appDelegate.resultIQ = self;
+    
+    self.contactRoster = [NSMutableArray array];
+    
+    [self getRoster];
 
 }
 
@@ -31,21 +29,50 @@
     
 }
 
-//- (void) getListRooms{
-//
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    NSString *jabberID = [defaults objectForKey:@"userID"];
-//    NSString* server = @"gmail.com"; //or whatever the server address for muc is
-//    XMPPJID *serverJID = [XMPPJID jidWithString:server];
-//    XMPPIQ *iq = [XMPPIQ iqWithType:@"get" to:serverJID];
-//    [iq addAttributeWithName:@"id" stringValue:@"124f35"];
-//    [iq addAttributeWithName:@"from" stringValue:[[self.appDelegate xmppStream] myJID].full];
-//    NSXMLElement *query = [NSXMLElement elementWithName:@"query"];
-//    [query addAttributeWithName:@"xmlns" stringValue:@"http://jabber.org/protocol/disco#items"];
-//    [iq addChild:query];
-//    [[self.appDelegate xmppStream] sendElement:iq];
-//
-//}
+
+- (void)buddyWentOnline:(NSString *)name{
+    //[self.tableView reloadData];
+}
+
+- (void)buddyWentOffline:(NSString *)name{
+    //[self.tableView reloadData];
+}
+
+- (void)didDisconnect{
+    [self.tableView reloadData];
+}
+
+- (void)didReceiveIQ:(XMPPIQ *)iq{
+
+    NSXMLElement * query = [iq elementForName:@"query"];
+    NSArray *items = [query elementsForName:@"item"];
+    
+    for (NSXMLElement * value in items) {
+        NSDictionary * contact = @{
+                                   @"name" : [value attributeStringValueForName:@"name"],
+                                   @"jid" : [value attributeStringValueForName:@"jid"]
+                                   };
+        //XMPPJID *jid = [XMPPJID jidWithString:jidString];
+        [self.contactRoster addObject:contact];
+    }
+}
+
+- (void) getRoster {
+    
+    NSXMLElement *xmlns = [NSXMLElement elementWithName:@"query"];
+    [xmlns addAttributeWithName:@"xmlns" stringValue:@"jabber:iq:roster"];
+    [xmlns addAttributeWithName:@"xmlns:gr" stringValue:@"google:roster"];
+    [xmlns addAttributeWithName:@"gr:ext" stringValue:@"2"];
+    
+    
+    NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
+    [iq addAttributeWithName:@"from" stringValue:[[[self.appDelegate xmppStream] myJID] full]];
+    [iq addAttributeWithName:@"id" stringValue:@"v1"];
+    [iq addAttributeWithName:@"type" stringValue:@"get"];
+    [iq addChild:xmlns];
+    
+    [[self.appDelegate xmppStream] sendElement:iq];
+}
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -74,63 +101,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary * cellViewModel = self.viewModel[indexPath.row];
     return [cellViewModel[@"height"] floatValue];
-}
-
-- (void)buddyWentOnline:(NSString *)name{
-    [self.onlineBuddies addObject:[NSString stringWithString:name]];
-    //[self.tableView reloadData];
-}
-
-- (void)buddyWentOffline:(NSString *)name{
-    [self.onlineBuddies removeObject:name];
-    //[self.tableView reloadData];
-}
-
-- (void)didDisconnect{
-    [self.onlineBuddies removeAllObjects];
-    [self.tableView reloadData];
-}
-
-
-- (void) getRoster: (NSString *) user{
-    
-    
-    NSXMLElement *xmlns = [NSXMLElement elementWithName:@"query"];
-    [xmlns addAttributeWithName:@"xmlns" stringValue:@"jabber:iq:roster"];
-    [xmlns addAttributeWithName:@"xmlns:gr" stringValue:@"google:roster"];
-    [xmlns addAttributeWithName:@"gr:ext" stringValue:@"2"];
-
-
-    NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
-    //[iq addAttributeWithName:@"to" stringValue:user];
-    [iq addAttributeWithName:@"from" stringValue:[[[self.appDelegate xmppStream] myJID] full]];
-    [iq addAttributeWithName:@"id" stringValue:@"v1"];
-    [iq addAttributeWithName:@"type" stringValue:@"get"];
-    [iq addChild:xmlns];
-    
-    [[self.appDelegate xmppStream] sendElement:iq];
-
-//    <iq type='get'
-//    from='romeo@gmail.com/orchard'
-//    id='google-roster-1'>
-//    <query xmlns='jabber:iq:roster' xmlns:gr='google:roster' gr:ext='2'/>
-//    </iq>
-    
-//    NSXMLElement *xmlns = [NSXMLElement elementWithName:@"vCard" xmlns:@"vcard-temp"];
-//    NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
-//    [iq addAttributeWithName:@"to" stringValue:user];
-//    [iq addAttributeWithName:@"from" stringValue:[[[self.appDelegate xmppStream] myJID] full]];
-//    [iq addAttributeWithName:@"id" stringValue:@"v1"];
-//    [iq addAttributeWithName:@"type" stringValue:@"get"];
-//    [iq addChild:xmlns];
-//    
-//    [[self.appDelegate xmppStream] sendElement:iq];
-    
-    //        <iq from='stpeter@jabber.org/roundabout'
-    //        id='v1'
-    //        type='get'>
-    //        <vCard xmlns='vcard-temp'/>
-    //        </iq>
 }
 
 @end
