@@ -22,7 +22,7 @@
     
     self.xmppStream = [XMPPStream new];
     self.xmppRosterStorage = [[XMPPRosterCoreDataStorage alloc] initWithDatabaseFilename:nil storeOptions:nil];
-    //self.xmppRoster = [[XMPPRoster new] initWithRosterStorage:self.xmppRosterStorage];
+    self.xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:self.xmppRosterStorage];
     
     return self;
 }
@@ -87,18 +87,14 @@
 
 - (BOOL) connect {
     [self setupStream];
+
     if (![self.xmppStream isDisconnected]) return YES;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *jabberID = [defaults objectForKey:@"userID"];
     NSString * myPassword = [defaults objectForKey:@"userPassword"];
     
-    if (![self.xmppStream isDisconnected]) {
-        return YES;
-    }
-    if ([jabberID isEqual: nil] && [myPassword isEqual: nil]) {
-        return NO;
-    }
+    if (!jabberID || !myPassword) return NO;
     
     [self.xmppStream setMyJID:[XMPPJID jidWithString:jabberID]];
     self.userPassword = [NSString stringWithString:myPassword];
@@ -128,6 +124,10 @@
     if (![[self xmppStream] authenticateWithPassword:self.userPassword error:&error]) {
         NSLog(@"Error authenticating: %@", error);
     }
+}
+
+- (void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(DDXMLElement *)error{
+    NSLog(@"%@", error);
 }
 
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender {

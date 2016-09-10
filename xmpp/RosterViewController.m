@@ -82,7 +82,6 @@
     [self registerNibs];
     
     [self.tableView reloadData];
-    
 }
 
 - (void) registerNibs{
