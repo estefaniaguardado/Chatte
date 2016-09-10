@@ -94,9 +94,7 @@
     NSString *jabberID = [defaults objectForKey:@"userID"];
     NSString * myPassword = [defaults objectForKey:@"userPassword"];
     
-    if ([jabberID isEqual: nil] && [myPassword isEqual: nil]) {
-        return NO;
-    }
+    if (!jabberID || !myPassword) return NO;
     
     [self.xmppStream setMyJID:[XMPPJID jidWithString:jabberID]];
     self.userPassword = [NSString stringWithString:myPassword];
