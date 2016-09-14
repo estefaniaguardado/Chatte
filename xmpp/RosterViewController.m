@@ -119,6 +119,25 @@
         [cell performSelector:@selector(setData:) withObject:cellViewModel[@"data"]];
     }
     
+    return [self update:cell];
+}
+
+- (UITableViewCell *) update: (UITableViewCell *) cell{
+    int number = 2;
+    static CGFloat size = 26;
+    static CGFloat digits = 1;
+    UILabel * accesoryBadge = [UILabel new];
+    accesoryBadge.text = [NSString stringWithFormat:@"%i", number];
+    accesoryBadge.backgroundColor = [UIColor blueColor];
+    accesoryBadge.textColor = [UIColor whiteColor];
+    accesoryBadge.font = [UIFont fontWithName:@"Lato-Regular" size:16];
+    accesoryBadge.textAlignment = NSTextAlignmentCenter;
+    accesoryBadge.layer.cornerRadius = 13;
+    accesoryBadge.layer.masksToBounds = true;
+    
+    accesoryBadge.frame = CGRectMake(0, 0, fmax(size, 0.7 * size * digits), size);
+    cell.accessoryView = accesoryBadge;
+    
     return cell;
 }
 
