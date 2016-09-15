@@ -141,8 +141,9 @@
 }
 
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message{
-    [self.infoMessage handler:message];
-    //NSLog(@"Did receive message: %@", message);
+    if ([message isChatMessageWithBody]){
+        [self.infoMessage handler:message];
+    }
 }
 
 - (void)xmppStream:(XMPPStream *)sender didSendMessage:(XMPPMessage *)message{
