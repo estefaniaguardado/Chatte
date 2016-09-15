@@ -30,9 +30,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    
-    [self setupStream];
-    //[self connect];
 
     return YES;
 }
@@ -86,8 +83,6 @@
 }
 
 - (BOOL) connect {
-    [self setupStream];
-
     if (![self.xmppStream isDisconnected]) return YES;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -95,6 +90,8 @@
     NSString * myPassword = [defaults objectForKey:@"userPassword"];
     
     if (!jabberID || !myPassword) return NO;
+    
+    [self setupStream];
     
     [self.xmppStream setMyJID:[XMPPJID jidWithString:jabberID]];
     self.userPassword = [NSString stringWithString:myPassword];
