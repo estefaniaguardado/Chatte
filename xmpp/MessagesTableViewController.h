@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "XMPPFramework.h"
 #import "AppDelegate.h"
-#import "IMessage.h"
+#import "IMessageDelegate.h"
 
 @interface MessagesTableViewController : UITableViewController
-<UITableViewDelegate, UITableViewDataSource, IMessage>
+<UITableViewDelegate, UITableViewDataSource, IMessageDelegate>
 
 @property (weak) AppDelegate *appDelegate;
 

@@ -14,7 +14,8 @@
     [super viewDidLoad];
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.appDelegate.resultIQ = self;
-    self.appDelegate.infoMessage = self;
+    
+    self.messageBusinessController = (MessageBusinessController *)[[UIApplication sharedApplication] delegate];
     
     self.contactRoster = [NSMutableArray array];
     
@@ -100,11 +101,6 @@
             [tableView registerNib:nib forCellReuseIdentifier:nibFile];
         }
     }];
-}
-
-- (void) handler:(XMPPMessage *)message{
-    
-    NSString * fromUser = [NSString stringWithFormat:@"%@", message.from];
 }
 
 #pragma mark - Table view data source

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "XMPPFramework.h"
-#import "IMessage.h"
+#import "IMessageDelegate.h"
 #import "IQuery.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, XMPPRosterDelegate, XMPPStreamDelegate>
@@ -20,7 +20,7 @@
 @property (strong, nonatomic) NSString * userPassword;
 
 @property (nonatomic, assign) BOOL didReceivedIQRoster;
-@property (weak) id<IMessage> infoMessage;
+@property (weak) id<IMessageDelegate> infoMessage;
 @property (weak) id<IQuery> resultIQ;
 
 - (BOOL) connect;
