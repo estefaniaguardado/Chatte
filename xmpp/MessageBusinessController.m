@@ -20,7 +20,8 @@
 
 - (instancetype)init{
     if (self = [super init]) {
-        self.message = [XMPPMessage alloc];
+        self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        self.appDelegate.infoMessage = self;
     }
     
     return self;
@@ -48,8 +49,13 @@
     return updateRoster;
 }
 
-- (void) getRequested:(XMPPMessage *)message{
-    self.message = message;
+-(void)handler:(XMPPMessage *)message{
+    if ([message isChatMessageWithBody]){
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+        {
+            self.message = message;
+        });
+    }
 }
 
 @end

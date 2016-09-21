@@ -19,6 +19,6 @@
 @property (strong) NSMutableArray * contactRoster;
 
 @property (weak) AppDelegate *appDelegate;
-@property (weak) MessageBusinessController * messageBusinessController;
+@property (strong) MessageBusinessController * messageBusinessController;
 
 @end

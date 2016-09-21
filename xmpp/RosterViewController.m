@@ -15,7 +15,7 @@
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.appDelegate.resultIQ = self;
     
-    self.messageBusinessController = (MessageBusinessController *)[[UIApplication sharedApplication] delegate];
+    self.messageBusinessController = [[MessageBusinessController alloc] init];
     
     self.contactRoster = [NSMutableArray array];
     
@@ -30,6 +30,11 @@
     
     self.title = [[[self.appDelegate xmppStream] myJID] bare];
     
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    NSLog(@"%@", [self.messageBusinessController didReceivedMessage]);
 }
 
 - (void)didReceiveIQ:(XMPPIQ *)iq{

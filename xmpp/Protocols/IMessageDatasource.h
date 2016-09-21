@@ -14,6 +14,5 @@
 @optional
 
 - (NSMutableArray *) updateBadgesIn: (NSArray *) roster;
-- (void) getRequested: (XMPPMessage *) message;
 
 @end
