@@ -9,14 +9,7 @@
 #import "MessageBusinessController.h"
 #import "XMPPFramework.h"
 
-@interface MessageBusinessController ()
-
-@property (nonatomic, strong) XMPPMessage * message;
-
-@end
-
 @implementation MessageBusinessController
-
 
 - (instancetype)init{
     if (self = [super init]) {
@@ -27,11 +20,23 @@
     return self;
 }
 
-- (NSMutableArray *)updateBadgesIn:(NSArray *)roster{
-    NSString * fromUser = [NSString stringWithFormat:@"%@", self.message.from];
+- (void) getContactRoster: (NSArray*) roster{
+    self.roster = [NSMutableArray arrayWithArray:roster];
+}
 
-    NSMutableArray * updateRoster = [NSMutableArray arrayWithArray:roster];
-    [roster enumerateObjectsUsingBlock:^(NSDictionary * contact, NSUInteger idx, BOOL * _Nonnull stop) {
+-(void)handler:(XMPPMessage *)message{
+    if ([message isChatMessageWithBody]){
+        self.message = message;
+        [self updateBadgesInRoster];
+    }
+}
+
+- (void) updateBadgesInRoster{
+    NSString * fromUser = [NSString stringWithFormat:@"%@", [self.message.from bareJID]];
+
+    NSMutableArray * updateRoster = [NSMutableArray arrayWithArray:self.roster];
+    [self.roster removeAllObjects];
+    [updateRoster enumerateObjectsUsingBlock:^(id contact, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([[contact valueForKey:@"jid"] isEqualToString:fromUser]) {
             int badge = 1;
             if ([contact valueForKey:@"badge"]) {
@@ -46,16 +51,12 @@
         }
     }];
     
-    return updateRoster;
+    [self.roster addObjectsFromArray:updateRoster];
+    self.isNewBadge = YES;
 }
 
--(void)handler:(XMPPMessage *)message{
-    if ([message isChatMessageWithBody]){
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
-        {
-            self.message = message;
-        });
-    }
+- (NSArray*) newBadgeInRoster{
+    return [NSArray arrayWithArray:self.roster];
 }
 
 @end

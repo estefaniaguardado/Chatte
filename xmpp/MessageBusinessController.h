@@ -15,6 +15,10 @@
 
 @property (weak) AppDelegate *appDelegate;
 
-@property (nonatomic, strong) NSMutableArray * contactRoster;
+@property (nonatomic, strong) NSMutableArray * roster;
+
+@property (nonatomic, strong) XMPPMessage * message;
+
+@property (nonatomic, assign) BOOL isNewBadge;
 
 @end

@@ -16,6 +16,7 @@
     self.appDelegate.resultIQ = self;
     
     self.messageBusinessController = [[MessageBusinessController alloc] init];
+    [self.messageBusinessController addObserver:self forKeyPath:@"isNewBadge" options:NSKeyValueObservingOptionNew context:nil];
     
     self.contactRoster = [NSMutableArray array];
     
@@ -34,7 +35,6 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    NSLog(@"%@", [self.messageBusinessController didReceivedMessage]);
 }
 
 - (void)didReceiveIQ:(XMPPIQ *)iq{
@@ -44,14 +44,19 @@
     
     for (NSXMLElement * value in items) {
         NSDictionary * contact = @{
-                                   @"name" : [value attributeStringValueForName:@"name"],
-                                   @"jid" : [value attributeStringValueForName:@"jid"]
+                                   @"name" : [[value attributeForName:@"name"] stringValue],
+                                   @"jid" : [[value attributeForName:@"jid"] stringValue]
                                    };
         //XMPPJID *jid = [XMPPJID jidWithString:jidString];
         [self.contactRoster addObject:contact];
     }
     
+    [self.messageBusinessController getContactRoster:self.contactRoster];
     [self updateViewModel];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+    NSArray * array = [NSArray arrayWithArray:[self.messageBusinessController newBadgeInRoster]];
 }
 
 - (void) getRoster {
@@ -106,6 +111,10 @@
             [tableView registerNib:nib forCellReuseIdentifier:nibFile];
         }
     }];
+}
+
+- (void) updateBadgesIn: (NSArray *) roster{
+    NSLog(@"%@", roster);
 }
 
 #pragma mark - Table view data source
