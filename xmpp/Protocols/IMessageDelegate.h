@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "XMPPFramework.h"
 
-@protocol IMessage <NSObject>
+@protocol IMessageDelegate <NSObject>
 
 @optional
 
-- (void) handler: (XMPPMessage *) message;
+- (void) handler: (XMPPMessage *) message; //Cambiar de nombre
 
 @end

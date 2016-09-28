@@ -15,6 +15,9 @@
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.appDelegate.resultIQ = self;
     
+    self.messageBusinessController = [[MessageBusinessController alloc] init];
+    [self.messageBusinessController addObserver:self forKeyPath:@"isNewBadge" options:NSKeyValueObservingOptionNew context:nil];
+    
     self.contactRoster = [NSMutableArray array];
     
     self.tableView.tableFooterView = [UIView new];
@@ -27,7 +30,10 @@
     [super viewDidAppear:YES];
     
     self.title = [[[self.appDelegate xmppStream] myJID] bare];
-    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
 }
 
 - (void)didReceiveIQ:(XMPPIQ *)iq{
@@ -37,14 +43,26 @@
     
     for (NSXMLElement * value in items) {
         NSDictionary * contact = @{
-                                   @"name" : [value attributeStringValueForName:@"name"],
-                                   @"jid" : [value attributeStringValueForName:@"jid"]
+                                   @"name" : [[value attributeForName:@"name"] stringValue],
+                                   @"jid" : [[value attributeForName:@"jid"] stringValue]
                                    };
         //XMPPJID *jid = [XMPPJID jidWithString:jidString];
         [self.contactRoster addObject:contact];
     }
     
+    [self.messageBusinessController getContactRoster:self.contactRoster];
     [self updateViewModel];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+    self.contactRoster = [NSMutableArray arrayWithArray:[self.messageBusinessController rosterWithUpdatedBadges]];
+    [self updateViewModel];
+    NSNumber *idxContact = [self.messageBusinessController getIdxContactOfNewBadge];
+    [self.tableView beginUpdates];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:
+                                            [NSIndexPath indexPathForRow:[idxContact integerValue] inSection:0]]
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView endUpdates];
 }
 
 - (void) getRoster {
@@ -117,6 +135,37 @@
     
     if([cell respondsToSelector:@selector(setData:)]) {
         [cell performSelector:@selector(setData:) withObject:cellViewModel[@"data"]];
+    }
+    
+    return [self update:[self numberOfBadgeFor:cellViewModel] In:cell];
+}
+
+- (NSNumber *) numberOfBadgeFor: (NSDictionary *) contact{
+    NSDictionary * dataContact = [contact valueForKey:@"data"];
+    if ([dataContact valueForKey:@"badge"]) {
+        NSNumber * numberBadge = [dataContact valueForKey:@"badge"];
+        return numberBadge;
+    }
+    
+    return 0;
+}
+
+- (UITableViewCell *) update: (NSNumber*) numberBadge In: (UITableViewCell *) cell{
+    int number = [numberBadge intValue];
+    if (number > 0) {
+        static CGFloat size = 26;
+        static CGFloat digits = 1;
+        UILabel * accesoryBadge = [UILabel new];
+        accesoryBadge.text = [NSString stringWithFormat:@"%i", number];
+        accesoryBadge.backgroundColor = [UIColor blueColor];
+        accesoryBadge.textColor = [UIColor whiteColor];
+        accesoryBadge.font = [UIFont fontWithName:@"Lato-Regular" size:16];
+        accesoryBadge.textAlignment = NSTextAlignmentCenter;
+        accesoryBadge.layer.cornerRadius = 13;
+        accesoryBadge.layer.masksToBounds = true;
+        
+        accesoryBadge.frame = CGRectMake(0, 0, fmax(size, 0.7 * size * digits), size);
+        cell.accessoryView = accesoryBadge;
     }
     
     return cell;
