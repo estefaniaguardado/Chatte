@@ -99,7 +99,18 @@
     
     [self registerNibs];
     
-    [self.tableView reloadData];
+    [self.tableView beginUpdates];
+    [self.tableView insertRowsAtIndexPaths:[self returnArrayIndexPaths] withRowAnimation:UITableViewRowAnimationTop];
+    [self.tableView endUpdates];    
+}
+
+- (NSMutableArray *) returnArrayIndexPaths{
+    NSMutableArray *indexPaths = [NSMutableArray array];
+    for (int index = 0; index < self.viewModel.count; index++) {
+        [indexPaths addObject:[NSIndexPath indexPathForRow:index inSection:0]];
+    }
+    
+    return indexPaths;
 }
 
 - (void) registerNibs{
