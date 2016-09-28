@@ -55,14 +55,9 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+    self.updatedBagesInRoster = YES;
     self.contactRoster = [NSMutableArray arrayWithArray:[self.messageBusinessController rosterWithUpdatedBadges]];
     [self updateViewModel];
-    NSNumber *idxContact = [self.messageBusinessController getIdxContactOfNewBadge];
-    [self.tableView beginUpdates];
-    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:
-                                            [NSIndexPath indexPathForRow:[idxContact integerValue] inSection:0]]
-                          withRowAnimation:UITableViewRowAnimationAutomatic];
-    [self.tableView endUpdates];
 }
 
 - (void) getRoster {
@@ -100,8 +95,17 @@
     [self registerNibs];
     
     [self.tableView beginUpdates];
-    [self.tableView insertRowsAtIndexPaths:[self returnArrayIndexPaths] withRowAnimation:UITableViewRowAnimationTop];
-    [self.tableView endUpdates];    
+    if (self.updatedBagesInRoster) {
+        NSNumber *idxContact = [self.messageBusinessController getIdxContactOfNewBadge];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:
+                                                [NSIndexPath indexPathForRow:[idxContact integerValue]
+                                                                   inSection:0]]
+                              withRowAnimation:UITableViewRowAnimationAutomatic];
+    } else{
+        [self.tableView insertRowsAtIndexPaths:[self returnArrayIndexPaths]
+                              withRowAnimation:UITableViewRowAnimationTop];
+    }
+    [self.tableView endUpdates];
 }
 
 - (NSMutableArray *) returnArrayIndexPaths{
