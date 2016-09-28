@@ -48,6 +48,7 @@
                                              @"badge": [NSNumber numberWithInt:badge]
                                              };
             [updateRoster replaceObjectAtIndex:idx withObject:updateContact];
+            self.idxContact = [NSNumber numberWithInteger:idx];
         }
     }];
     
@@ -55,8 +56,12 @@
     self.isNewBadge = YES;
 }
 
-- (NSArray*) newBadgeInRoster{
+- (NSArray*) rosterWithUpdatedBadges{
     return [NSArray arrayWithArray:self.roster];
+}
+
+- (NSNumber *) getIdxContactOfNewBadge{
+    return self.idxContact;
 }
 
 @end

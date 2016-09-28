@@ -13,8 +13,8 @@
 
 @optional
 
-//- (NSMutableArray *) updateBadgesIn: (NSArray *) roster;
 - (void) getContactRoster: (NSArray*) roster;
-- (NSArray*) newBadgeInRoster;
+- (NSArray*) rosterWithUpdatedBadges;
+- (NSNumber *) getIdxContactOfNewBadge;
 
 @end

@@ -20,5 +20,6 @@
 @property (nonatomic, strong) XMPPMessage * message;
 
 @property (nonatomic, assign) BOOL isNewBadge;
+@property (nonatomic, strong) NSNumber * idxContact;
 
 @end

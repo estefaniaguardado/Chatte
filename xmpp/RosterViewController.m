@@ -30,7 +30,6 @@
     [super viewDidAppear:YES];
     
     self.title = [[[self.appDelegate xmppStream] myJID] bare];
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -56,7 +55,14 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
-    NSArray * array = [NSArray arrayWithArray:[self.messageBusinessController newBadgeInRoster]];
+    self.contactRoster = [NSMutableArray arrayWithArray:[self.messageBusinessController rosterWithUpdatedBadges]];
+    [self updateViewModel];
+    NSNumber *idxContact = [self.messageBusinessController getIdxContactOfNewBadge];
+    [self.tableView beginUpdates];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:
+                                            [NSIndexPath indexPathForRow:[idxContact integerValue] inSection:0]]
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView endUpdates];
 }
 
 - (void) getRoster {
@@ -113,10 +119,6 @@
     }];
 }
 
-- (void) updateBadgesIn: (NSArray *) roster{
-    NSLog(@"%@", roster);
-}
-
 #pragma mark - Table view data source
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -135,24 +137,36 @@
         [cell performSelector:@selector(setData:) withObject:cellViewModel[@"data"]];
     }
     
-    return [self update:cell];
+    return [self update:[self numberOfBadgeFor:cellViewModel] In:cell];
 }
 
-- (UITableViewCell *) update: (UITableViewCell *) cell{
-    int number = 2;
-    static CGFloat size = 26;
-    static CGFloat digits = 1;
-    UILabel * accesoryBadge = [UILabel new];
-    accesoryBadge.text = [NSString stringWithFormat:@"%i", number];
-    accesoryBadge.backgroundColor = [UIColor blueColor];
-    accesoryBadge.textColor = [UIColor whiteColor];
-    accesoryBadge.font = [UIFont fontWithName:@"Lato-Regular" size:16];
-    accesoryBadge.textAlignment = NSTextAlignmentCenter;
-    accesoryBadge.layer.cornerRadius = 13;
-    accesoryBadge.layer.masksToBounds = true;
+- (NSNumber *) numberOfBadgeFor: (NSDictionary *) contact{
+    NSDictionary * dataContact = [contact valueForKey:@"data"];
+    if ([dataContact valueForKey:@"badge"]) {
+        NSNumber * numberBadge = [dataContact valueForKey:@"badge"];
+        return numberBadge;
+    }
     
-    accesoryBadge.frame = CGRectMake(0, 0, fmax(size, 0.7 * size * digits), size);
-    cell.accessoryView = accesoryBadge;
+    return 0;
+}
+
+- (UITableViewCell *) update: (NSNumber*) numberBadge In: (UITableViewCell *) cell{
+    int number = [numberBadge intValue];
+    if (number > 0) {
+        static CGFloat size = 26;
+        static CGFloat digits = 1;
+        UILabel * accesoryBadge = [UILabel new];
+        accesoryBadge.text = [NSString stringWithFormat:@"%i", number];
+        accesoryBadge.backgroundColor = [UIColor blueColor];
+        accesoryBadge.textColor = [UIColor whiteColor];
+        accesoryBadge.font = [UIFont fontWithName:@"Lato-Regular" size:16];
+        accesoryBadge.textAlignment = NSTextAlignmentCenter;
+        accesoryBadge.layer.cornerRadius = 13;
+        accesoryBadge.layer.masksToBounds = true;
+        
+        accesoryBadge.frame = CGRectMake(0, 0, fmax(size, 0.7 * size * digits), size);
+        cell.accessoryView = accesoryBadge;
+    }
     
     return cell;
 }
