@@ -17,6 +17,7 @@
 
 @property (strong) NSArray *viewModel;
 @property (strong) NSMutableArray * contactRoster;
+@property (nonatomic, assign) BOOL updatedBagesInRoster;
 
 @property (weak) AppDelegate *appDelegate;
 @property (strong) MessageBusinessController * messageBusinessController;
