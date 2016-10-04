@@ -39,7 +39,10 @@
 }
 
 - (void)handler:(XMPPIQ *)iq{
-    if ([iq.elementID isEqualToString:@"v1"] && !self.didReceivedIQRoster) {
+    
+    NSXMLElement *query = [NSXMLElement elementWithName:@"query" xmlns:@"jabber:iq:roster"];
+    
+    if (query && !self.didReceivedIQRoster) {
         [self formatToReceivedRoster: iq];
         self.didReceivedIQRoster = YES;
     }
