@@ -10,10 +10,10 @@
 #import "XMPPFramework.h"
 #import "AppDelegate.h"
 #import "MessageBusinessController.h"
-#import "IQuery.h"
+#import "QueriesBusinessController.h"
 
 @interface RosterViewController : UITableViewController
-<UITableViewDelegate, UITableViewDataSource, IQuery>
+<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong) NSArray *viewModel;
 @property (strong) NSMutableArray * contactRoster;
@@ -21,5 +21,6 @@
 
 @property (weak) AppDelegate *appDelegate;
 @property (strong) MessageBusinessController * messageBusinessController;
+@property (strong) QueriesBusinessController * queriesBusinessController;
 
 @end

@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "XMPPFramework.h"
 
-@protocol IQuery <NSObject>
+@protocol IQueryDelegate <NSObject>
 
 @optional
 
-- (void) didReceiveIQ:(XMPPIQ *)iq;
+- (void) handler: (XMPPIQ*) iq;
 
 @end
