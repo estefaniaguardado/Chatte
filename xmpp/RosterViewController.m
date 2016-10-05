@@ -13,17 +13,17 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.appDelegate.resultIQ = self;
     
     self.messageBusinessController = [[MessageBusinessController alloc] init];
     [self.messageBusinessController addObserver:self forKeyPath:@"isNewBadge" options:NSKeyValueObservingOptionNew context:nil];
     
+    self.queriesBusinessController = [[QueriesBusinessController alloc] init];
+    [self.queriesBusinessController sendIQToGetRoster];
+    [self.queriesBusinessController addObserver:self forKeyPath:@"didReceivedIQRoster" options:NSKeyValueObservingOptionNew context:nil];
+    
     self.contactRoster = [NSMutableArray array];
     
     self.tableView.tableFooterView = [UIView new];
-    
-    [self getRoster];
-
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -36,46 +36,51 @@
     [super viewWillAppear:YES];
 }
 
-- (void)didReceiveIQ:(XMPPIQ *)iq{
-
-    NSXMLElement * query = [iq elementForName:@"query"];
-    NSArray *items = [query elementsForName:@"item"];
-    
-    for (NSXMLElement * value in items) {
-        NSDictionary * contact = @{
-                                   @"name" : [[value attributeForName:@"name"] stringValue],
-                                   @"jid" : [[value attributeForName:@"jid"] stringValue]
-                                   };
-        //XMPPJID *jid = [XMPPJID jidWithString:jidString];
-        [self.contactRoster addObject:contact];
-    }
-    
-    [self.messageBusinessController getContactRoster:self.contactRoster];
-    [self updateViewModel];
-}
+//- (void)didReceiveIQ:(XMPPIQ *)iq{
+//
+//    NSXMLElement * query = [iq elementForName:@"query"];
+//    NSArray *items = [query elementsForName:@"item"];
+//    
+//    for (NSXMLElement * value in items) {
+//        NSDictionary * contact = @{
+//                                   @"name" : [[value attributeForName:@"name"] stringValue],
+//                                   @"jid" : [[value attributeForName:@"jid"] stringValue]
+//                                   };
+//        //XMPPJID *jid = [XMPPJID jidWithString:jidString];
+//        [self.contactRoster addObject:contact];
+//    }
+//    
+//    [self.messageBusinessController getContactRoster:self.contactRoster];
+//    [self updateViewModel];
+//}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
-    self.updatedBagesInRoster = YES;
-    self.contactRoster = [NSMutableArray arrayWithArray:[self.messageBusinessController rosterWithUpdatedBadges]];
+    if ([keyPath isEqualToString:@"isNewBadge"]) {
+        self.updatedBagesInRoster = YES;
+        self.contactRoster = [NSMutableArray arrayWithArray:[self.messageBusinessController rosterWithUpdatedBadges]];
+    } else if ([keyPath isEqualToString:@"didReceivedIQRoster"]){
+        self.contactRoster = [self.queriesBusinessController getRoster];
+    }
+    
     [self updateViewModel];
 }
 
-- (void) getRoster {
-    
-    NSXMLElement *xmlns = [NSXMLElement elementWithName:@"query"];
-    [xmlns addAttributeWithName:@"xmlns" stringValue:@"jabber:iq:roster"];
-    [xmlns addAttributeWithName:@"xmlns:gr" stringValue:@"google:roster"];
-    [xmlns addAttributeWithName:@"gr:ext" stringValue:@"2"];
-    
-    
-    NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
-    [iq addAttributeWithName:@"from" stringValue:[[[self.appDelegate xmppStream] myJID] full]];
-    [iq addAttributeWithName:@"id" stringValue:@"v1"];
-    [iq addAttributeWithName:@"type" stringValue:@"get"];
-    [iq addChild:xmlns];
-    
-    [[self.appDelegate xmppStream] sendElement:iq];
-}
+//- (void) getRoster {
+//    
+//    NSXMLElement *xmlns = [NSXMLElement elementWithName:@"query"];
+//    [xmlns addAttributeWithName:@"xmlns" stringValue:@"jabber:iq:roster"];
+//    [xmlns addAttributeWithName:@"xmlns:gr" stringValue:@"google:roster"];
+//    [xmlns addAttributeWithName:@"gr:ext" stringValue:@"2"];
+//    
+//    
+//    NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
+//    [iq addAttributeWithName:@"from" stringValue:[[[self.appDelegate xmppStream] myJID] full]];
+//    [iq addAttributeWithName:@"id" stringValue:@"v1"];
+//    [iq addAttributeWithName:@"type" stringValue:@"get"];
+//    [iq addChild:xmlns];
+//    
+//    [[self.appDelegate xmppStream] sendElement:iq];
+//}
 
 - (void) updateViewModel {
     NSMutableArray * viewModel = [NSMutableArray array];

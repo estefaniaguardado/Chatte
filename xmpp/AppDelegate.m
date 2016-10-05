@@ -133,11 +133,8 @@
 }
 
 - (BOOL) xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq{
-    if ([iq.elementID isEqualToString:@"v1"] && !self.didReceivedIQRoster) {
-        self.didReceivedIQRoster = YES;
-        [self.resultIQ didReceiveIQ:iq];
-    }
-    return NO;
+    [self.resultIQ handler:iq];
+    return YES;
 }
 
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message{
