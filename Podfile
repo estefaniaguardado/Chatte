@@ -5,9 +5,13 @@
 
 target 'xmpp' do
     
+    pod 'Realm'
+    
 end
 
 target 'xmppTests' do
+    
+    pod 'Realm/Headers'
 
 end
 
