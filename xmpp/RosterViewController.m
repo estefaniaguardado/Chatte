@@ -36,24 +36,6 @@
     [super viewWillAppear:YES];
 }
 
-//- (void)didReceiveIQ:(XMPPIQ *)iq{
-//
-//    NSXMLElement * query = [iq elementForName:@"query"];
-//    NSArray *items = [query elementsForName:@"item"];
-//    
-//    for (NSXMLElement * value in items) {
-//        NSDictionary * contact = @{
-//                                   @"name" : [[value attributeForName:@"name"] stringValue],
-//                                   @"jid" : [[value attributeForName:@"jid"] stringValue]
-//                                   };
-//        //XMPPJID *jid = [XMPPJID jidWithString:jidString];
-//        [self.contactRoster addObject:contact];
-//    }
-//    
-//    [self.messageBusinessController getContactRoster:self.contactRoster];
-//    [self updateViewModel];
-//}
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     if ([keyPath isEqualToString:@"isNewBadge"]) {
         self.updatedBagesInRoster = YES;
@@ -64,23 +46,6 @@
     
     [self updateViewModel];
 }
-
-//- (void) getRoster {
-//    
-//    NSXMLElement *xmlns = [NSXMLElement elementWithName:@"query"];
-//    [xmlns addAttributeWithName:@"xmlns" stringValue:@"jabber:iq:roster"];
-//    [xmlns addAttributeWithName:@"xmlns:gr" stringValue:@"google:roster"];
-//    [xmlns addAttributeWithName:@"gr:ext" stringValue:@"2"];
-//    
-//    
-//    NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
-//    [iq addAttributeWithName:@"from" stringValue:[[[self.appDelegate xmppStream] myJID] full]];
-//    [iq addAttributeWithName:@"id" stringValue:@"v1"];
-//    [iq addAttributeWithName:@"type" stringValue:@"get"];
-//    [iq addChild:xmlns];
-//    
-//    [[self.appDelegate xmppStream] sendElement:iq];
-//}
 
 - (void) updateViewModel {
     NSMutableArray * viewModel = [NSMutableArray array];
