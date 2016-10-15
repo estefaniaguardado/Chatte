@@ -6,23 +6,33 @@
 	<dict>
 		<key>Pods-xmpp.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-xmppTests.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>6214C0F0E6E33749BFE86F831F375C65</key>
+		<key>1193027DFB0411E5BB84E45F76FCA753</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>64F683D20F45BC56F2758442838C151A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>89111C1878590C8C835A235BD1034354</key>
 		<dict>
 			<key>primary</key>
 			<true/>
