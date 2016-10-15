@@ -42,7 +42,9 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
     if ([appDelegate connect]) {
-        [self performSegueWithIdentifier:@"rosterVC" sender:self];
+        if ([self shouldPerformSegueWithIdentifier:@"rosterVC" sender:self]) {
+            [self performSegueWithIdentifier:@"rosterVC" sender:self];
+        }
     }
 }
 
