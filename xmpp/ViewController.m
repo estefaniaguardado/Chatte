@@ -23,6 +23,7 @@
     
     self.logTextField.text = @"yourLogin@gmail.com";
     self.passTextField.text = @"yourPassword";
+    self.daoUser = [[DAOUser alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,19 +32,24 @@
 }
 
 - (IBAction)login:(id)sender {
-    [[NSUserDefaults standardUserDefaults] setObject:self.logTextField.text forKey:@"userID"];
-    [[NSUserDefaults standardUserDefaults] setObject:self.passTextField.text forKey:@"userPassword"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self.daoUser updateValues:[NSDictionary
+                             dictionaryWithObjectsAndKeys:
+                             self.logTextField.text, @"userID",
+                             self.passTextField.text, @"userPassword",
+                             nil]];
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
     if ([appDelegate connect]) {
-        [self performSegueWithIdentifier:@"rosterVC" sender:self];
+        if ([self shouldPerformSegueWithIdentifier:@"rosterVC" sender:self]) {
+            [self performSegueWithIdentifier:@"rosterVC" sender:self];
+        }
     }
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userID"] != nil) {
+    if ([[self.daoUser getUser] valueForKey:@"userID"] != nil) {
         if ([self.appDelegate connect]) {
             return YES;
         }
