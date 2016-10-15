@@ -6,6 +6,7 @@
 target 'xmpp' do
     
     pod 'Realm'
+    pod 'DZNEmptyDataSet'
     
 end
 
