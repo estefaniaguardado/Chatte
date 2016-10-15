@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "DAOUser.h"
 
 @interface ViewController : UIViewController
 
 @property (weak) AppDelegate *appDelegate;
+@property (strong) DAOUser *daoUser;
 
 @property (weak, nonatomic) IBOutlet UITextField *logTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passTextField;

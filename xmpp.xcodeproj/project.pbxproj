@@ -172,6 +172,7 @@
 		7CD284151D7EF2650036437D /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CD284131D7EF2650036437D /* MessageTableViewCell.xib */; };
 		CA74862E1DAF7E8A00BA556D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CA74862D1DAF7E8A00BA556D /* User.m */; };
 		CAEAD5BF1DA360DD00390086 /* QueriesBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAEAD5BE1DA360DD00390086 /* QueriesBusinessController.m */; };
+		CAFA62181DB24C1400A8A23A /* DAOUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFA62171DB24C1400A8A23A /* DAOUser.m */; };
 		D6552306F68024C8B5ECC765 /* libPods-xmpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8C13E86C1915FBB7C1F1C3F /* libPods-xmpp.a */; };
 /* End PBXBuildFile section */
 
@@ -526,6 +527,8 @@
 		CAEAD5BD1DA360DD00390086 /* QueriesBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueriesBusinessController.h; sourceTree = "<group>"; };
 		CAEAD5BE1DA360DD00390086 /* QueriesBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueriesBusinessController.m; sourceTree = "<group>"; };
 		CAEAD5C01DA368DB00390086 /* IQueryDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IQueryDataSource.h; path = Protocols/IQueryDataSource.h; sourceTree = "<group>"; };
+		CAFA62161DB24C1400A8A23A /* DAOUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAOUser.h; path = Models/DAOUser.h; sourceTree = "<group>"; };
+		CAFA62171DB24C1400A8A23A /* DAOUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAOUser.m; path = Models/DAOUser.m; sourceTree = "<group>"; };
 		F8C13E86C1915FBB7C1F1C3F /* libPods-xmpp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-xmpp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1556,6 +1559,8 @@
 			children = (
 				CA74862C1DAF7E8A00BA556D /* User.h */,
 				CA74862D1DAF7E8A00BA556D /* User.m */,
+				CAFA62161DB24C1400A8A23A /* DAOUser.h */,
+				CAFA62171DB24C1400A8A23A /* DAOUser.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1766,6 +1771,7 @@
 				CA74862E1DAF7E8A00BA556D /* User.m in Sources */,
 				7C7E70581D75FE9F007BDB38 /* XMPPIQ+XEP_0060.m in Sources */,
 				7C7E701E1D75FE9F007BDB38 /* XMPPMessage.m in Sources */,
+				CAFA62181DB24C1400A8A23A /* DAOUser.m in Sources */,
 				7C7E70291D75FE9F007BDB38 /* XMPPProcessOne.m in Sources */,
 				7C7E70531D75FE9F007BDB38 /* XMPPvCardTempLabel.m in Sources */,
 				7C7E70611D75FE9F007BDB38 /* XMPPSoftwareVersion.m in Sources */,

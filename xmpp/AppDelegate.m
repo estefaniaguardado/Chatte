@@ -23,6 +23,7 @@
     self.xmppStream = [XMPPStream new];
     self.xmppRosterStorage = [[XMPPRosterCoreDataStorage alloc] initWithDatabaseFilename:nil storeOptions:nil];
     self.xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:self.xmppRosterStorage];
+    self.daoUser = [[DAOUser alloc] init];
     
     return self;
 }
@@ -30,7 +31,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
-
+    [self.daoUser initValues];
+    
     return YES;
 }
 
@@ -85,9 +87,8 @@
 - (BOOL) connect {
     if (![self.xmppStream isDisconnected]) return YES;
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *jabberID = [defaults objectForKey:@"userID"];
-    NSString * myPassword = [defaults objectForKey:@"userPassword"];
+    NSString *jabberID = [self.daoUser userID];
+    NSString * myPassword = [self.daoUser userPassword];
     
     if (!jabberID || !myPassword) return NO;
     
