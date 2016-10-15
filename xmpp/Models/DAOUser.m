@@ -10,13 +10,6 @@
 
 @implementation DAOUser
 
-- (void)initValues
-{
-    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"userID"];
-    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"userPassword"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
 - (void)updateValues: (NSDictionary*) user
 {
     [[NSUserDefaults standardUserDefaults] setObject:[user valueForKey:@"userID"] forKey:@"userID"];
@@ -24,14 +17,13 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (NSString *) userID{
+- (NSDictionary *) getUser{
     
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"userID"];
-}
-
-- (NSString *) userPassword{
-    
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"userPassword"];
+    return @{
+             
+             @"userID" : [[NSUserDefaults standardUserDefaults] objectForKey:@"userID"],
+             @"userPassword": [[NSUserDefaults standardUserDefaults] objectForKey:@"userPassword"]
+             };
 }
 
 @end

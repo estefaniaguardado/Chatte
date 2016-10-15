@@ -10,9 +10,7 @@
 
 @interface DAOUser : NSObject
 
-- (void)initValues;
 - (void)updateValues: (NSDictionary*) user;
-- (NSString *) userID;
-- (NSString *) userPassword;
+- (NSDictionary *) getUser;
 
 @end

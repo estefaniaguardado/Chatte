@@ -31,7 +31,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    [self.daoUser initValues];
     
     return YES;
 }
@@ -50,7 +49,7 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    [self connect];
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -87,8 +86,9 @@
 - (BOOL) connect {
     if (![self.xmppStream isDisconnected]) return YES;
     
-    NSString *jabberID = [self.daoUser userID];
-    NSString * myPassword = [self.daoUser userPassword];
+    NSDictionary *user = [self.daoUser getUser];
+    NSString *jabberID = [user valueForKey:@"userID"];
+    NSString * myPassword = [user valueForKey:@"userPassword"];
     
     if (!jabberID || !myPassword) return NO;
     

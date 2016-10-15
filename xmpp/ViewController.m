@@ -47,7 +47,7 @@
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
-    if ([self.daoUser userID] != nil) {
+    if ([[self.daoUser getUser] valueForKey:@"userID"] != nil) {
         if ([self.appDelegate connect]) {
             return YES;
         }

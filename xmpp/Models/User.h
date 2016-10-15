@@ -7,17 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Realm/Realm.h>
 
-@interface User : RLMObject
+@interface User : NSObject
     
-    @property NSString *name;
-    @property NSString *email;
-    
-    @property bool     xmppContact;
+@property NSString *jid;
+@property NSString *password;
 
-    @property (readonly) NSString *jid;
-    
 @end
-
-RLM_ARRAY_TYPE(User)
