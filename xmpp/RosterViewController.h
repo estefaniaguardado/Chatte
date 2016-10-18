@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import "XMPPFramework.h"
 #import "AppDelegate.h"
 #import "MessageBusinessController.h"
 #import "QueriesBusinessController.h"
 
 @interface RosterViewController : UITableViewController
-<UITableViewDelegate, UITableViewDataSource>
+<UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
 
 @property (strong) NSArray *viewModel;
 @property (strong) NSMutableArray * contactRoster;

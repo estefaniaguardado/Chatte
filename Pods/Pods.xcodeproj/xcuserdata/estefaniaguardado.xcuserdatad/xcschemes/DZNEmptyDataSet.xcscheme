@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '4824354C7BD9BF73EA8F6DC209255B7E'
-               BlueprintName = 'Pods-xmpp'
+               BlueprintIdentifier = '736E57AD5AEFAAF68D47AE4E8FCB8F68'
+               BlueprintName = 'DZNEmptyDataSet'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-xmpp.a'>
+               BuildableName = 'libDZNEmptyDataSet.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
