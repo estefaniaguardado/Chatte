@@ -12,7 +12,7 @@
 
 - (instancetype)init{
     if (self = [super init]) {
-        self.daoUser = [[DAOUser alloc] init];
+        self.daoUserDefaults = [[DAOUserDefaults alloc] init];
 
     }
     
@@ -20,11 +20,11 @@
 }
 
 - (void) updateInformation: (NSDictionary*) user{
-    [self.daoUser updateValues:user];
+    [self.daoUserDefaults updateValues:user];
 }
 
 - (NSDictionary *) getInformationUser{
-    return [self.daoUser getUser];
+    return [self.daoUserDefaults getUser];
 }
 
 @end

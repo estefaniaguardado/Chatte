@@ -23,7 +23,7 @@
     
     self.logTextField.text = @"yourLogin@gmail.com";
     self.passTextField.text = @"yourPassword";
-    self.daoUser = [[DAOUser alloc] init];
+    self.daoUserDefaults = [[DAOUserDefaults alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,7 +33,7 @@
 
 - (IBAction)login:(id)sender {
     
-    [self.daoUser updateValues:[NSDictionary
+    [self.daoUserDefaults updateValues:[NSDictionary
                              dictionaryWithObjectsAndKeys:
                              self.logTextField.text, @"userID",
                              self.passTextField.text, @"userPassword",
@@ -49,7 +49,7 @@
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
-    if ([[self.daoUser getUser] valueForKey:@"userID"] != nil) {
+    if ([[self.daoUserDefaults getUser] valueForKey:@"userID"] != nil) {
         if ([self.appDelegate connect]) {
             return YES;
         }

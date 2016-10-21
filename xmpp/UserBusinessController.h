@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DAOUser.h"
+#import "DAOUserDefaults.h"
 
 @interface UserBusinessController : NSObject
 
-@property (strong) DAOUser *daoUser;
+@property (strong) DAOUserDefaults *daoUserDefaults;
 
 @end
