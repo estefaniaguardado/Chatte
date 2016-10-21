@@ -525,6 +525,8 @@
 		96E8F2D61271EBBE08B5FE7A /* libPods-xmppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-xmppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA6415411DBA45770045970F /* UserBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBusinessController.h; sourceTree = "<group>"; };
 		CA6415421DBA45770045970F /* UserBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBusinessController.m; sourceTree = "<group>"; };
+		CA6415441DBA4B1E0045970F /* IUserDatasource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IUserDatasource.h; path = Protocols/IUserDatasource.h; sourceTree = "<group>"; };
+		CA6415451DBA4B3F0045970F /* IUserDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IUserDelegate.h; path = Protocols/IUserDelegate.h; sourceTree = "<group>"; };
 		CA74862C1DAF7E8A00BA556D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Models/User.h; sourceTree = "<group>"; };
 		CA74862D1DAF7E8A00BA556D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Models/User.m; sourceTree = "<group>"; };
 		CAEAD5BD1DA360DD00390086 /* QueriesBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueriesBusinessController.h; sourceTree = "<group>"; };
@@ -1526,6 +1528,8 @@
 				7CD2840F1D7EBC580036437D /* IMessageDelegate.h */,
 				7C66FD571D82ED6100D2B897 /* IQueryDelegate.h */,
 				CAEAD5C01DA368DB00390086 /* IQueryDataSource.h */,
+				CA6415441DBA4B1E0045970F /* IUserDatasource.h */,
+				CA6415451DBA4B3F0045970F /* IUserDelegate.h */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
