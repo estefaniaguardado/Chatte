@@ -8,15 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-#import "DAOUserDefaults.h"
+#import "UserBusinessController.h"
 
 @interface ViewController : UIViewController
 
 @property (weak) AppDelegate *appDelegate;
-@property (strong) DAOUserDefaults *daoUserDefaults;
 
 @property (weak, nonatomic) IBOutlet UITextField *logTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passTextField;
+
+@property (strong) UserBusinessController * userBusinessController;
 
 - (IBAction)login:(id)sender;
 

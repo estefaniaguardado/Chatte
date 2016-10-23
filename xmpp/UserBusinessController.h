@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "DAOUserDefaults.h"
+#import "AppDelegate.h"
 #import "IUserDatasource.h"
 #import "IUserDelegate.h"
 
 @interface UserBusinessController : NSObject <IUserDatasource,IUserDelegate>
+
+@property (weak) AppDelegate *appDelegate;
 
 @property (strong) DAOUserDefaults *daoUserDefaults;
 

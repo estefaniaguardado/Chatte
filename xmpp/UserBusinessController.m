@@ -13,7 +13,8 @@
 - (instancetype)init{
     if (self = [super init]) {
         self.daoUserDefaults = [[DAOUserDefaults alloc] init];
-
+        self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        self.appDelegate.infoUser = self;
     }
     
     return self;

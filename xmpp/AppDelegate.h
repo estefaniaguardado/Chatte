@@ -10,7 +10,7 @@
 #import "XMPPFramework.h"
 #import "IMessageDelegate.h"
 #import "IQueryDelegate.h"
-#import "DAOUserDefaults.h"
+#import "IUserDatasource.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, XMPPRosterDelegate, XMPPStreamDelegate>
 
@@ -19,8 +19,8 @@
 @property (strong, retain) XMPPRosterCoreDataStorage * xmppRosterStorage;
 @property (strong, retain) XMPPRoster * xmppRoster;
 @property (strong, nonatomic) NSString * userPassword;
-@property (strong) DAOUserDefaults *daoUserDefaults;
 
+@property (weak) id<IUserDatasource> infoUser;
 @property (weak) id<IMessageDelegate> infoMessage;
 @property (weak) id<IQueryDelegate> resultIQ;
 
