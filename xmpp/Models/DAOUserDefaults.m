@@ -6,9 +6,9 @@
 //  Copyright © 2016 Estefania Chavez Guardado. All rights reserved.
 //
 
-#import "DAOUser.h"
+#import "DAOUserDefaults.h"
 
-@implementation DAOUser
+@implementation DAOUserDefaults
 
 - (void)updateValues: (NSDictionary*) user
 {

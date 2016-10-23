@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DAOUser : NSObject
+@interface DAOUserDefaults : NSObject
 
 - (void)updateValues: (NSDictionary*) user;
 - (NSDictionary *) getUser;

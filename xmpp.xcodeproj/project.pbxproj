@@ -170,9 +170,10 @@
 		7C7E70A01D75FF7A007BDB38 /* libresolv.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7E709F1D75FF7A007BDB38 /* libresolv.9.dylib */; };
 		7CD284141D7EF2650036437D /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD284121D7EF2650036437D /* MessageTableViewCell.m */; };
 		7CD284151D7EF2650036437D /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CD284131D7EF2650036437D /* MessageTableViewCell.xib */; };
+		CA6415431DBA45770045970F /* UserBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6415421DBA45770045970F /* UserBusinessController.m */; };
 		CA74862E1DAF7E8A00BA556D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CA74862D1DAF7E8A00BA556D /* User.m */; };
 		CAEAD5BF1DA360DD00390086 /* QueriesBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAEAD5BE1DA360DD00390086 /* QueriesBusinessController.m */; };
-		CAFA62181DB24C1400A8A23A /* DAOUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFA62171DB24C1400A8A23A /* DAOUser.m */; };
+		CAFA62181DB24C1400A8A23A /* DAOUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFA62171DB24C1400A8A23A /* DAOUserDefaults.m */; };
 		D6552306F68024C8B5ECC765 /* libPods-xmpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8C13E86C1915FBB7C1F1C3F /* libPods-xmpp.a */; };
 /* End PBXBuildFile section */
 
@@ -522,13 +523,17 @@
 		7CD284121D7EF2650036437D /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageTableViewCell.m; path = Artifacts/MessageTableViewCell.m; sourceTree = "<group>"; };
 		7CD284131D7EF2650036437D /* MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageTableViewCell.xib; path = Artifacts/MessageTableViewCell.xib; sourceTree = "<group>"; };
 		96E8F2D61271EBBE08B5FE7A /* libPods-xmppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-xmppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA6415411DBA45770045970F /* UserBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBusinessController.h; sourceTree = "<group>"; };
+		CA6415421DBA45770045970F /* UserBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBusinessController.m; sourceTree = "<group>"; };
+		CA6415441DBA4B1E0045970F /* IUserDatasource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IUserDatasource.h; path = Protocols/IUserDatasource.h; sourceTree = "<group>"; };
+		CA6415451DBA4B3F0045970F /* IUserDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IUserDelegate.h; path = Protocols/IUserDelegate.h; sourceTree = "<group>"; };
 		CA74862C1DAF7E8A00BA556D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Models/User.h; sourceTree = "<group>"; };
 		CA74862D1DAF7E8A00BA556D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Models/User.m; sourceTree = "<group>"; };
 		CAEAD5BD1DA360DD00390086 /* QueriesBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueriesBusinessController.h; sourceTree = "<group>"; };
 		CAEAD5BE1DA360DD00390086 /* QueriesBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueriesBusinessController.m; sourceTree = "<group>"; };
 		CAEAD5C01DA368DB00390086 /* IQueryDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IQueryDataSource.h; path = Protocols/IQueryDataSource.h; sourceTree = "<group>"; };
-		CAFA62161DB24C1400A8A23A /* DAOUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAOUser.h; path = Models/DAOUser.h; sourceTree = "<group>"; };
-		CAFA62171DB24C1400A8A23A /* DAOUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAOUser.m; path = Models/DAOUser.m; sourceTree = "<group>"; };
+		CAFA62161DB24C1400A8A23A /* DAOUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAOUserDefaults.h; path = Models/DAOUserDefaults.h; sourceTree = "<group>"; };
+		CAFA62171DB24C1400A8A23A /* DAOUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAOUserDefaults.m; path = Models/DAOUserDefaults.m; sourceTree = "<group>"; };
 		F8C13E86C1915FBB7C1F1C3F /* libPods-xmpp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-xmpp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -598,6 +603,8 @@
 				7CD2840D1D7EBBFC0036437D /* Protocol */,
 				7C6FB1B51D74295D00BAB1C6 /* AppDelegate.h */,
 				7C6FB1B61D74295D00BAB1C6 /* AppDelegate.m */,
+				CA6415411DBA45770045970F /* UserBusinessController.h */,
+				CA6415421DBA45770045970F /* UserBusinessController.m */,
 				7C545E791D8ABE210094586A /* MessageBusinessController.h */,
 				7C545E7A1D8ABE210094586A /* MessageBusinessController.m */,
 				CAEAD5BD1DA360DD00390086 /* QueriesBusinessController.h */,
@@ -1521,6 +1528,8 @@
 				7CD2840F1D7EBC580036437D /* IMessageDelegate.h */,
 				7C66FD571D82ED6100D2B897 /* IQueryDelegate.h */,
 				CAEAD5C01DA368DB00390086 /* IQueryDataSource.h */,
+				CA6415441DBA4B1E0045970F /* IUserDatasource.h */,
+				CA6415451DBA4B3F0045970F /* IUserDelegate.h */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
@@ -1559,8 +1568,8 @@
 			children = (
 				CA74862C1DAF7E8A00BA556D /* User.h */,
 				CA74862D1DAF7E8A00BA556D /* User.m */,
-				CAFA62161DB24C1400A8A23A /* DAOUser.h */,
-				CAFA62171DB24C1400A8A23A /* DAOUser.m */,
+				CAFA62161DB24C1400A8A23A /* DAOUserDefaults.h */,
+				CAFA62171DB24C1400A8A23A /* DAOUserDefaults.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1771,7 +1780,7 @@
 				CA74862E1DAF7E8A00BA556D /* User.m in Sources */,
 				7C7E70581D75FE9F007BDB38 /* XMPPIQ+XEP_0060.m in Sources */,
 				7C7E701E1D75FE9F007BDB38 /* XMPPMessage.m in Sources */,
-				CAFA62181DB24C1400A8A23A /* DAOUser.m in Sources */,
+				CAFA62181DB24C1400A8A23A /* DAOUserDefaults.m in Sources */,
 				7C7E70291D75FE9F007BDB38 /* XMPPProcessOne.m in Sources */,
 				7C7E70531D75FE9F007BDB38 /* XMPPvCardTempLabel.m in Sources */,
 				7C7E70611D75FE9F007BDB38 /* XMPPSoftwareVersion.m in Sources */,
@@ -1901,6 +1910,7 @@
 				7C7E70281D75FE9F007BDB38 /* XMPPGoogleSharedStatus.m in Sources */,
 				7C7E702C1D75FE9F007BDB38 /* XMPPResourceCoreDataStorageObject.m in Sources */,
 				7C7E700F1D75FE9F007BDB38 /* XMPPAnonymousAuthentication.m in Sources */,
+				CA6415431DBA45770045970F /* UserBusinessController.m in Sources */,
 				7C7E706D1D75FE9F007BDB38 /* XMPPMessageArchiving.m in Sources */,
 				7C7E70271D75FE9F007BDB38 /* XMPPOutgoingFileTransfer.m in Sources */,
 				7C7E70521D75FE9F007BDB38 /* XMPPvCardTempEmail.m in Sources */,

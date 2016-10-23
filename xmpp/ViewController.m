@@ -21,9 +21,10 @@
 
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    self.userBusinessController = [[UserBusinessController alloc] init];
+    
     self.logTextField.text = @"yourLogin@gmail.com";
     self.passTextField.text = @"yourPassword";
-    self.daoUser = [[DAOUser alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,11 +34,11 @@
 
 - (IBAction)login:(id)sender {
     
-    [self.daoUser updateValues:[NSDictionary
-                             dictionaryWithObjectsAndKeys:
-                             self.logTextField.text, @"userID",
-                             self.passTextField.text, @"userPassword",
-                             nil]];
+    [self.userBusinessController updateInformation:[NSDictionary
+                                      dictionaryWithObjectsAndKeys:
+                                      self.logTextField.text, @"userID",
+                                      self.passTextField.text, @"userPassword",
+                                      nil]];
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
@@ -49,7 +50,7 @@
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
-    if ([[self.daoUser getUser] valueForKey:@"userID"] != nil) {
+    if ([[self.userBusinessController getInformationUser] valueForKey:@"userID"] != nil) {
         if ([self.appDelegate connect]) {
             return YES;
         }
