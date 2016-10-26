@@ -15,7 +15,7 @@
 -(AppDelegate *)appDelegate{
     return [TyphoonDefinition withClass:[AppDelegate class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(xmppStream) with:[self xmppStream]];
-        [definition injectProperty:@selector(xmppRoomStorage) with:[self xmppRosterStorage]];
+        [definition injectProperty:@selector(xmppRosterStorage) with:[self xmppRosterStorage]];
         [definition injectProperty:@selector(xmppRoster) with:[self xmppRoster]];
 
         definition.scope = TyphoonScopeLazySingleton;
