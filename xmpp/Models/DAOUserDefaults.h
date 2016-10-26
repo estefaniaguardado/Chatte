@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DAOUserDefaults : NSObject
+#import "../Protocols/IDAOUser.h"
 
-- (void)updateValues: (NSDictionary*) user;
-- (NSDictionary *) getUser;
+@interface DAOUserDefaults : NSObject <IDAOUser>
 
 @end

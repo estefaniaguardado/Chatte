@@ -18,10 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    self.userBusinessController = [[UserBusinessController alloc] init];
     
     self.logTextField.text = @"yourLogin@gmail.com";
     self.passTextField.text = @"yourPassword";
@@ -34,15 +30,13 @@
 
 - (IBAction)login:(id)sender {
     
-    [self.userBusinessController updateInformation:[NSDictionary
-                                      dictionaryWithObjectsAndKeys:
-                                      self.logTextField.text, @"userID",
-                                      self.passTextField.text, @"userPassword",
-                                      nil]];
+    [self.daoUser updateValues:[NSDictionary
+                                dictionaryWithObjectsAndKeys:
+                                self.logTextField.text, @"userID",
+                                self.passTextField.text, @"userPassword",
+                                nil]];
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-
-    if ([appDelegate connect]) {
+    if ([self.appDelegate connect]) {
         if ([self shouldPerformSegueWithIdentifier:@"rosterVC" sender:self]) {
             [self performSegueWithIdentifier:@"rosterVC" sender:self];
         }
@@ -50,7 +44,7 @@
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
-    if ([[self.userBusinessController getInformationUser] valueForKey:@"userID"] != nil) {
+    if ([[self.daoUser getUser] valueForKey:@"userID"] != nil) {
         if ([self.appDelegate connect]) {
             return YES;
         }

@@ -9,6 +9,9 @@
 #import "MainAssembly.h"
 
 #import "AppDelegate.h"
+#import "ViewController.h"
+
+#import "DAOUserDefaults.h"
 
 @implementation MainAssembly
     
@@ -17,6 +20,9 @@
         [definition injectProperty:@selector(xmppStream) with:[self xmppStream]];
         [definition injectProperty:@selector(xmppRosterStorage) with:[self xmppRosterStorage]];
         [definition injectProperty:@selector(xmppRoster) with:[self xmppRoster]];
+        
+        [definition injectProperty:@selector(infoUser) with:[self daoUserDefaults]];
+
 
         definition.scope = TyphoonScopeLazySingleton;
     }];
@@ -48,6 +54,21 @@
                         }];
         definition.scope = TyphoonScopeLazySingleton;
     }];
+}
+    
+- (DAOUserDefaults *) daoUserDefaults{
+    return [TyphoonDefinition withClass:[DAOUserDefaults class] configuration:^(TyphoonDefinition *definition) {
+        definition.scope = TyphoonScopeLazySingleton;
+    }];
+}
+    
+- (ViewController *) viewController{
+        return [TyphoonDefinition withClass:[ViewController class] configuration:^(TyphoonDefinition *definition) {
+            [definition injectProperty:@selector(appDelegate) with:[self appDelegate]];
+            [definition injectProperty:@selector(daoUser) with:[self daoUserDefaults]];
+
+            definition.scope = TyphoonScopeLazySingleton;
+        }];
 }
 
 @end

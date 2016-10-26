@@ -11,9 +11,11 @@
 #import "XMPPFramework.h"
 
 @class AppDelegate;
+@class ViewController;
 
 @interface MainAssembly : TyphoonAssembly
     
 -(AppDelegate *) appDelegate;
+- (ViewController *) viewController;
 
 @end
