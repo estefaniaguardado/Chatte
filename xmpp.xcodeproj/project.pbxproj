@@ -170,6 +170,7 @@
 		7C7E70A01D75FF7A007BDB38 /* libresolv.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7E709F1D75FF7A007BDB38 /* libresolv.9.dylib */; };
 		7CD284141D7EF2650036437D /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD284121D7EF2650036437D /* MessageTableViewCell.m */; };
 		7CD284151D7EF2650036437D /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CD284131D7EF2650036437D /* MessageTableViewCell.xib */; };
+		CA2B5BE41DC0DAB80062BEC0 /* MainAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2B5BE31DC0DAB80062BEC0 /* MainAssembly.m */; };
 		CA6415431DBA45770045970F /* UserBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6415421DBA45770045970F /* UserBusinessController.m */; };
 		CA74862E1DAF7E8A00BA556D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CA74862D1DAF7E8A00BA556D /* User.m */; };
 		CAEAD5BF1DA360DD00390086 /* QueriesBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAEAD5BE1DA360DD00390086 /* QueriesBusinessController.m */; };
@@ -523,6 +524,8 @@
 		7CD284121D7EF2650036437D /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageTableViewCell.m; path = Artifacts/MessageTableViewCell.m; sourceTree = "<group>"; };
 		7CD284131D7EF2650036437D /* MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageTableViewCell.xib; path = Artifacts/MessageTableViewCell.xib; sourceTree = "<group>"; };
 		96E8F2D61271EBBE08B5FE7A /* libPods-xmppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-xmppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA2B5BE21DC0DAB80062BEC0 /* MainAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainAssembly.h; path = Assemblies/MainAssembly.h; sourceTree = "<group>"; };
+		CA2B5BE31DC0DAB80062BEC0 /* MainAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainAssembly.m; path = Assemblies/MainAssembly.m; sourceTree = "<group>"; };
 		CA6415411DBA45770045970F /* UserBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBusinessController.h; sourceTree = "<group>"; };
 		CA6415421DBA45770045970F /* UserBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBusinessController.m; sourceTree = "<group>"; };
 		CA6415441DBA4B1E0045970F /* IUserDatasource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IUserDatasource.h; path = Protocols/IUserDatasource.h; sourceTree = "<group>"; };
@@ -598,6 +601,7 @@
 		7C6FB1B11D74295C00BAB1C6 /* xmpp */ = {
 			isa = PBXGroup;
 			children = (
+				CA2B5BE11DC0DAA10062BEC0 /* Assemblies */,
 				CA7486281DAF7E5100BA556D /* Models */,
 				7CD284101D7EF1CE0036437D /* Artifacts */,
 				7CD2840D1D7EBBFC0036437D /* Protocol */,
@@ -1563,6 +1567,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CA2B5BE11DC0DAA10062BEC0 /* Assemblies */ = {
+			isa = PBXGroup;
+			children = (
+				CA2B5BE21DC0DAB80062BEC0 /* MainAssembly.h */,
+				CA2B5BE31DC0DAB80062BEC0 /* MainAssembly.m */,
+			);
+			name = Assemblies;
+			sourceTree = "<group>";
+		};
 		CA7486281DAF7E5100BA556D /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1863,6 +1876,7 @@
 				7C7E70761D75FE9F007BDB38 /* XMPPStreamManagementStanzas.m in Sources */,
 				7C7E70131D75FE9F007BDB38 /* XMPPPlainAuthentication.m in Sources */,
 				7C7E701C1D75FE9F007BDB38 /* XMPPIQ.m in Sources */,
+				CA2B5BE41DC0DAB80062BEC0 /* MainAssembly.m in Sources */,
 				7C7E703E1D75FE9F007BDB38 /* XMPPRoomOccupantCoreDataStorageObject.m in Sources */,
 				7C7E70601D75FE9F007BDB38 /* XMPPMessage+XEP_0085.m in Sources */,
 				7C7E705F1D75FE9F007BDB38 /* XMPPDateTimeProfiles.m in Sources */,
