@@ -12,11 +12,13 @@
 
 @class AppDelegate;
 @class ViewController;
+@class RosterViewController;
 
 @interface MainAssembly : TyphoonAssembly
     
 - (AppDelegate *) appDelegate;
 - (ViewController *) viewController;
+- (RosterViewController *) rosterViewController;
 - (UIWindow *) mainWindow;
 
 @end
