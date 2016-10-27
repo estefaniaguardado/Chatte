@@ -11,15 +11,6 @@
 
 @implementation MessageBusinessController
 
-- (instancetype)init{
-    if (self = [super init]) {
-        self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        self.appDelegate.infoMessage = self;
-    }
-    
-    return self;
-}
-
 - (void) getContactRoster: (NSArray*) roster{
     self.roster = [NSMutableArray arrayWithArray:roster];
 }

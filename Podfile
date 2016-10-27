@@ -7,6 +7,7 @@ target 'xmpp' do
     
     pod 'Realm'
     pod 'DZNEmptyDataSet'
+    pod 'Typhoon'
     
 end
 

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-#import "UserBusinessController.h"
+
+#import "Protocols/IDAOUser.h"
 
 @interface ViewController : UIViewController
 
@@ -17,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *logTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passTextField;
 
-@property (strong) UserBusinessController * userBusinessController;
+@property (weak) id<IDAOUser> daoUser;
 
 - (IBAction)login:(id)sender;
 

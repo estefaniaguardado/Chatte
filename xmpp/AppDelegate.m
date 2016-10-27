@@ -16,17 +16,6 @@
 
 @implementation AppDelegate
 
-- (id) init{
-    
-    self = [super init];
-    
-    self.xmppStream = [XMPPStream new];
-    self.xmppRosterStorage = [[XMPPRosterCoreDataStorage alloc] initWithDatabaseFilename:nil storeOptions:nil];
-    self.xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:self.xmppRosterStorage];
-    
-    return self;
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
@@ -85,7 +74,7 @@
 - (BOOL) connect {
     if (![self.xmppStream isDisconnected]) return YES;
     
-    NSDictionary *user = [self.infoUser getInformationUser];
+    NSDictionary *user = [self.infoUser getUser];
     NSString *jabberID = [user valueForKey:@"userID"];
     NSString * myPassword = [user valueForKey:@"userPassword"];
     

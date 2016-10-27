@@ -10,7 +10,8 @@
 #import "XMPPFramework.h"
 #import "IMessageDelegate.h"
 #import "IQueryDelegate.h"
-#import "IUserDatasource.h"
+
+#import "Protocols/IDAOUser.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, XMPPRosterDelegate, XMPPStreamDelegate>
 
@@ -20,7 +21,7 @@
 @property (strong, retain) XMPPRoster * xmppRoster;
 @property (strong, nonatomic) NSString * userPassword;
 
-@property (weak) id<IUserDatasource> infoUser;
+@property (weak) id<IDAOUser> infoUser;
 @property (weak) id<IMessageDelegate> infoMessage;
 @property (weak) id<IQueryDelegate> resultIQ;
 

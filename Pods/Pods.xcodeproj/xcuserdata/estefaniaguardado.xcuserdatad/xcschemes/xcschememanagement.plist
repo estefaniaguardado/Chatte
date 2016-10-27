@@ -24,10 +24,20 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Typhoon.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4824354C7BD9BF73EA8F6DC209255B7E</key>
+		<key>0ED1635BBB67009AE817FF5C056EFE14</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2FBBE28C9DE3F2AF1B964E0872EF3B2C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,7 +52,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9120E77CBDDB08A9FEBD9AC57D45D965</key>
+		<key>FC86B9D3C19674EC87874CA82225CFBD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
