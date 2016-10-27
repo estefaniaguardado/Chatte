@@ -8,16 +8,16 @@
 
 #import "RosterViewController.h"
 
+#import "MainAssembly.h"
+
 @implementation RosterViewController
 
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    self.messageBusinessController = [[MessageBusinessController alloc] init];
     [self.messageBusinessController addObserver:self forKeyPath:@"isNewBadge" options:NSKeyValueObservingOptionNew context:nil];
     
-    self.queriesBusinessController = [[QueriesBusinessController alloc] init];
     [self.queriesBusinessController sendIQToGetRoster];
     [self.queriesBusinessController addObserver:self forKeyPath:@"didReceivedIQRoster" options:NSKeyValueObservingOptionNew context:nil];
     
