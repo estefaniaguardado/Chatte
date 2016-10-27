@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AppDelegate.h"
+#import "ConnectionXMPPBusinessController.h"
 
 #import "Protocols/IDAOUser.h"
 
 @interface ViewController : UIViewController
 
-@property (weak) AppDelegate *appDelegate;
+@property (weak) ConnectionXMPPBusinessController *connectionXMPPBusinessController;
 
 @property (weak, nonatomic) IBOutlet UITextField *logTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passTextField;

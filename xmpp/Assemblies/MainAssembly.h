@@ -15,7 +15,8 @@
 
 @interface MainAssembly : TyphoonAssembly
     
--(AppDelegate *) appDelegate;
+- (AppDelegate *) appDelegate;
 - (ViewController *) viewController;
+- (UIWindow *) mainWindow;
 
 @end

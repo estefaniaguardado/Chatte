@@ -171,6 +171,7 @@
 		7CD284141D7EF2650036437D /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD284121D7EF2650036437D /* MessageTableViewCell.m */; };
 		7CD284151D7EF2650036437D /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CD284131D7EF2650036437D /* MessageTableViewCell.xib */; };
 		CA2B5BE41DC0DAB80062BEC0 /* MainAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2B5BE31DC0DAB80062BEC0 /* MainAssembly.m */; };
+		CA3327861DC21F3F00F6578E /* ConnectionXMPPBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3327851DC21F3F00F6578E /* ConnectionXMPPBusinessController.m */; };
 		CA74862E1DAF7E8A00BA556D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CA74862D1DAF7E8A00BA556D /* User.m */; };
 		CAEAD5BF1DA360DD00390086 /* QueriesBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAEAD5BE1DA360DD00390086 /* QueriesBusinessController.m */; };
 		CAFA62181DB24C1400A8A23A /* DAOUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFA62171DB24C1400A8A23A /* DAOUserDefaults.m */; };
@@ -526,6 +527,8 @@
 		CA2B5BE21DC0DAB80062BEC0 /* MainAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainAssembly.h; path = Assemblies/MainAssembly.h; sourceTree = "<group>"; };
 		CA2B5BE31DC0DAB80062BEC0 /* MainAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainAssembly.m; path = Assemblies/MainAssembly.m; sourceTree = "<group>"; };
 		CA2B5BE51DC1258D0062BEC0 /* IDAOUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDAOUser.h; path = Protocols/IDAOUser.h; sourceTree = "<group>"; };
+		CA3327841DC21F3F00F6578E /* ConnectionXMPPBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionXMPPBusinessController.h; sourceTree = "<group>"; };
+		CA3327851DC21F3F00F6578E /* ConnectionXMPPBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionXMPPBusinessController.m; sourceTree = "<group>"; };
 		CA74862C1DAF7E8A00BA556D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Models/User.h; sourceTree = "<group>"; };
 		CA74862D1DAF7E8A00BA556D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Models/User.m; sourceTree = "<group>"; };
 		CAEAD5BD1DA360DD00390086 /* QueriesBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueriesBusinessController.h; sourceTree = "<group>"; };
@@ -603,6 +606,8 @@
 				7CD2840D1D7EBBFC0036437D /* Protocol */,
 				7C6FB1B51D74295D00BAB1C6 /* AppDelegate.h */,
 				7C6FB1B61D74295D00BAB1C6 /* AppDelegate.m */,
+				CA3327841DC21F3F00F6578E /* ConnectionXMPPBusinessController.h */,
+				CA3327851DC21F3F00F6578E /* ConnectionXMPPBusinessController.m */,
 				7C545E791D8ABE210094586A /* MessageBusinessController.h */,
 				7C545E7A1D8ABE210094586A /* MessageBusinessController.m */,
 				CAEAD5BD1DA360DD00390086 /* QueriesBusinessController.h */,
@@ -1881,6 +1886,7 @@
 				7C7E70191D75FE9F007BDB38 /* NSXMLElement+XMPP.m in Sources */,
 				7C7E70901D75FE9F007BDB38 /* DDFileLogger.m in Sources */,
 				7C7E708F1D75FE9F007BDB38 /* DDASLLogger.m in Sources */,
+				CA3327861DC21F3F00F6578E /* ConnectionXMPPBusinessController.m in Sources */,
 				7C7E70721D75FE9F007BDB38 /* XMPPMessage+XEP_0184.m in Sources */,
 				7C7E706E1D75FE9F007BDB38 /* XMPPURI.m in Sources */,
 				7C7E707F1D75FE9F007BDB38 /* XMPPMessage+XEP_0224.m in Sources */,

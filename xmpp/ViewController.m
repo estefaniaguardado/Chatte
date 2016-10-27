@@ -36,7 +36,7 @@
                                 self.passTextField.text, @"userPassword",
                                 nil]];
     
-    if ([self.appDelegate connect]) {
+    if ([self.connectionXMPPBusinessController connect]) {
         if ([self shouldPerformSegueWithIdentifier:@"rosterVC" sender:self]) {
             [self performSegueWithIdentifier:@"rosterVC" sender:self];
         }
@@ -45,7 +45,7 @@
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
     if ([[self.daoUser getUser] valueForKey:@"userID"] != nil) {
-        if ([self.appDelegate connect]) {
+        if ([self.connectionXMPPBusinessController connect]) {
             return YES;
         }
         return NO;

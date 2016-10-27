@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import "XMPPFramework.h"
-#import "AppDelegate.h"
+
+#import "ConnectionXMPPBusinessController.h"
 #import "MessageBusinessController.h"
 #import "QueriesBusinessController.h"
 
@@ -20,7 +21,7 @@
 @property (strong) NSMutableArray * contactRoster;
 @property (nonatomic, assign) BOOL updatedBagesInRoster;
 
-@property (weak) AppDelegate *appDelegate;
+@property (weak) ConnectionXMPPBusinessController *connectionXMPPBusinessController;
 @property (strong) MessageBusinessController * messageBusinessController;
 @property (strong) QueriesBusinessController * queriesBusinessController;
 

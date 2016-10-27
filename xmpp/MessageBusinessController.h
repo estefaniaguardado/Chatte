@@ -7,13 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AppDelegate.h"
 #import "IMessageDelegate.h"
 #import "IMessageDatasource.h"
 
 @interface MessageBusinessController : NSObject <IMessageDelegate, IMessageDatasource>
-
-@property (weak) AppDelegate *appDelegate;
 
 @property (nonatomic, strong) NSMutableArray * roster;
 

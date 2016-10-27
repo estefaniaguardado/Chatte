@@ -20,12 +20,13 @@
     
     
     NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
-    [iq addAttributeWithName:@"from" stringValue:[[[self.appDelegate xmppStream] myJID] full]];
+    [iq addAttributeWithName:@"from"
+                 stringValue:[[[self.connectionXMPPBusinessController xmppStream] myJID] full]];
     [iq addAttributeWithName:@"id" stringValue:@"v1"];
     [iq addAttributeWithName:@"type" stringValue:@"get"];
     [iq addChild:xmlns];
     
-    [[self.appDelegate xmppStream] sendElement:iq];
+    [[self.connectionXMPPBusinessController xmppStream] sendElement:iq];
 }
 
 - (void)handler:(XMPPIQ *)iq{

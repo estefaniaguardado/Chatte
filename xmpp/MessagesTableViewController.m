@@ -17,10 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.appDelegate.infoMessage = self;
-    //self.appDelegate = [AppDelegate new];
-    
     self.viewModel = [NSArray array];
     self.messagesArray = [NSMutableArray array];
     self.messagesRegistered = [NSMutableSet set];
@@ -106,7 +102,7 @@
     [xmppMessage addAttributeWithName:@"to" stringValue:[receiver full]];
     [xmppMessage addChild:body];
     
-    [[self.appDelegate xmppStream] sendElement:xmppMessage];
+    [[self.connectionXMPPBusinessController xmppStream] sendElement:xmppMessage];
 }
 
 #pragma mark - Table view data source
