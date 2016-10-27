@@ -10,6 +10,10 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "RosterViewController.h"
+
+#import "MessageBusinessController.h"
+#import "QueriesBusinessController.h"
 
 #import "DAOUserDefaults.h"
 
@@ -22,8 +26,9 @@
         [definition injectProperty:@selector(xmppRoster) with:[self xmppRoster]];
         
         [definition injectProperty:@selector(infoUser) with:[self daoUserDefaults]];
-
-
+        [definition injectProperty:@selector(infoMessage) with:[self messageBusinessController]];
+        [definition injectProperty:@selector(resultIQ) with:[self queriesBusinessController]];
+        
         definition.scope = TyphoonScopeLazySingleton;
     }];
 }
@@ -63,11 +68,51 @@
 }
     
 - (ViewController *) viewController{
-        return [TyphoonDefinition withClass:[ViewController class] configuration:^(TyphoonDefinition *definition) {
-            [definition injectProperty:@selector(appDelegate) with:[self appDelegate]];
-            [definition injectProperty:@selector(daoUser) with:[self daoUserDefaults]];
+    return [TyphoonDefinition withClass:[ViewController class] configuration:^(TyphoonDefinition *definition){
+        [definition injectProperty:@selector(appDelegate) with:[self appDelegate]];
+        [definition injectProperty:@selector(daoUser) with:[self daoUserDefaults]];
+        
+        definition.scope = TyphoonScopeLazySingleton;
+    }];
+}
 
-            definition.scope = TyphoonScopeLazySingleton;
+- (RosterViewController *) rosterViewController{
+    return [TyphoonDefinition withClass:[RosterViewController class]
+                          configuration:^(TyphoonDefinition *definition){
+        [definition injectProperty:@selector(appDelegate) with:[self appDelegate]];
+        [definition injectProperty:@selector(messageBusinessController)
+                              with:[self messageBusinessController]];
+        [definition injectProperty:@selector(queriesBusinessController)
+                              with:[self queriesBusinessController]];
+
+        definition.scope = TyphoonScopeLazySingleton;
+    }];
+}
+
+- (MessageBusinessController *) messageBusinessController{
+    return [TyphoonDefinition withClass:[MessageBusinessController class]
+                          configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(appDelegate) with:[self appDelegate]];
+        [definition injectProperty:@selector(message) with:[self xmppMessage]];
+
+        definition.scope = TyphoonScopeLazySingleton;
+    }];
+}
+
+- (XMPPMessage *) xmppMessage{
+    return [TyphoonDefinition withClass:[XMPPMessage class]
+                          configuration:^(TyphoonDefinition *definition) {
+        definition.scope = TyphoonScopeLazySingleton;
+    }];
+}
+
+- (QueriesBusinessController *) queriesBusinessController{
+    return [TyphoonDefinition withClass:[QueriesBusinessController class]
+                          configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(appDelegate) with:[self appDelegate]];
+        [definition injectProperty:@selector(messageBusinessController)
+                              with:[self messageBusinessController]];
+        definition.scope = TyphoonScopeLazySingleton;
         }];
 }
 

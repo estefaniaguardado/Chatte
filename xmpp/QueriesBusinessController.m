@@ -11,16 +11,6 @@
 
 @implementation QueriesBusinessController
 
-- (instancetype)init{
-    if (self = [super init]) {
-        self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        self.appDelegate.resultIQ = self;
-        self.messageBusinessController = [[MessageBusinessController alloc] init];
-    }
-    
-    return self;
-}
-
 - (void) sendIQToGetRoster {
     
     NSXMLElement *xmlns = [NSXMLElement elementWithName:@"query"];
