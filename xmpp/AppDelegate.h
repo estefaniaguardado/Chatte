@@ -7,25 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XMPPFramework.h"
-#import "IMessageDelegate.h"
-#import "IQueryDelegate.h"
+#import "ConnectionXMPPBusinessController.h"
 
-#import "Protocols/IDAOUser.h"
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate, XMPPRosterDelegate, XMPPStreamDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, retain) XMPPStream * xmppStream;
-@property (strong, retain) XMPPRosterCoreDataStorage * xmppRosterStorage;
-@property (strong, retain) XMPPRoster * xmppRoster;
-@property (strong, nonatomic) NSString * userPassword;
-
-@property (weak) id<IDAOUser> infoUser;
-@property (weak) id<IMessageDelegate> infoMessage;
-@property (weak) id<IQueryDelegate> resultIQ;
-
-- (BOOL) connect;
+@property (weak) ConnectionXMPPBusinessController * connectionXMPPBusinessController;
 
 @end
 

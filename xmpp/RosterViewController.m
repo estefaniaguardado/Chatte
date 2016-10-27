@@ -14,7 +14,6 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     [self.messageBusinessController addObserver:self forKeyPath:@"isNewBadge" options:NSKeyValueObservingOptionNew context:nil];
     
@@ -32,7 +31,7 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
     
-    self.title = [[[self.appDelegate xmppStream] myJID] bare];
+    self.title = [[[self.connectionXMPPBusinessController xmppStream] myJID] bare];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
