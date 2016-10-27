@@ -21,7 +21,9 @@
 @implementation MainAssembly
     
 -(AppDelegate *)appDelegate{
-    return [TyphoonDefinition withClass:[AppDelegate class] configuration:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[AppDelegate class]
+                          configuration:^(TyphoonDefinition *definition) {
+                              
         [definition injectProperty:@selector(window)
                               with:[self mainWindow]];
         [definition injectProperty:@selector(connectionXMPPBusinessController)
@@ -63,41 +65,52 @@
 }
     
 -(XMPPStream *) xmppStream{
-    return [TyphoonDefinition withClass:[XMPPStream class] configuration:^(TyphoonDefinition *definition) {
-        
+    return [TyphoonDefinition withClass:[XMPPStream class]
+                          configuration:^(TyphoonDefinition *definition) {
+                              
         definition.scope = TyphoonScopeLazySingleton;
     }];
 }
 
 -(XMPPRoster *) xmppRoster{
-    return [TyphoonDefinition withClass:[XMPPRoster class] configuration:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[XMPPRoster class]
+                          configuration:^(TyphoonDefinition *definition) {
+                              
         [definition useInitializer:@selector(initWithRosterStorage:)
                         parameters:^(TyphoonMethod *initializer) {
                             [initializer injectParameterWith:[self xmppRosterStorage]];
                         }];
+                              
         definition.scope = TyphoonScopeLazySingleton;
     }];
 }
     
 -(XMPPRosterCoreDataStorage *) xmppRosterStorage{
-    return [TyphoonDefinition withClass:[XMPPRosterCoreDataStorage class] configuration:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[XMPPRosterCoreDataStorage class]
+                          configuration:^(TyphoonDefinition *definition) {
+                              
         [definition useInitializer:@selector(initWithDatabaseFilename:storeOptions:)
                         parameters:^(TyphoonMethod *initializer) {
                             [initializer injectParameterWith:nil];
                             [initializer injectParameterWith:nil];
                         }];
+                              
         definition.scope = TyphoonScopeLazySingleton;
     }];
 }
     
 - (DAOUserDefaults *) daoUserDefaults{
-    return [TyphoonDefinition withClass:[DAOUserDefaults class] configuration:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[DAOUserDefaults class]
+                          configuration:^(TyphoonDefinition *definition) {
+                              
         definition.scope = TyphoonScopeLazySingleton;
     }];
 }
     
 - (ViewController *) viewController{
-    return [TyphoonDefinition withClass:[ViewController class] configuration:^(TyphoonDefinition *definition){
+    return [TyphoonDefinition withClass:[ViewController class]
+                          configuration:^(TyphoonDefinition *definition){
+                              
         [definition injectProperty:@selector(connectionXMPPBusinessController)
                               with:[self connectionXMPPBusinessController]];
         [definition injectProperty:@selector(daoUser) with:[self daoUserDefaults]];
@@ -109,6 +122,7 @@
 - (RosterViewController *) rosterViewController{
     return [TyphoonDefinition withClass:[RosterViewController class]
                           configuration:^(TyphoonDefinition *definition){
+                              
         [definition injectProperty:@selector(connectionXMPPBusinessController)
                               with:[self connectionXMPPBusinessController]];
         [definition injectProperty:@selector(messageBusinessController)
