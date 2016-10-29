@@ -11,7 +11,7 @@
 
 #import "Protocols/IDAOUser.h"
 
-@interface ViewController : UIViewController
+@interface LoginViewController : UIViewController
 
 @property (weak) ConnectionXMPPBusinessController *connectionXMPPBusinessController;
 

@@ -14,12 +14,16 @@
 #import "MessageBusinessController.h"
 #import "QueriesBusinessController.h"
 
+#import "Protocols/IDAOUser.h"
+
 @interface RosterViewController : UITableViewController
 <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
 
 @property (strong) NSArray *viewModel;
 @property (strong) NSMutableArray * contactRoster;
 @property (nonatomic, assign) BOOL updatedBagesInRoster;
+
+@property (weak) id<IDAOUser> daoUser;
 
 @property (weak) ConnectionXMPPBusinessController *connectionXMPPBusinessController;
 @property (strong) MessageBusinessController * messageBusinessController;

@@ -9,7 +9,7 @@
 #import "MainAssembly.h"
 
 #import "AppDelegate.h"
-#import "ViewController.h"
+#import "LoginViewController.h"
 #import "RosterViewController.h"
 
 #import "ConnectionXMPPBusinessController.h"
@@ -108,8 +108,8 @@
     }];
 }
     
-- (ViewController *) viewController{
-    return [TyphoonDefinition withClass:[ViewController class]
+- (LoginViewController *) loginViewController{
+    return [TyphoonDefinition withClass:[LoginViewController class]
                           configuration:^(TyphoonDefinition *definition){
                               
         [definition injectProperty:@selector(connectionXMPPBusinessController)
@@ -124,6 +124,7 @@
     return [TyphoonDefinition withClass:[RosterViewController class]
                           configuration:^(TyphoonDefinition *definition){
                               
+        [definition injectProperty:@selector(daoUser) with:[self daoUserRLM]];
         [definition injectProperty:@selector(connectionXMPPBusinessController)
                               with:[self connectionXMPPBusinessController]];
         [definition injectProperty:@selector(messageBusinessController)

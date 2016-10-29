@@ -9,6 +9,7 @@
 #import "RosterViewController.h"
 
 #import "MainAssembly.h"
+#import "LoginViewController.h"
 
 @implementation RosterViewController
 
@@ -36,6 +37,18 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
+    
+    if (![self.daoUser getUser]) {
+        [self presentLoginViewController];
+    } else {
+        [self.connectionXMPPBusinessController connectUser:[self.daoUser getUser]];
+    }
+}
+
+- (void) presentLoginViewController{
+    UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController * myVC = [sb instantiateViewControllerWithIdentifier:@"loginVC"];
+    [self presentViewController:myVC animated:YES completion:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{

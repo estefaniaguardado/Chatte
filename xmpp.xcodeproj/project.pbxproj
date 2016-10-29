@@ -18,7 +18,7 @@
 		7C66FD561D82EBAA00D2B897 /* MessagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C66FD551D82EBAA00D2B897 /* MessagesTableViewController.m */; };
 		7C6FB1B41D74295D00BAB1C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6FB1B31D74295D00BAB1C6 /* main.m */; };
 		7C6FB1B71D74295D00BAB1C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6FB1B61D74295D00BAB1C6 /* AppDelegate.m */; };
-		7C6FB1BA1D74295D00BAB1C6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6FB1B91D74295D00BAB1C6 /* ViewController.m */; };
+		7C6FB1BA1D74295D00BAB1C6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6FB1B91D74295D00BAB1C6 /* LoginViewController.m */; };
 		7C6FB1BD1D74295D00BAB1C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C6FB1BB1D74295D00BAB1C6 /* Main.storyboard */; };
 		7C6FB1BF1D74295D00BAB1C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C6FB1BE1D74295D00BAB1C6 /* Assets.xcassets */; };
 		7C6FB1C21D74295D00BAB1C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C6FB1C01D74295D00BAB1C6 /* LaunchScreen.storyboard */; };
@@ -212,8 +212,8 @@
 		7C6FB1B31D74295D00BAB1C6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7C6FB1B51D74295D00BAB1C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7C6FB1B61D74295D00BAB1C6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7C6FB1B81D74295D00BAB1C6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		7C6FB1B91D74295D00BAB1C6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7C6FB1B81D74295D00BAB1C6 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		7C6FB1B91D74295D00BAB1C6 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7C6FB1BC1D74295D00BAB1C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7C6FB1BE1D74295D00BAB1C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C6FB1C11D74295D00BAB1C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -618,8 +618,8 @@
 				7C545E7A1D8ABE210094586A /* MessageBusinessController.m */,
 				CAEAD5BD1DA360DD00390086 /* QueriesBusinessController.h */,
 				CAEAD5BE1DA360DD00390086 /* QueriesBusinessController.m */,
-				7C6FB1B81D74295D00BAB1C6 /* ViewController.h */,
-				7C6FB1B91D74295D00BAB1C6 /* ViewController.m */,
+				7C6FB1B81D74295D00BAB1C6 /* LoginViewController.h */,
+				7C6FB1B91D74295D00BAB1C6 /* LoginViewController.m */,
 				7C73CB8D1D7827C10092D33C /* RosterViewController.h */,
 				7C73CB8E1D7827C10092D33C /* RosterViewController.m */,
 				7C66FD541D82EBAA00D2B897 /* MessagesTableViewController.h */,
@@ -1827,7 +1827,7 @@
 				7C7E70691D75FE9F007BDB38 /* XMPPMessageArchiving.xcdatamodeld in Sources */,
 				7C7E70851D75FE9F007BDB38 /* NSXMLElement+XEP_0335.m in Sources */,
 				7C7E70491D75FE9F007BDB38 /* XMPPvCard.xcdatamodeld in Sources */,
-				7C6FB1BA1D74295D00BAB1C6 /* ViewController.m in Sources */,
+				7C6FB1BA1D74295D00BAB1C6 /* LoginViewController.m in Sources */,
 				CA919C5B1DC494880094F6E8 /* DAOUserRLM.m in Sources */,
 				7C7E70181D75FE9F007BDB38 /* NSNumber+XMPP.m in Sources */,
 				7C7E709A1D75FE9F007BDB38 /* DDXMLNode.m in Sources */,

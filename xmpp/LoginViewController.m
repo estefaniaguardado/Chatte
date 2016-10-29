@@ -6,15 +6,15 @@
 //  Copyright © 2016 Estefania Chavez Guardado. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "RosterViewController.h"
 
-@interface ViewController ()
+@interface LoginViewController ()
 
 @end
 
-@implementation ViewController
+@implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,9 +37,7 @@
                                nil];
     
     if ([self.connectionXMPPBusinessController connectUser:infoUser]) {
-        if ([self shouldPerformSegueWithIdentifier:@"rosterVC" sender:self]) {
-            [self performSegueWithIdentifier:@"rosterVC" sender:self];
-        }
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
