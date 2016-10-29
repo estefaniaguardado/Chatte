@@ -96,7 +96,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="NBV-rX-bM4" kind="presentation" id="Nnl-QM-I12"/>
+                        <segue destination="NBV-rX-bM4" kind="presentation" identifier="roster" id="Nnl-QM-I12"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="njA-ml-W64" userLabel="First Responder" sceneMemberID="firstResponder"/>

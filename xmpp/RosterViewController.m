@@ -40,6 +40,8 @@
     
     if (![self.daoUser getUser]) {
         [self presentLoginViewController];
+    } else {
+        [self.connectionXMPPBusinessController connectUser:[self.daoUser getUser]];
     }
 }
 

@@ -37,9 +37,7 @@
                                nil];
     
     if ([self.connectionXMPPBusinessController connectUser:infoUser]) {
-        if ([self shouldPerformSegueWithIdentifier:@"rosterVC" sender:self]) {
-            [self performSegueWithIdentifier:@"rosterVC" sender:self];
-        }
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
