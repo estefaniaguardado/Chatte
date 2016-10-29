@@ -30,20 +30,20 @@
 
 - (IBAction)login:(id)sender {
     
-    [self.daoUser updateValues:[NSDictionary
-                                dictionaryWithObjectsAndKeys:
-                                self.logTextField.text, @"userID",
-                                self.passTextField.text, @"userPassword",
-                                nil]];
+    NSDictionary * infoUser = [NSDictionary
+                               dictionaryWithObjectsAndKeys:
+                               self.logTextField.text, @"userID",
+                               self.passTextField.text, @"userPassword",
+                               nil];
     
-    if ([self.connectionXMPPBusinessController connect]) {
+    if ([self.connectionXMPPBusinessController connectUser:infoUser]) {
         if ([self shouldPerformSegueWithIdentifier:@"rosterVC" sender:self]) {
             [self performSegueWithIdentifier:@"rosterVC" sender:self];
         }
     }
 }
 
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+/*- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
     if ([[self.daoUser getUser] valueForKey:@"userID"] != nil) {
         if ([self.connectionXMPPBusinessController connect]) {
             return YES;
@@ -51,6 +51,7 @@
         return NO;
     }
     return NO;
-}
+}*/
+
 
 @end
