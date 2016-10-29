@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 
 #import "UserRLM.h"
+#import "../Protocols/IDAOUser.h"
 
-@interface DAOUser : NSObject
+@interface DAOUserRLM : NSObject <IDAOUser>
 
-@property (strong) UserRLM * user;
+@property (strong) RLMRealm * realm;
 
 @end
