@@ -15,14 +15,18 @@
 
 - (void)updateValues: (NSDictionary*) user{
     
-    UserRLM * userRLM = [UserRLM new];
+    if (![self getUser]) {
+        UserRLM * userRLM = [UserRLM new];
+        
+        userRLM.jid = [user valueForKey:@"userID"];
+        userRLM.password = [user valueForKey:@"userPassword"];
+        
+        [self.realm beginWriteTransaction];
+        [self.realm addObject:userRLM];
+        [self.realm commitWriteTransaction];
+    }
     
-    userRLM.jid = [user valueForKey:@"userID"];
-    userRLM.password = [user valueForKey:@"userPassword"];
-    
-    [self.realm beginWriteTransaction];
-    [self.realm addObject:userRLM];
-    [self.realm commitWriteTransaction];
+
 }
 
 - (NSDictionary *) getUser {
