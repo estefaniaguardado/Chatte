@@ -24,11 +24,11 @@
 @property (strong, retain) XMPPRosterCoreDataStorage * xmppRosterStorage;
 @property (strong, retain) XMPPRoster * xmppRoster;
 
-@property (weak) id<IDAOUser> infoUser;
+@property (weak) id<IDAOUser> daoUser;
 @property (weak) id<IMessageDelegate> infoMessage;
 @property (weak) id<IQueryDelegate> resultIQ;
 
-- (BOOL) connect;
+- (BOOL) connectUser:(NSDictionary *) user;
 - (void) disconnect;
 
 @end

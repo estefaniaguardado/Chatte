@@ -17,6 +17,7 @@
 #import "QueriesBusinessController.h"
 
 #import "DAOUserDefaults.h"
+#import "DAOUserRLM.h"
 
 @implementation MainAssembly
     
@@ -54,7 +55,7 @@
                               with:[self xmppRosterStorage]];
         [definition injectProperty:@selector(xmppRoster) with:[self xmppRoster]];
         
-        [definition injectProperty:@selector(infoUser) with:[self daoUserDefaults]];
+        [definition injectProperty:@selector(daoUser) with:[self daoUserRLM]];
         [definition injectProperty:@selector(infoMessage)
                               with:[self messageBusinessController]];
         [definition injectProperty:@selector(resultIQ)
@@ -113,8 +114,8 @@
                               
         [definition injectProperty:@selector(connectionXMPPBusinessController)
                               with:[self connectionXMPPBusinessController]];
-        [definition injectProperty:@selector(daoUser) with:[self daoUserDefaults]];
-        
+        [definition injectProperty:@selector(daoUser) with:[self daoUserRLM]];
+
         definition.scope = TyphoonScopeLazySingleton;
     }];
 }
@@ -163,6 +164,21 @@
                               
         definition.scope = TyphoonScopeLazySingleton;
         }];
+}
+
+- (DAOUserRLM *) daoUserRLM {
+    return [TyphoonDefinition withClass:[DAOUserRLM class]
+                          configuration:^(TyphoonDefinition *definition) {
+
+                              [definition injectProperty:@selector(realm)
+                                                    with:[self rlmRealm]];
+                              
+                              definition.scope = TyphoonScopeLazySingleton;
+                          }];
+}
+
+- (RLMRealm *) rlmRealm{
+    return [RLMRealm defaultRealm];
 }
 
 @end

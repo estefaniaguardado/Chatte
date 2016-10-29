@@ -10,10 +10,9 @@
 
 @implementation ConnectionXMPPBusinessController
 
-- (BOOL) connect {
+- (BOOL) connectUser:(NSDictionary *) user {
     if (![self.xmppStream isDisconnected]) return YES;
     
-    NSDictionary *user = [self.infoUser getUser];
     NSString *jabberID = [user valueForKey:@"userID"];
     NSString * myPassword = [user valueForKey:@"userPassword"];
     
@@ -30,6 +29,7 @@
         return NO;
     }
     
+    [self.daoUser updateValues:user];
     NSLog(@"connected");
     return YES;
 }

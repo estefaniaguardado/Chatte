@@ -173,6 +173,8 @@
 		CA2B5BE41DC0DAB80062BEC0 /* MainAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2B5BE31DC0DAB80062BEC0 /* MainAssembly.m */; };
 		CA3327861DC21F3F00F6578E /* ConnectionXMPPBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3327851DC21F3F00F6578E /* ConnectionXMPPBusinessController.m */; };
 		CA74862E1DAF7E8A00BA556D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CA74862D1DAF7E8A00BA556D /* User.m */; };
+		CA919C5B1DC494880094F6E8 /* DAOUserRLM.m in Sources */ = {isa = PBXBuildFile; fileRef = CA919C5A1DC494880094F6E8 /* DAOUserRLM.m */; };
+		CA919C5E1DC495E60094F6E8 /* UserRLM.m in Sources */ = {isa = PBXBuildFile; fileRef = CA919C5D1DC495E60094F6E8 /* UserRLM.m */; };
 		CAEAD5BF1DA360DD00390086 /* QueriesBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAEAD5BE1DA360DD00390086 /* QueriesBusinessController.m */; };
 		CAFA62181DB24C1400A8A23A /* DAOUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFA62171DB24C1400A8A23A /* DAOUserDefaults.m */; };
 		D6552306F68024C8B5ECC765 /* libPods-xmpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8C13E86C1915FBB7C1F1C3F /* libPods-xmpp.a */; };
@@ -531,6 +533,10 @@
 		CA3327851DC21F3F00F6578E /* ConnectionXMPPBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionXMPPBusinessController.m; sourceTree = "<group>"; };
 		CA74862C1DAF7E8A00BA556D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Models/User.h; sourceTree = "<group>"; };
 		CA74862D1DAF7E8A00BA556D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Models/User.m; sourceTree = "<group>"; };
+		CA919C591DC494880094F6E8 /* DAOUserRLM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAOUserRLM.h; path = Models/DAOUserRLM.h; sourceTree = "<group>"; };
+		CA919C5A1DC494880094F6E8 /* DAOUserRLM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAOUserRLM.m; path = Models/DAOUserRLM.m; sourceTree = "<group>"; };
+		CA919C5C1DC495E60094F6E8 /* UserRLM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserRLM.h; path = Models/UserRLM.h; sourceTree = "<group>"; };
+		CA919C5D1DC495E60094F6E8 /* UserRLM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserRLM.m; path = Models/UserRLM.m; sourceTree = "<group>"; };
 		CAEAD5BD1DA360DD00390086 /* QueriesBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueriesBusinessController.h; sourceTree = "<group>"; };
 		CAEAD5BE1DA360DD00390086 /* QueriesBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueriesBusinessController.m; sourceTree = "<group>"; };
 		CAEAD5C01DA368DB00390086 /* IQueryDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IQueryDataSource.h; path = Protocols/IQueryDataSource.h; sourceTree = "<group>"; };
@@ -1581,6 +1587,10 @@
 				CA74862D1DAF7E8A00BA556D /* User.m */,
 				CAFA62161DB24C1400A8A23A /* DAOUserDefaults.h */,
 				CAFA62171DB24C1400A8A23A /* DAOUserDefaults.m */,
+				CA919C5C1DC495E60094F6E8 /* UserRLM.h */,
+				CA919C5D1DC495E60094F6E8 /* UserRLM.m */,
+				CA919C591DC494880094F6E8 /* DAOUserRLM.h */,
+				CA919C5A1DC494880094F6E8 /* DAOUserRLM.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1818,6 +1828,7 @@
 				7C7E70851D75FE9F007BDB38 /* NSXMLElement+XEP_0335.m in Sources */,
 				7C7E70491D75FE9F007BDB38 /* XMPPvCard.xcdatamodeld in Sources */,
 				7C6FB1BA1D74295D00BAB1C6 /* ViewController.m in Sources */,
+				CA919C5B1DC494880094F6E8 /* DAOUserRLM.m in Sources */,
 				7C7E70181D75FE9F007BDB38 /* NSNumber+XMPP.m in Sources */,
 				7C7E709A1D75FE9F007BDB38 /* DDXMLNode.m in Sources */,
 				7C66FD561D82EBAA00D2B897 /* MessagesTableViewController.m in Sources */,
@@ -1829,6 +1840,7 @@
 				7C7E70571D75FE9F007BDB38 /* XMPPResultSet.m in Sources */,
 				7C7E70301D75FE9F007BDB38 /* XMPPResourceMemoryStorageObject.m in Sources */,
 				7C7E70861D75FE9F007BDB38 /* DDList.m in Sources */,
+				CA919C5E1DC495E60094F6E8 /* UserRLM.m in Sources */,
 				7C7E70801D75FE9F007BDB38 /* XMPPMessage+XEP_0280.m in Sources */,
 				7C7E70161D75FE9F007BDB38 /* XMPPXOAuth2Google.m in Sources */,
 				7C7E70101D75FE9F007BDB38 /* XMPPDeprecatedDigestAuthentication.m in Sources */,
