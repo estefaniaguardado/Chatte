@@ -11,14 +11,16 @@
 #import "XMPPFramework.h"
 
 @class AppDelegate;
-@class ViewController;
+@class LoginViewController;
 @class RosterViewController;
+@class MessagesTableViewController;
 
 @interface MainAssembly : TyphoonAssembly
     
 - (AppDelegate *) appDelegate;
-- (ViewController *) viewController;
+- (LoginViewController *) loginViewController;
 - (RosterViewController *) rosterViewController;
+- (MessagesTableViewController *) messagesTableViewController;
 - (UIWindow *) mainWindow;
 
 @end

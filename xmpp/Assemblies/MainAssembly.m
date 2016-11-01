@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "RosterViewController.h"
+#import "MessagesTableViewController.h"
 
 #import "ConnectionXMPPBusinessController.h"
 #import "MessageBusinessController.h"
@@ -133,6 +134,17 @@
                               with:[self queriesBusinessController]];
 
         definition.scope = TyphoonScopeLazySingleton;
+    }];
+}
+
+- (MessagesTableViewController *) messagesTableViewController{
+    return [TyphoonDefinition withClass:[MessagesTableViewController class]
+                          configuration:^(TyphoonDefinition *definition){
+        
+        [definition injectProperty:@selector(connectionXMPPBusinessController)
+                              with:[self connectionXMPPBusinessController]];
+       
+        definition.scope = TyphoonScopePrototype;
     }];
 }
 

@@ -10,6 +10,7 @@
 
 #import "MainAssembly.h"
 #import "LoginViewController.h"
+#import "MessagesTableViewController.h"
 
 @implementation RosterViewController
 
@@ -72,6 +73,7 @@
         [viewModel addObject:@{
                                @"nib" : @"ContactTableViewCell",
                                @"height" : @(70),
+                               @"segue" : @"chat",
                                @"data":cellModel }];
     }];
     
@@ -138,6 +140,28 @@
                                  NSParagraphStyleAttributeName: paragraph};
     
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSDictionary *)sender {
+    if ([segue.identifier isEqualToString:@"chat"]){
+        MessagesTableViewController * messagesTableViewController = (MessagesTableViewController *)segue.destinationViewController;
+        //[messagesTableViewController setCurrentHost: self.currentUser];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
+    
+    [self performSegue: indexPath];
+}
+
+- (void) performSegue: (NSIndexPath *)indexPath{
+    NSDictionary * cellModel = self.viewModel[indexPath.row];
+    NSString * segueToPerform = cellModel[@"segue"];
+    if(segueToPerform) {
+        [self performSegueWithIdentifier: segueToPerform
+                                  sender: cellModel[@"data"]];
+    }
 }
 
 #pragma mark - Table view data source
