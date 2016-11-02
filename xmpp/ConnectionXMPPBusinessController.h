@@ -10,7 +10,7 @@
 
 #import "XMPPFramework.h"
 
-#import "IMessageDelegate.h"
+#import "IRosterDelegate.h"
 #import "IQueryDelegate.h"
 
 #import "Protocols/IDAOUser.h"
@@ -25,7 +25,7 @@
 @property (strong, retain) XMPPRoster * xmppRoster;
 
 @property (weak) id<IDAOUser> daoUser;
-@property (weak) id<IMessageDelegate> infoMessage;
+@property (weak) id<IRosterDelegate> infoRoster;
 @property (weak) id<IQueryDelegate> resultIQ;
 
 - (BOOL) connectUser:(NSDictionary *) user;

@@ -1,5 +1,5 @@
 //
-//  IMessage.h
+//  IRosterDatasource.h
 //  xmpp
 //
 //  Created by Estefania Chavez Guardado on 9/6/16.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "XMPPFramework.h"
 
-@protocol IMessageDelegate <NSObject>
+@protocol IRosterDelegate <NSObject>
 
 @optional
 

@@ -14,7 +14,7 @@
 #import "MessagesTableViewController.h"
 
 #import "ConnectionXMPPBusinessController.h"
-#import "MessageBusinessController.h"
+#import "RosterBusinessController.h"
 #import "QueriesBusinessController.h"
 
 #import "DAOUserDefaults.h"
@@ -57,8 +57,8 @@
         [definition injectProperty:@selector(xmppRoster) with:[self xmppRoster]];
         
         [definition injectProperty:@selector(daoUser) with:[self daoUserRLM]];
-        [definition injectProperty:@selector(infoMessage)
-                              with:[self messageBusinessController]];
+        [definition injectProperty:@selector(infoRoster)
+                              with:[self rosterBusinessController]];
         [definition injectProperty:@selector(resultIQ)
                               with:[self queriesBusinessController]];
         
@@ -128,8 +128,8 @@
         [definition injectProperty:@selector(daoUser) with:[self daoUserRLM]];
         [definition injectProperty:@selector(connectionXMPPBusinessController)
                               with:[self connectionXMPPBusinessController]];
-        [definition injectProperty:@selector(messageBusinessController)
-                              with:[self messageBusinessController]];
+        [definition injectProperty:@selector(rosterBusinessController)
+                              with:[self rosterBusinessController]];
         [definition injectProperty:@selector(queriesBusinessController)
                               with:[self queriesBusinessController]];
 
@@ -148,8 +148,8 @@
     }];
 }
 
-- (MessageBusinessController *) messageBusinessController{
-    return [TyphoonDefinition withClass:[MessageBusinessController class]
+- (RosterBusinessController *) rosterBusinessController{
+    return [TyphoonDefinition withClass:[RosterBusinessController class]
                           configuration:^(TyphoonDefinition *definition) {
                               
         [definition injectProperty:@selector(message) with:[self xmppMessage]];
@@ -172,8 +172,8 @@
                               
         [definition injectProperty:@selector(connectionXMPPBusinessController)
                               with:[self connectionXMPPBusinessController]];
-        [definition injectProperty:@selector(messageBusinessController)
-                              with:[self messageBusinessController]];
+        [definition injectProperty:@selector(rosterBusinessController)
+                              with:[self rosterBusinessController]];
                               
         definition.scope = TyphoonScopeLazySingleton;
         }];

@@ -10,12 +10,12 @@
 #import "IQueryDelegate.h"
 #import "IQueryDataSource.h"
 #import "ConnectionXMPPBusinessController.h"
-#import "MessageBusinessController.h"
+#import "RosterBusinessController.h"
 
 @interface QueriesBusinessController : NSObject <IQueryDelegate, IQueryDataSource>
 
 @property (weak) ConnectionXMPPBusinessController * connectionXMPPBusinessController;
-@property (strong) MessageBusinessController * messageBusinessController;
+@property (strong) RosterBusinessController * rosterBusinessController;
 
 @property (strong) NSMutableArray * contactRoster;
 

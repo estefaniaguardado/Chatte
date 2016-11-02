@@ -11,7 +11,7 @@
 #import "XMPPFramework.h"
 
 #import "ConnectionXMPPBusinessController.h"
-#import "MessageBusinessController.h"
+#import "RosterBusinessController.h"
 #import "QueriesBusinessController.h"
 
 #import "Protocols/IDAOUser.h"
@@ -26,7 +26,7 @@
 @property (weak) id<IDAOUser> daoUser;
 
 @property (weak) ConnectionXMPPBusinessController *connectionXMPPBusinessController;
-@property (strong) MessageBusinessController * messageBusinessController;
+@property (strong) RosterBusinessController * rosterBusinessController;
 @property (strong) QueriesBusinessController * queriesBusinessController;
 
 @end

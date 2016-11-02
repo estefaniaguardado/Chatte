@@ -63,7 +63,7 @@
 }
 
 -(void) sendRosterToMessageBC{
-    [self.messageBusinessController getContactRoster:self.contactRoster];
+    [self.rosterBusinessController getContactRoster:self.contactRoster];
 }
 
 @end

@@ -14,7 +14,7 @@
 		7C44AF091D75FBD200B85D18 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C44AF081D75FBD200B85D18 /* Security.framework */; };
 		7C44AF0B1D75FBD800B85D18 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C44AF0A1D75FBD800B85D18 /* CoreData.framework */; };
 		7C44AF0D1D75FBE600B85D18 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C44AF0C1D75FBE600B85D18 /* SystemConfiguration.framework */; };
-		7C545E7B1D8ABE210094586A /* MessageBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C545E7A1D8ABE210094586A /* MessageBusinessController.m */; };
+		7C545E7B1D8ABE210094586A /* RosterBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C545E7A1D8ABE210094586A /* RosterBusinessController.m */; };
 		7C66FD561D82EBAA00D2B897 /* MessagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C66FD551D82EBAA00D2B897 /* MessagesTableViewController.m */; };
 		7C6FB1B41D74295D00BAB1C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6FB1B31D74295D00BAB1C6 /* main.m */; };
 		7C6FB1B71D74295D00BAB1C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6FB1B61D74295D00BAB1C6 /* AppDelegate.m */; };
@@ -202,9 +202,9 @@
 		7C44AF081D75FBD200B85D18 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7C44AF0A1D75FBD800B85D18 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		7C44AF0C1D75FBE600B85D18 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		7C545E791D8ABE210094586A /* MessageBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBusinessController.h; sourceTree = "<group>"; };
-		7C545E7A1D8ABE210094586A /* MessageBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBusinessController.m; sourceTree = "<group>"; };
-		7C545E7C1D8AC26D0094586A /* IMessageDatasource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IMessageDatasource.h; path = Protocols/IMessageDatasource.h; sourceTree = "<group>"; };
+		7C545E791D8ABE210094586A /* RosterBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RosterBusinessController.h; sourceTree = "<group>"; };
+		7C545E7A1D8ABE210094586A /* RosterBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RosterBusinessController.m; sourceTree = "<group>"; };
+		7C545E7C1D8AC26D0094586A /* IRosterDatasource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IRosterDatasource.h; path = Protocols/IRosterDatasource.h; sourceTree = "<group>"; };
 		7C66FD541D82EBAA00D2B897 /* MessagesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesTableViewController.h; sourceTree = "<group>"; };
 		7C66FD551D82EBAA00D2B897 /* MessagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesTableViewController.m; sourceTree = "<group>"; };
 		7C66FD571D82ED6100D2B897 /* IQueryDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IQueryDelegate.h; path = Protocols/IQueryDelegate.h; sourceTree = "<group>"; };
@@ -521,7 +521,7 @@
 		7C7E700E1D75FE9F007BDB38 /* XMPPFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPFramework.h; sourceTree = "<group>"; };
 		7C7E709D1D75FF5C007BDB38 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
 		7C7E709F1D75FF7A007BDB38 /* libresolv.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.9.dylib; path = ../../../../usr/lib/libresolv.9.dylib; sourceTree = "<group>"; };
-		7CD2840F1D7EBC580036437D /* IMessageDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IMessageDelegate.h; path = Protocols/IMessageDelegate.h; sourceTree = "<group>"; };
+		7CD2840F1D7EBC580036437D /* IRosterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IRosterDelegate.h; path = Protocols/IRosterDelegate.h; sourceTree = "<group>"; };
 		7CD284111D7EF2650036437D /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageTableViewCell.h; path = Artifacts/MessageTableViewCell.h; sourceTree = "<group>"; };
 		7CD284121D7EF2650036437D /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageTableViewCell.m; path = Artifacts/MessageTableViewCell.m; sourceTree = "<group>"; };
 		7CD284131D7EF2650036437D /* MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageTableViewCell.xib; path = Artifacts/MessageTableViewCell.xib; sourceTree = "<group>"; };
@@ -614,8 +614,8 @@
 				7C6FB1B61D74295D00BAB1C6 /* AppDelegate.m */,
 				CA3327841DC21F3F00F6578E /* ConnectionXMPPBusinessController.h */,
 				CA3327851DC21F3F00F6578E /* ConnectionXMPPBusinessController.m */,
-				7C545E791D8ABE210094586A /* MessageBusinessController.h */,
-				7C545E7A1D8ABE210094586A /* MessageBusinessController.m */,
+				7C545E791D8ABE210094586A /* RosterBusinessController.h */,
+				7C545E7A1D8ABE210094586A /* RosterBusinessController.m */,
 				CAEAD5BD1DA360DD00390086 /* QueriesBusinessController.h */,
 				CAEAD5BE1DA360DD00390086 /* QueriesBusinessController.m */,
 				7C6FB1B81D74295D00BAB1C6 /* LoginViewController.h */,
@@ -1533,8 +1533,8 @@
 		7CD2840D1D7EBBFC0036437D /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				7C545E7C1D8AC26D0094586A /* IMessageDatasource.h */,
-				7CD2840F1D7EBC580036437D /* IMessageDelegate.h */,
+				7C545E7C1D8AC26D0094586A /* IRosterDatasource.h */,
+				7CD2840F1D7EBC580036437D /* IRosterDelegate.h */,
 				7C66FD571D82ED6100D2B897 /* IQueryDelegate.h */,
 				CAEAD5C01DA368DB00390086 /* IQueryDataSource.h */,
 				CA2B5BE51DC1258D0062BEC0 /* IDAOUser.h */,
@@ -1869,7 +1869,7 @@
 				7C7E706B1D75FE9F007BDB38 /* XMPPMessageArchiving_Message_CoreDataObject.m in Sources */,
 				7C7E70121D75FE9F007BDB38 /* XMPPDigestMD5Authentication.m in Sources */,
 				7C7E70781D75FE9F007BDB38 /* XMPPAutoPing.m in Sources */,
-				7C545E7B1D8ABE210094586A /* MessageBusinessController.m in Sources */,
+				7C545E7B1D8ABE210094586A /* RosterBusinessController.m in Sources */,
 				7C7E70891D75FE9F007BDB38 /* XMPPIDTracker.m in Sources */,
 				7C7E70991D75FE9F007BDB38 /* DDXMLElement.m in Sources */,
 				7C7E70431D75FE9F007BDB38 /* XMPPRoomMemoryStorage.m in Sources */,

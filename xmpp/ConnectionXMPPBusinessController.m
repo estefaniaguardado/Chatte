@@ -93,7 +93,7 @@
 
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message{
     if ([message isChatMessageWithBody]){
-        [self.infoMessage handler:message];
+        [self.infoRoster handler:message];
     }
 }
 

@@ -17,7 +17,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    [self.messageBusinessController addObserver:self forKeyPath:@"isNewBadge" options:NSKeyValueObservingOptionNew context:nil];
+    [self.rosterBusinessController addObserver:self forKeyPath:@"isNewBadge" options:NSKeyValueObservingOptionNew context:nil];
     
     [self.queriesBusinessController sendIQToGetRoster];
     [self.queriesBusinessController addObserver:self forKeyPath:@"didReceivedIQRoster" options:NSKeyValueObservingOptionNew context:nil];
@@ -55,7 +55,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     if ([keyPath isEqualToString:@"isNewBadge"]) {
         self.updatedBagesInRoster = YES;
-        self.contactRoster = [NSMutableArray arrayWithArray:[self.messageBusinessController rosterWithUpdatedBadges]];
+        self.contactRoster = [NSMutableArray arrayWithArray:[self.rosterBusinessController rosterWithUpdatedBadges]];
     } else if ([keyPath isEqualToString:@"didReceivedIQRoster"]){
         self.contactRoster = [self.queriesBusinessController getRoster];
     }
@@ -83,7 +83,7 @@
     
     [self.tableView beginUpdates];
     if (self.updatedBagesInRoster) {
-        NSNumber *idxContact = [self.messageBusinessController getIdxContactOfNewBadge];
+        NSNumber *idxContact = [self.rosterBusinessController getIdxContactOfNewBadge];
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:
                                                 [NSIndexPath indexPathForRow:[idxContact integerValue]
                                                                    inSection:0]]
