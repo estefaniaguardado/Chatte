@@ -13,7 +13,7 @@
 #import "IRosterDelegate.h"
 #import "IQueryDelegate.h"
 
-#import "Protocols/IDAOUser.h"
+#import "../Protocols/IDAOUser.h"
 
 @interface ConnectionXMPPBusinessController : NSObject
 <XMPPRosterDelegate, XMPPStreamDelegate>
