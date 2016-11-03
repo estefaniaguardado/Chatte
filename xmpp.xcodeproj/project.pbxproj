@@ -1600,8 +1600,8 @@
 		CA9653BD1DC9EDFB005E654F /* BusinessController */ = {
 			isa = PBXGroup;
 			children = (
-				CA9653C11DC9EEC7005E654F /* ConnectionXMPPBusinessController.m */,
 				CA9653C21DC9EEC7005E654F /* ConnectionXMPPBusinessController.h */,
+				CA9653C11DC9EEC7005E654F /* ConnectionXMPPBusinessController.m */,
 				CA9653C31DC9EEC7005E654F /* RosterBusinessController.h */,
 				CA9653C41DC9EEC7005E654F /* RosterBusinessController.m */,
 				CA9653C51DC9EEC7005E654F /* QueriesBusinessController.m */,

@@ -94,7 +94,18 @@
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message{
     if ([message isChatMessageWithBody]){
         [self.infoRoster handler:message];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationMessage"
+                                                            object:nil
+                                                          userInfo:[self getDictionaryFromStanza:message]];
     }
+}
+
+- (NSDictionary *) getDictionaryFromStanza: (XMPPElement *) stanza{
+    return @{
+             @"id": [[stanza attributeForName:@"id"] stringValue],
+             @"from": [[stanza attributeForName:@"from"] stringValue],
+             @"body": [[stanza elementForName:@"body"] stringValue]
+             };
 }
 
 - (void)xmppStream:(XMPPStream *)sender didSendMessage:(XMPPMessage *)message{

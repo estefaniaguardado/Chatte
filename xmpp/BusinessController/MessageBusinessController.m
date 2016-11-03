@@ -10,4 +10,24 @@
 
 @implementation MessageBusinessController
 
+- (id)init {
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handlerMessage:)
+                                                 name:@"notificationMessage" object:nil];
+    
+    return self;
+}
+
+- (void) handlerMessage:(NSNotification*) notification{
+
+    NSDictionary * message = notification.userInfo;
+    
+    NSLog(@"a");
+}
+
 @end
