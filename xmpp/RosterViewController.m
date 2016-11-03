@@ -10,7 +10,7 @@
 
 #import "MainAssembly.h"
 #import "LoginViewController.h"
-#import "MessagesTableViewController.h"
+#import "ChatTableViewController.h"
 
 @implementation RosterViewController
 
@@ -144,8 +144,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSDictionary *)sender {
     if ([segue.identifier isEqualToString:@"chat"]){
-        MessagesTableViewController * messagesTableViewController = (MessagesTableViewController *)segue.destinationViewController;
-        [messagesTableViewController setDataRoster:sender];
+        ChatTableViewController * chatTableViewController = (ChatTableViewController *)segue.destinationViewController;
+        [chatTableViewController setDataRoster:sender];
     }
 }
 

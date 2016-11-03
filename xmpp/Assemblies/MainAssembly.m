@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "RosterViewController.h"
-#import "MessagesTableViewController.h"
+#import "ChatTableViewController.h"
 
 #import "XMPPBusinessController.h"
 #import "RosterBusinessController.h"
@@ -138,8 +138,8 @@
     }];
 }
 
-- (MessagesTableViewController *) messagesTableViewController{
-    return [TyphoonDefinition withClass:[MessagesTableViewController class]
+- (ChatTableViewController *) chatTableViewController{
+    return [TyphoonDefinition withClass:[ChatTableViewController class]
                           configuration:^(TyphoonDefinition *definition){
         
         [definition injectProperty:@selector(chatBusinessController)

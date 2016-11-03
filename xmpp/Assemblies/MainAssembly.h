@@ -13,14 +13,14 @@
 @class AppDelegate;
 @class LoginViewController;
 @class RosterViewController;
-@class MessagesTableViewController;
+@class ChatTableViewController;
 
 @interface MainAssembly : TyphoonAssembly
     
 - (AppDelegate *) appDelegate;
 - (LoginViewController *) loginViewController;
 - (RosterViewController *) rosterViewController;
-- (MessagesTableViewController *) messagesTableViewController;
+- (ChatTableViewController *) chatTableViewController;
 - (UIWindow *) mainWindow;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  MessagesTableViewController.h
+//  ChatTableViewController.h
 //  xmpp
 //
 //  Created by Estefania Chavez Guardado on 9/9/16.
@@ -11,7 +11,7 @@
 #import "ChatBusinessController.h"
 #import "IRosterDelegate.h"
 
-@interface MessagesTableViewController : UITableViewController
+@interface ChatTableViewController : UITableViewController
 <UITableViewDelegate, UITableViewDataSource, IRosterDelegate>
 
 @property (strong) ChatBusinessController * chatBusinessController;

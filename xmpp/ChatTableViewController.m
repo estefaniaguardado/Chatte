@@ -1,18 +1,18 @@
 //
-//  MessagesTableViewController.m
+//  ChatTableViewController.m
 //  xmpp
 //
 //  Created by Estefania Chavez Guardado on 9/9/16.
 //  Copyright © 2016 Estefania Chavez Guardado. All rights reserved.
 //
 
-#import "MessagesTableViewController.h"
+#import "ChatTableViewController.h"
 
-@interface MessagesTableViewController ()
+@interface ChatTableViewController ()
 
 @end
 
-@implementation MessagesTableViewController
+@implementation ChatTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
