@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "XMPPFramework.h"
-#import "MessageBusinessController.h"
+#import "ChatBusinessController.h"
 #import "IRosterDelegate.h"
 
 @interface MessagesTableViewController : UITableViewController
 <UITableViewDelegate, UITableViewDataSource, IRosterDelegate>
 
-@property (strong) MessageBusinessController * messageBusinessController;
+@property (strong) ChatBusinessController * chatBusinessController;
 
 @property (strong) NSMutableArray * messagesArray;
 @property (strong) NSArray *viewModel;

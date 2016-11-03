@@ -1,14 +1,14 @@
 //
-//  MessageBusinessController.m
+//  ChatBusinessController.m
 //  xmpp
 //
 //  Created by Estefania Guardado on 02/11/2016.
 //  Copyright © 2016 Estefania Chavez Guardado. All rights reserved.
 //
 
-#import "MessageBusinessController.h"
+#import "ChatBusinessController.h"
 
-@implementation MessageBusinessController
+@implementation ChatBusinessController
 
 - (id)init {
     self = [super init];

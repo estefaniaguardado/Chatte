@@ -33,7 +33,7 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
     
-    self.title = [[[self.connectionXMPPBusinessController xmppStream] myJID] bare];
+    self.title = [[[self.xmppBusinessController xmppStream] myJID] bare];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -42,7 +42,7 @@
     if (![self.daoUser getUser]) {
         [self presentLoginViewController];
     } else {
-        [self.connectionXMPPBusinessController connectUser:[self.daoUser getUser]];
+        [self.xmppBusinessController connectUser:[self.daoUser getUser]];
     }
 }
 

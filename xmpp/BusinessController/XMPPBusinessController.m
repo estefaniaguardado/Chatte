@@ -1,14 +1,14 @@
 //
-//  ConnectionXMPPBusinessController.m
+//  XMPPBusinessController.m
 //  xmpp
 //
 //  Created by Estefania Guardado on 27/10/2016.
 //  Copyright © 2016 Estefania Chavez Guardado. All rights reserved.
 //
 
-#import "ConnectionXMPPBusinessController.h"
+#import "XMPPBusinessController.h"
 
-@implementation ConnectionXMPPBusinessController
+@implementation XMPPBusinessController
 
 - (BOOL) connectUser:(NSDictionary *) user {
     if (![self.xmppStream isDisconnected]) return YES;

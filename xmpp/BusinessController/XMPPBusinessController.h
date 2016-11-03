@@ -1,5 +1,5 @@
 //
-//  ConnectionXMPPBusinessController.h
+//  XMPPBusinessController.h
 //  xmpp
 //
 //  Created by Estefania Guardado on 27/10/2016.
@@ -15,7 +15,7 @@
 
 #import "../Protocols/IDAOUser.h"
 
-@interface ConnectionXMPPBusinessController : NSObject
+@interface XMPPBusinessController : NSObject
 <XMPPRosterDelegate, XMPPStreamDelegate>
 
 @property (strong, nonatomic) NSString * userPassword;

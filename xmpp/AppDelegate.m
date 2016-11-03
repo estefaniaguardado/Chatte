@@ -23,7 +23,7 @@
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    [self.connectionXMPPBusinessController disconnect];
+    [self.xmppBusinessController disconnect];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

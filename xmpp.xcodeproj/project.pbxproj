@@ -173,8 +173,8 @@
 		CA74862E1DAF7E8A00BA556D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CA74862D1DAF7E8A00BA556D /* User.m */; };
 		CA919C5B1DC494880094F6E8 /* DAOUserRLM.m in Sources */ = {isa = PBXBuildFile; fileRef = CA919C5A1DC494880094F6E8 /* DAOUserRLM.m */; };
 		CA919C5E1DC495E60094F6E8 /* UserRLM.m in Sources */ = {isa = PBXBuildFile; fileRef = CA919C5D1DC495E60094F6E8 /* UserRLM.m */; };
-		CA9653C01DC9EE62005E654F /* MessageBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9653BF1DC9EE62005E654F /* MessageBusinessController.m */; };
-		CA9653C71DC9EEC7005E654F /* ConnectionXMPPBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9653C11DC9EEC7005E654F /* ConnectionXMPPBusinessController.m */; };
+		CA9653C01DC9EE62005E654F /* ChatBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9653BF1DC9EE62005E654F /* ChatBusinessController.m */; };
+		CA9653C71DC9EEC7005E654F /* XMPPBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9653C11DC9EEC7005E654F /* XMPPBusinessController.m */; };
 		CA9653C81DC9EEC7005E654F /* RosterBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9653C41DC9EEC7005E654F /* RosterBusinessController.m */; };
 		CA9653C91DC9EEC7005E654F /* QueriesBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9653C51DC9EEC7005E654F /* QueriesBusinessController.m */; };
 		CAFA62181DB24C1400A8A23A /* DAOUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFA62171DB24C1400A8A23A /* DAOUserDefaults.m */; };
@@ -536,10 +536,10 @@
 		CA919C5D1DC495E60094F6E8 /* UserRLM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserRLM.m; path = Models/UserRLM.m; sourceTree = "<group>"; };
 		CA9653BB1DC9EDC2005E654F /* IMessageDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IMessageDatasource.h; path = Protocols/IMessageDatasource.h; sourceTree = "<group>"; };
 		CA9653BC1DC9EDDC005E654F /* IMessageDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IMessageDelegate.h; path = Protocols/IMessageDelegate.h; sourceTree = "<group>"; };
-		CA9653BE1DC9EE62005E654F /* MessageBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageBusinessController.h; path = BusinessController/MessageBusinessController.h; sourceTree = "<group>"; };
-		CA9653BF1DC9EE62005E654F /* MessageBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageBusinessController.m; path = BusinessController/MessageBusinessController.m; sourceTree = "<group>"; };
-		CA9653C11DC9EEC7005E654F /* ConnectionXMPPBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConnectionXMPPBusinessController.m; path = BusinessController/ConnectionXMPPBusinessController.m; sourceTree = "<group>"; };
-		CA9653C21DC9EEC7005E654F /* ConnectionXMPPBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConnectionXMPPBusinessController.h; path = BusinessController/ConnectionXMPPBusinessController.h; sourceTree = "<group>"; };
+		CA9653BE1DC9EE62005E654F /* ChatBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChatBusinessController.h; path = BusinessController/ChatBusinessController.h; sourceTree = "<group>"; };
+		CA9653BF1DC9EE62005E654F /* ChatBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChatBusinessController.m; path = BusinessController/ChatBusinessController.m; sourceTree = "<group>"; };
+		CA9653C11DC9EEC7005E654F /* XMPPBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMPPBusinessController.m; path = BusinessController/XMPPBusinessController.m; sourceTree = "<group>"; };
+		CA9653C21DC9EEC7005E654F /* XMPPBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMPPBusinessController.h; path = BusinessController/XMPPBusinessController.h; sourceTree = "<group>"; };
 		CA9653C31DC9EEC7005E654F /* RosterBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RosterBusinessController.h; path = BusinessController/RosterBusinessController.h; sourceTree = "<group>"; };
 		CA9653C41DC9EEC7005E654F /* RosterBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RosterBusinessController.m; path = BusinessController/RosterBusinessController.m; sourceTree = "<group>"; };
 		CA9653C51DC9EEC7005E654F /* QueriesBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QueriesBusinessController.m; path = BusinessController/QueriesBusinessController.m; sourceTree = "<group>"; };
@@ -1600,14 +1600,14 @@
 		CA9653BD1DC9EDFB005E654F /* BusinessController */ = {
 			isa = PBXGroup;
 			children = (
-				CA9653C21DC9EEC7005E654F /* ConnectionXMPPBusinessController.h */,
-				CA9653C11DC9EEC7005E654F /* ConnectionXMPPBusinessController.m */,
+				CA9653C21DC9EEC7005E654F /* XMPPBusinessController.h */,
+				CA9653C11DC9EEC7005E654F /* XMPPBusinessController.m */,
 				CA9653C31DC9EEC7005E654F /* RosterBusinessController.h */,
 				CA9653C41DC9EEC7005E654F /* RosterBusinessController.m */,
 				CA9653C51DC9EEC7005E654F /* QueriesBusinessController.m */,
 				CA9653C61DC9EEC7005E654F /* QueriesBusinessController.h */,
-				CA9653BE1DC9EE62005E654F /* MessageBusinessController.h */,
-				CA9653BF1DC9EE62005E654F /* MessageBusinessController.m */,
+				CA9653BE1DC9EE62005E654F /* ChatBusinessController.h */,
+				CA9653BF1DC9EE62005E654F /* ChatBusinessController.m */,
 			);
 			name = BusinessController;
 			sourceTree = "<group>";
@@ -1825,7 +1825,7 @@
 				7C7E704B1D75FE9F007BDB38 /* XMPPvCardCoreDataStorage.m in Sources */,
 				7C7E70741D75FE9F007BDB38 /* XMPPBlocking.m in Sources */,
 				7C7E70111D75FE9F007BDB38 /* XMPPDeprecatedPlainAuthentication.m in Sources */,
-				CA9653C71DC9EEC7005E654F /* ConnectionXMPPBusinessController.m in Sources */,
+				CA9653C71DC9EEC7005E654F /* XMPPBusinessController.m in Sources */,
 				7C7E707D1D75FE9F007BDB38 /* XEP_0223.m in Sources */,
 				CA9653C91DC9EEC7005E654F /* QueriesBusinessController.m in Sources */,
 				7C7E704A1D75FE9F007BDB38 /* XMPPvCardAvatarCoreDataStorageObject.m in Sources */,
@@ -1879,7 +1879,7 @@
 				7C7E70501D75FE9F007BDB38 /* XMPPvCardTempAdrTypes.m in Sources */,
 				7C7E70971D75FE9F007BDB38 /* NSString+DDXML.m in Sources */,
 				7C7E70311D75FE9F007BDB38 /* XMPPRosterMemoryStorage.m in Sources */,
-				CA9653C01DC9EE62005E654F /* MessageBusinessController.m in Sources */,
+				CA9653C01DC9EE62005E654F /* ChatBusinessController.m in Sources */,
 				7C7E70911D75FE9F007BDB38 /* DDLog.m in Sources */,
 				7C7E70231D75FE9F007BDB38 /* XMPPBandwidthMonitor.m in Sources */,
 				7C7E70821D75FE9F007BDB38 /* NSXMLElement+XEP_0297.m in Sources */,

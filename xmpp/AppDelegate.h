@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ConnectionXMPPBusinessController.h"
+#import "XMPPBusinessController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (weak) ConnectionXMPPBusinessController * connectionXMPPBusinessController;
+@property (weak) XMPPBusinessController * xmppBusinessController;
 
 @end
 

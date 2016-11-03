@@ -1,5 +1,5 @@
 //
-//  MessageBusinessController.h
+//  ChatBusinessController.h
 //  xmpp
 //
 //  Created by Estefania Guardado on 02/11/2016.
@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MessageBusinessController : NSObject
+@interface ChatBusinessController : NSObject
 
 @end

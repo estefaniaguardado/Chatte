@@ -104,7 +104,7 @@
 //    [xmppMessage addAttributeWithName:@"to" stringValue:[receiver full]];
 //    [xmppMessage addChild:body];
 //    
-//    [[self.connectionXMPPBusinessController xmppStream] sendElement:xmppMessage];
+//    [[self.xmppBusinessController xmppStream] sendElement:xmppMessage];
 //}
 
 #pragma mark - Table view data source
