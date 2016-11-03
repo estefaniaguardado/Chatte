@@ -26,8 +26,12 @@
 - (void) handlerMessage:(NSNotification*) notification{
 
     NSDictionary * message = notification.userInfo;
+    NSString * from = [message valueForKey:@"from"];
     
-    NSLog(@"a");
+    if ([self.jid isEqualToString:from]) {
+        NSLog(@"a");
+
+    }
 }
 
 @end

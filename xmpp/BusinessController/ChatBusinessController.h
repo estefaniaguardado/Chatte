@@ -10,4 +10,6 @@
 
 @interface ChatBusinessController : NSObject
 
+@property (strong) NSString *jid;
+
 @end

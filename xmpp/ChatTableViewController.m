@@ -18,6 +18,7 @@
     [super viewDidLoad];
     
     self.title = [self.dataRoster valueForKey:@"name"];
+    [self.chatBusinessController setJid:[self.dataRoster valueForKey:@"jid"]];
     
     self.viewModel = [NSArray array];
     self.messagesArray = [NSMutableArray array];

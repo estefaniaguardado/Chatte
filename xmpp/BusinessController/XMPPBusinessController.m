@@ -101,9 +101,11 @@
 }
 
 - (NSDictionary *) getDictionaryFromStanza: (XMPPElement *) stanza{
+    XMPPJID * jidSender = [stanza from];
+    
     return @{
              @"id": [[stanza attributeForName:@"id"] stringValue],
-             @"from": [[stanza attributeForName:@"from"] stringValue],
+             @"from": [jidSender bare],
              @"body": [[stanza elementForName:@"body"] stringValue]
              };
 }
