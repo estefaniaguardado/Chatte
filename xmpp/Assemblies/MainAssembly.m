@@ -16,6 +16,7 @@
 #import "ConnectionXMPPBusinessController.h"
 #import "RosterBusinessController.h"
 #import "QueriesBusinessController.h"
+#import "MessageBusinessController.h"
 
 #import "DAOUserDefaults.h"
 #import "DAOUserRLM.h"
@@ -141,8 +142,8 @@
     return [TyphoonDefinition withClass:[MessagesTableViewController class]
                           configuration:^(TyphoonDefinition *definition){
         
-        [definition injectProperty:@selector(connectionXMPPBusinessController)
-                              with:[self connectionXMPPBusinessController]];
+        [definition injectProperty:@selector(messageBusinessController)
+                              with:[self messageBusinessController]];
        
         definition.scope = TyphoonScopePrototype;
     }];
@@ -192,6 +193,15 @@
 
 - (RLMRealm *) rlmRealm{
     return [RLMRealm defaultRealm];
+}
+
+- (MessageBusinessController *) messageBusinessController{
+    return [TyphoonDefinition withClass:[MessageBusinessController class]
+                          configuration:^(TyphoonDefinition *definition) {
+
+            definition.scope = TyphoonScopePrototype;
+                          
+                          }];
 }
 
 @end
