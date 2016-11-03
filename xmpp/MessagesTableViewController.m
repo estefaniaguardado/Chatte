@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = [self.dataRoster valueForKey:@"name"];
+    
     self.viewModel = [NSArray array];
     self.messagesArray = [NSMutableArray array];
     self.messagesRegistered = [NSMutableSet set];

@@ -145,7 +145,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSDictionary *)sender {
     if ([segue.identifier isEqualToString:@"chat"]){
         MessagesTableViewController * messagesTableViewController = (MessagesTableViewController *)segue.destinationViewController;
-        //[messagesTableViewController setCurrentHost: self.currentUser];
+        [messagesTableViewController setDataRoster:sender];
     }
 }
 

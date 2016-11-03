@@ -19,5 +19,7 @@
 @property (strong) NSMutableArray * messagesArray;
 @property (strong) NSArray *viewModel;
 @property (strong) NSMutableSet * messagesRegistered;
+@property (strong) NSDictionary * dataRoster;
+
 
 @end
