@@ -19,10 +19,22 @@
     
     self.title = [self.dataRoster valueForKey:@"name"];
     [self.chatBusinessController setJid:[self.dataRoster valueForKey:@"jid"]];
+    [self.chatBusinessController setHandler: self];
     
     self.viewModel = [NSArray array];
     self.messagesArray = [NSMutableArray array];
     self.messagesRegistered = [NSMutableSet set];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    NSArray * messages = [self.chatBusinessController getMessages];
+    [self.messagesArray addObjectsFromArray: messages];
+    [self updateViewModel];
+}
+
+- (void) from: (NSArray *) messages added: (NSDictionary *) message {
+    // TODO: Update view model and refresh table
+    NSLog(@"Added new message: %@", message);
 }
 
 - (void) updateViewModel {

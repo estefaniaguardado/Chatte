@@ -7,9 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "IMessageDelegate.h"
+#import "IChatRepresentationHandler.h"
 
-@interface ChatBusinessController : NSObject
+@interface ChatBusinessController : NSObject <IMessageDelegate>
 
+@property (strong, atomic) NSArray * messages;
 @property (strong) NSString *jid;
+@property (weak) id<IChatRepresentationHandler> handler;
 
 @end

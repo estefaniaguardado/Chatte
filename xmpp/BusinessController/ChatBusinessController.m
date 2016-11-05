@@ -12,6 +12,8 @@
 
 - (id)init {
     self = [super init];
+    self.messages = @[];
+
     if (!self) {
         return nil;
     }
@@ -23,15 +25,24 @@
     return self;
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
+}
+
+
 - (void) handlerMessage:(NSNotification*) notification{
 
     NSDictionary * message = notification.userInfo;
     NSString * from = [message valueForKey:@"from"];
     
     if ([self.jid isEqualToString:from]) {
-        NSLog(@"a");
-
+        self.messages = [self.messages arrayByAddingObject: message];
+        [self.handler from: self.messages added: message];
     }
+}
+
+- (NSArray *) getMessages {
+    return [self.messages copy];
 }
 
 @end

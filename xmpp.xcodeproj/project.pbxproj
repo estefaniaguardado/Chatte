@@ -544,6 +544,7 @@
 		CA9653C41DC9EEC7005E654F /* RosterBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RosterBusinessController.m; path = BusinessController/RosterBusinessController.m; sourceTree = "<group>"; };
 		CA9653C51DC9EEC7005E654F /* QueriesBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QueriesBusinessController.m; path = BusinessController/QueriesBusinessController.m; sourceTree = "<group>"; };
 		CA9653C61DC9EEC7005E654F /* QueriesBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QueriesBusinessController.h; path = BusinessController/QueriesBusinessController.h; sourceTree = "<group>"; };
+		CAB9C5231DCE1DBB00AD91D9 /* IChatRepresentationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IChatRepresentationHandler.h; path = Protocols/IChatRepresentationHandler.h; sourceTree = "<group>"; };
 		CAEAD5C01DA368DB00390086 /* IQueryDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IQueryDataSource.h; path = Protocols/IQueryDataSource.h; sourceTree = "<group>"; };
 		CAFA62161DB24C1400A8A23A /* DAOUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAOUserDefaults.h; path = Models/DAOUserDefaults.h; sourceTree = "<group>"; };
 		CAFA62171DB24C1400A8A23A /* DAOUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAOUserDefaults.m; path = Models/DAOUserDefaults.m; sourceTree = "<group>"; };
@@ -1540,6 +1541,7 @@
 				CA2B5BE51DC1258D0062BEC0 /* IDAOUser.h */,
 				CA9653BB1DC9EDC2005E654F /* IMessageDatasource.h */,
 				CA9653BC1DC9EDDC005E654F /* IMessageDelegate.h */,
+				CAB9C5231DCE1DBB00AD91D9 /* IChatRepresentationHandler.h */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";

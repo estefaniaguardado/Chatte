@@ -10,4 +10,6 @@
 
 @protocol IMessageDelegate <NSObject>
 
+- (NSArray *) getMessages;
+
 @end

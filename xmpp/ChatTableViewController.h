@@ -10,9 +10,10 @@
 #import "XMPPFramework.h"
 #import "ChatBusinessController.h"
 #import "IRosterDelegate.h"
+#import "IChatRepresentationHandler.h"
 
 @interface ChatTableViewController : UITableViewController
-<UITableViewDelegate, UITableViewDataSource, IRosterDelegate>
+<UITableViewDelegate, UITableViewDataSource, IRosterDelegate, IChatRepresentationHandler>
 
 @property (strong) ChatBusinessController * chatBusinessController;
 
