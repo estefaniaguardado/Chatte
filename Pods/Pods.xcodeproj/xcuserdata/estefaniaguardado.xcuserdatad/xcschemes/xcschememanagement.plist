@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SlackTextViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Typhoon.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,12 +37,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0ED1635BBB67009AE817FF5C056EFE14</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2FBBE28C9DE3F2AF1B964E0872EF3B2C</key>
+		<key>2F8F45D8857428F22BA3DFDF6F0B326B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,7 +52,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FC86B9D3C19674EC87874CA82225CFBD</key>
+		<key>783CACB69210A32F01CBC4D8109C7F6F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7F934A34DDD05047B7B0F9890F31205F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F68F2EF62ACBFA36A6B90ECD896A5251</key>
 		<dict>
 			<key>primary</key>
 			<true/>

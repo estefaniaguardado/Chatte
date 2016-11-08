@@ -8,6 +8,7 @@ target 'xmpp' do
     pod 'Realm'
     pod 'DZNEmptyDataSet'
     pod 'Typhoon'
+    pod 'SlackTextViewController'
     
 end
 
