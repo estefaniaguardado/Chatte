@@ -12,7 +12,6 @@
 
 @property(nonatomic, weak) NSDictionary * data;
 
-@property (weak, nonatomic) IBOutlet UILabel *fromUser;
 @property (weak, nonatomic) IBOutlet UILabel *bodyMessage;
 
 @end

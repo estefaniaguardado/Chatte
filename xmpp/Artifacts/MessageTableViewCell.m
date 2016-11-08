@@ -24,7 +24,6 @@
 - (void) setData:(NSDictionary *)data {
     _data = data;
     
-    [self.fromUser setText: _data[@"from"]];
     [self.bodyMessage setText: _data[@"body"]];
 }
 

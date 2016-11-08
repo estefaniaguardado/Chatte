@@ -35,6 +35,8 @@
 - (void) from: (NSArray *) messages added: (NSDictionary *) message {
     // TODO: Update view model and refresh table
     NSLog(@"Added new message: %@", message);
+    [self.messagesArray addObject:message];
+    [self updateViewModel];
 }
 
 - (void) updateViewModel {
@@ -45,7 +47,7 @@
         
         [viewModel addObject:@{
                                @"nib" : @"MessageTableViewCell",
-                               @"height" : @(70),
+                               @"height" : @(50),
                                @"data":cellModel }];
     }];
     
@@ -75,50 +77,6 @@
         }
     }];
 }
-
-//- (void) handler:(XMPPMessage *)message{
-//    //NSLog(@"%@", message.body);
-//    //NSLog(@"%@", message.elementID);
-//    
-//    if ([self isValid:message]) {
-//        [self.messagesRegistered addObject:[[message attributeForName:@"id"] stringValue]];
-//        
-//        NSDictionary * detailMessage = @{
-//                                         @"id": [[message attributeForName:@"id"] stringValue],
-//                                         @"from": [[message attributeForName:@"from"] stringValue],
-//                                         @"body": [[message elementForName:@"body"] stringValue]
-//                                         };
-//        [self.messagesArray addObject:detailMessage];
-//        
-//        [self updateViewModel];
-//        
-//        [self send:message to:[message from]];
-//    }
-//}
-//
-//- (BOOL) isValid: (XMPPMessage *) message{
-//    BOOL messageNotRegistered = [self.messagesRegistered
-//                                 containsObject:[[message attributeForName:@"id"]
-//                                                 stringValue]] ? NO : YES;
-//    
-//    BOOL messageNotNill = [[message elementsForName:@"body"]
-//                           isEqualToArray:@[]] ? NO : YES;
-//    
-//    return messageNotRegistered && messageNotNill;
-//}
-//
-//- (void) send:(XMPPMessage *)message to: (XMPPJID *) receiver{
-//    
-//    NSXMLElement *body = [NSXMLElement elementWithName:@"body"];
-//    [body setStringValue:[[message elementForName:@"body"] stringValue]];
-//    
-//    NSXMLElement *xmppMessage = [NSXMLElement elementWithName:@"message"];
-//    [xmppMessage addAttributeWithName:@"type" stringValue:@"chat"];
-//    [xmppMessage addAttributeWithName:@"to" stringValue:[receiver full]];
-//    [xmppMessage addChild:body];
-//    
-//    [[self.xmppBusinessController xmppStream] sendElement:xmppMessage];
-//}
 
 #pragma mark - Table view data source
 
