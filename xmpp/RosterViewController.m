@@ -11,6 +11,7 @@
 #import "MainAssembly.h"
 #import "LoginViewController.h"
 #import "ChatTableViewController.h"
+#import "ChatViewController.h"
 
 @implementation RosterViewController
 
@@ -73,7 +74,7 @@
         [viewModel addObject:@{
                                @"nib" : @"ContactTableViewCell",
                                @"height" : @(70),
-                               @"segue" : @"chat",
+                               @"segue" : @"test",
                                @"data":cellModel }];
     }];
     
@@ -146,6 +147,9 @@
     if ([segue.identifier isEqualToString:@"chat"]){
         ChatTableViewController * chatTableViewController = (ChatTableViewController *)segue.destinationViewController;
         [chatTableViewController setDataRoster:sender];
+    }else if ([segue.identifier isEqualToString:@"test"]){
+        ChatViewController * chatViewController = (ChatViewController *)segue.destinationViewController;
+        //[chatViewController setDataRoster:sender];
     }
 }
 

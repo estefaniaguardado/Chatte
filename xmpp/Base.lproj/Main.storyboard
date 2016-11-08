@@ -83,7 +83,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NlY-Fg-Se3" id="t3b-ku-TDc">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -101,11 +101,30 @@
                     <connections>
                         <segue destination="NBV-rX-bM4" kind="presentation" identifier="roster" id="Nnl-QM-I12"/>
                         <segue destination="6M1-5B-TaF" kind="show" identifier="chat" id="u0p-Mx-Nij"/>
+                        <segue destination="NHb-mp-cUZ" kind="show" identifier="test" id="Bh1-mZ-wZX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="njA-ml-W64" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2758" y="505"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="1Bu-xu-5E2">
+            <objects>
+                <viewController id="NHb-mp-cUZ" customClass="ChatViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="B9y-Bp-LO1"/>
+                        <viewControllerLayoutGuide type="bottom" id="M1h-pe-fhT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Gy5-bt-krP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VQR-fu-AEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2758" y="1224"/>
         </scene>
         <!--Chat Table View Controller-->
         <scene sceneID="eGW-5d-eT3">
@@ -120,7 +139,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RBi-Oy-KUM" id="X7O-jy-coV">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
