@@ -2,19 +2,12 @@
 //  IMessageDatasource.h
 //  xmpp
 //
-//  Created by Estefania Chavez Guardado on 9/15/16.
+//  Created by Estefania Guardado on 02/11/2016.
 //  Copyright © 2016 Estefania Chavez Guardado. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "XMPPFramework.h"
 
 @protocol IMessageDatasource <NSObject>
-
-@optional
-
-- (void) getContactRoster: (NSArray*) roster;
-- (NSArray*) rosterWithUpdatedBadges;
-- (NSNumber *) getIdxContactOfNewBadge;
 
 @end

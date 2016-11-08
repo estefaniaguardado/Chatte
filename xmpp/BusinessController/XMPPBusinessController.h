@@ -1,5 +1,5 @@
 //
-//  ConnectionXMPPBusinessController.h
+//  XMPPBusinessController.h
 //  xmpp
 //
 //  Created by Estefania Guardado on 27/10/2016.
@@ -10,12 +10,12 @@
 
 #import "XMPPFramework.h"
 
-#import "IMessageDelegate.h"
+#import "IRosterDelegate.h"
 #import "IQueryDelegate.h"
 
-#import "Protocols/IDAOUser.h"
+#import "../Protocols/IDAOUser.h"
 
-@interface ConnectionXMPPBusinessController : NSObject
+@interface XMPPBusinessController : NSObject
 <XMPPRosterDelegate, XMPPStreamDelegate>
 
 @property (strong, nonatomic) NSString * userPassword;
@@ -25,7 +25,7 @@
 @property (strong, retain) XMPPRoster * xmppRoster;
 
 @property (weak) id<IDAOUser> daoUser;
-@property (weak) id<IMessageDelegate> infoMessage;
+@property (weak) id<IRosterDelegate> infoRoster;
 @property (weak) id<IQueryDelegate> resultIQ;
 
 - (BOOL) connectUser:(NSDictionary *) user;

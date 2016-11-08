@@ -10,8 +10,8 @@
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import "XMPPFramework.h"
 
-#import "ConnectionXMPPBusinessController.h"
-#import "MessageBusinessController.h"
+#import "XMPPBusinessController.h"
+#import "RosterBusinessController.h"
 #import "QueriesBusinessController.h"
 
 #import "Protocols/IDAOUser.h"
@@ -25,8 +25,8 @@
 
 @property (weak) id<IDAOUser> daoUser;
 
-@property (weak) ConnectionXMPPBusinessController *connectionXMPPBusinessController;
-@property (strong) MessageBusinessController * messageBusinessController;
+@property (weak) XMPPBusinessController *xmppBusinessController;
+@property (strong) RosterBusinessController * rosterBusinessController;
 @property (strong) QueriesBusinessController * queriesBusinessController;
 
 @end

@@ -11,10 +11,12 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "RosterViewController.h"
+#import "ChatTableViewController.h"
 
-#import "ConnectionXMPPBusinessController.h"
-#import "MessageBusinessController.h"
+#import "XMPPBusinessController.h"
+#import "RosterBusinessController.h"
 #import "QueriesBusinessController.h"
+#import "ChatBusinessController.h"
 
 #import "DAOUserDefaults.h"
 #import "DAOUserRLM.h"
@@ -27,8 +29,8 @@
                               
         [definition injectProperty:@selector(window)
                               with:[self mainWindow]];
-        [definition injectProperty:@selector(connectionXMPPBusinessController)
-                              with:[self connectionXMPPBusinessController]];
+        [definition injectProperty:@selector(xmppBusinessController)
+                              with:[self xmppBusinessController]];
         
         definition.scope = TyphoonScopeLazySingleton;
     }];
@@ -46,8 +48,8 @@
     }];
 }
 
--(ConnectionXMPPBusinessController *) connectionXMPPBusinessController{
-    return [TyphoonDefinition withClass:[ConnectionXMPPBusinessController class]
+-(XMPPBusinessController *) xmppBusinessController{
+    return [TyphoonDefinition withClass:[XMPPBusinessController class]
                           configuration:^(TyphoonDefinition *definition) {
                               
         [definition injectProperty:@selector(xmppStream) with:[self xmppStream]];
@@ -56,8 +58,8 @@
         [definition injectProperty:@selector(xmppRoster) with:[self xmppRoster]];
         
         [definition injectProperty:@selector(daoUser) with:[self daoUserRLM]];
-        [definition injectProperty:@selector(infoMessage)
-                              with:[self messageBusinessController]];
+        [definition injectProperty:@selector(infoRoster)
+                              with:[self rosterBusinessController]];
         [definition injectProperty:@selector(resultIQ)
                               with:[self queriesBusinessController]];
         
@@ -112,8 +114,8 @@
     return [TyphoonDefinition withClass:[LoginViewController class]
                           configuration:^(TyphoonDefinition *definition){
                               
-        [definition injectProperty:@selector(connectionXMPPBusinessController)
-                              with:[self connectionXMPPBusinessController]];
+        [definition injectProperty:@selector(xmppBusinessController)
+                              with:[self xmppBusinessController]];
         [definition injectProperty:@selector(daoUser) with:[self daoUserRLM]];
 
         definition.scope = TyphoonScopeLazySingleton;
@@ -125,10 +127,10 @@
                           configuration:^(TyphoonDefinition *definition){
                               
         [definition injectProperty:@selector(daoUser) with:[self daoUserRLM]];
-        [definition injectProperty:@selector(connectionXMPPBusinessController)
-                              with:[self connectionXMPPBusinessController]];
-        [definition injectProperty:@selector(messageBusinessController)
-                              with:[self messageBusinessController]];
+        [definition injectProperty:@selector(xmppBusinessController)
+                              with:[self xmppBusinessController]];
+        [definition injectProperty:@selector(rosterBusinessController)
+                              with:[self rosterBusinessController]];
         [definition injectProperty:@selector(queriesBusinessController)
                               with:[self queriesBusinessController]];
 
@@ -136,8 +138,19 @@
     }];
 }
 
-- (MessageBusinessController *) messageBusinessController{
-    return [TyphoonDefinition withClass:[MessageBusinessController class]
+- (ChatTableViewController *) chatTableViewController{
+    return [TyphoonDefinition withClass:[ChatTableViewController class]
+                          configuration:^(TyphoonDefinition *definition){
+        
+        [definition injectProperty:@selector(chatBusinessController)
+                              with:[self chatBusinessController]];
+       
+        definition.scope = TyphoonScopePrototype;
+    }];
+}
+
+- (RosterBusinessController *) rosterBusinessController{
+    return [TyphoonDefinition withClass:[RosterBusinessController class]
                           configuration:^(TyphoonDefinition *definition) {
                               
         [definition injectProperty:@selector(message) with:[self xmppMessage]];
@@ -158,10 +171,10 @@
     return [TyphoonDefinition withClass:[QueriesBusinessController class]
                           configuration:^(TyphoonDefinition *definition) {
                               
-        [definition injectProperty:@selector(connectionXMPPBusinessController)
-                              with:[self connectionXMPPBusinessController]];
-        [definition injectProperty:@selector(messageBusinessController)
-                              with:[self messageBusinessController]];
+        [definition injectProperty:@selector(xmppBusinessController)
+                              with:[self xmppBusinessController]];
+        [definition injectProperty:@selector(rosterBusinessController)
+                              with:[self rosterBusinessController]];
                               
         definition.scope = TyphoonScopeLazySingleton;
         }];
@@ -180,6 +193,15 @@
 
 - (RLMRealm *) rlmRealm{
     return [RLMRealm defaultRealm];
+}
+
+- (ChatBusinessController *) chatBusinessController{
+    return [TyphoonDefinition withClass:[ChatBusinessController class]
+                          configuration:^(TyphoonDefinition *definition) {
+
+            definition.scope = TyphoonScopePrototype;
+                          
+                          }];
 }
 
 @end

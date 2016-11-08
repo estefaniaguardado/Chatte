@@ -1,15 +1,15 @@
 //
-//  MessageBusinessController.m
+//  RosterBusinessController.h
 //  xmpp
 //
 //  Created by Estefania Chavez Guardado on 9/15/16.
 //  Copyright © 2016 Estefania Chavez Guardado. All rights reserved.
 //
 
-#import "MessageBusinessController.h"
+#import "RosterBusinessController.h"
 #import "XMPPFramework.h"
 
-@implementation MessageBusinessController
+@implementation RosterBusinessController
 
 - (void) getContactRoster: (NSArray*) roster{
     self.roster = [NSMutableArray arrayWithArray:roster];

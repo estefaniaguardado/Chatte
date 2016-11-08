@@ -1,5 +1,5 @@
 //
-//  MessageBusinessController.h
+//  RosterBusinessController.h
 //  xmpp
 //
 //  Created by Estefania Chavez Guardado on 9/15/16.
@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IMessageDelegate.h"
-#import "IMessageDatasource.h"
+#import "IRosterDelegate.h"
+#import "IRosterDatasource.h"
 
-@interface MessageBusinessController : NSObject <IMessageDelegate, IMessageDatasource>
+@interface RosterBusinessController : NSObject <IRosterDatasource, IRosterDelegate>
 
 @property (nonatomic, strong) NSMutableArray * roster;
 

@@ -36,14 +36,14 @@
                                self.passTextField.text, @"userPassword",
                                nil];
     
-    if ([self.connectionXMPPBusinessController connectUser:infoUser]) {
+    if ([self.xmppBusinessController connectUser:infoUser]) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
 /*- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
     if ([[self.daoUser getUser] valueForKey:@"userID"] != nil) {
-        if ([self.connectionXMPPBusinessController connect]) {
+        if ([self.xmppBusinessController connect]) {
             return YES;
         }
         return NO;

@@ -1,14 +1,14 @@
 //
-//  ConnectionXMPPBusinessController.m
+//  XMPPBusinessController.m
 //  xmpp
 //
 //  Created by Estefania Guardado on 27/10/2016.
 //  Copyright © 2016 Estefania Chavez Guardado. All rights reserved.
 //
 
-#import "ConnectionXMPPBusinessController.h"
+#import "XMPPBusinessController.h"
 
-@implementation ConnectionXMPPBusinessController
+@implementation XMPPBusinessController
 
 - (BOOL) connectUser:(NSDictionary *) user {
     if (![self.xmppStream isDisconnected]) return YES;
@@ -93,8 +93,21 @@
 
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message{
     if ([message isChatMessageWithBody]){
-        [self.infoMessage handler:message];
+        [self.infoRoster handler:message];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationMessage"
+                                                            object:nil
+                                                          userInfo:[self getDictionaryFromStanza:message]];
     }
+}
+
+- (NSDictionary *) getDictionaryFromStanza: (XMPPElement *) stanza{
+    XMPPJID * jidSender = [stanza from];
+    
+    return @{
+             @"id": [[stanza attributeForName:@"id"] stringValue],
+             @"from": [jidSender bare],
+             @"body": [[stanza elementForName:@"body"] stringValue]
+             };
 }
 
 - (void)xmppStream:(XMPPStream *)sender didSendMessage:(XMPPMessage *)message{

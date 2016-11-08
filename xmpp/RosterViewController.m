@@ -10,13 +10,14 @@
 
 #import "MainAssembly.h"
 #import "LoginViewController.h"
+#import "ChatTableViewController.h"
 
 @implementation RosterViewController
 
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    [self.messageBusinessController addObserver:self forKeyPath:@"isNewBadge" options:NSKeyValueObservingOptionNew context:nil];
+    [self.rosterBusinessController addObserver:self forKeyPath:@"isNewBadge" options:NSKeyValueObservingOptionNew context:nil];
     
     [self.queriesBusinessController sendIQToGetRoster];
     [self.queriesBusinessController addObserver:self forKeyPath:@"didReceivedIQRoster" options:NSKeyValueObservingOptionNew context:nil];
@@ -32,7 +33,7 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
     
-    self.title = [[[self.connectionXMPPBusinessController xmppStream] myJID] bare];
+    self.title = [[[self.xmppBusinessController xmppStream] myJID] bare];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -41,7 +42,7 @@
     if (![self.daoUser getUser]) {
         [self presentLoginViewController];
     } else {
-        [self.connectionXMPPBusinessController connectUser:[self.daoUser getUser]];
+        [self.xmppBusinessController connectUser:[self.daoUser getUser]];
     }
 }
 
@@ -54,7 +55,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     if ([keyPath isEqualToString:@"isNewBadge"]) {
         self.updatedBagesInRoster = YES;
-        self.contactRoster = [NSMutableArray arrayWithArray:[self.messageBusinessController rosterWithUpdatedBadges]];
+        self.contactRoster = [NSMutableArray arrayWithArray:[self.rosterBusinessController rosterWithUpdatedBadges]];
     } else if ([keyPath isEqualToString:@"didReceivedIQRoster"]){
         self.contactRoster = [self.queriesBusinessController getRoster];
     }
@@ -72,6 +73,7 @@
         [viewModel addObject:@{
                                @"nib" : @"ContactTableViewCell",
                                @"height" : @(70),
+                               @"segue" : @"chat",
                                @"data":cellModel }];
     }];
     
@@ -81,7 +83,7 @@
     
     [self.tableView beginUpdates];
     if (self.updatedBagesInRoster) {
-        NSNumber *idxContact = [self.messageBusinessController getIdxContactOfNewBadge];
+        NSNumber *idxContact = [self.rosterBusinessController getIdxContactOfNewBadge];
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:
                                                 [NSIndexPath indexPathForRow:[idxContact integerValue]
                                                                    inSection:0]]
@@ -138,6 +140,28 @@
                                  NSParagraphStyleAttributeName: paragraph};
     
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSDictionary *)sender {
+    if ([segue.identifier isEqualToString:@"chat"]){
+        ChatTableViewController * chatTableViewController = (ChatTableViewController *)segue.destinationViewController;
+        [chatTableViewController setDataRoster:sender];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
+    
+    [self performSegue: indexPath];
+}
+
+- (void) performSegue: (NSIndexPath *)indexPath{
+    NSDictionary * cellModel = self.viewModel[indexPath.row];
+    NSString * segueToPerform = cellModel[@"segue"];
+    if(segueToPerform) {
+        [self performSegueWithIdentifier: segueToPerform
+                                  sender: cellModel[@"data"]];
+    }
 }
 
 #pragma mark - Table view data source

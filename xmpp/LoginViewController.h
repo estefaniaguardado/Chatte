@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ConnectionXMPPBusinessController.h"
+#import "XMPPBusinessController.h"
 
 #import "Protocols/IDAOUser.h"
 
 @interface LoginViewController : UIViewController
 
-@property (weak) ConnectionXMPPBusinessController *connectionXMPPBusinessController;
+@property (weak) XMPPBusinessController *xmppBusinessController;
 
 @property (weak, nonatomic) IBOutlet UITextField *logTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passTextField;

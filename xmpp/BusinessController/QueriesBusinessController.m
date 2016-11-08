@@ -21,12 +21,12 @@
     
     NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
     [iq addAttributeWithName:@"from"
-                 stringValue:[[[self.connectionXMPPBusinessController xmppStream] myJID] full]];
+                 stringValue:[[[self.xmppBusinessController xmppStream] myJID] full]];
     [iq addAttributeWithName:@"id" stringValue:@"v1"];
     [iq addAttributeWithName:@"type" stringValue:@"get"];
     [iq addChild:xmlns];
     
-    [[self.connectionXMPPBusinessController xmppStream] sendElement:iq];
+    [[self.xmppBusinessController xmppStream] sendElement:iq];
 }
 
 - (void)handler:(XMPPIQ *)iq{
@@ -63,7 +63,7 @@
 }
 
 -(void) sendRosterToMessageBC{
-    [self.messageBusinessController getContactRoster:self.contactRoster];
+    [self.rosterBusinessController getContactRoster:self.contactRoster];
 }
 
 @end
