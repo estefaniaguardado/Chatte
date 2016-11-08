@@ -20,11 +20,6 @@
 
 @property (nonatomic, strong) NSMutableArray *messages;
 
-@property (nonatomic, strong) NSArray *users;
-@property (nonatomic, strong) NSArray *channels;
-@property (nonatomic, strong) NSArray *emojis;
-@property (nonatomic, strong) NSArray *commands;
-
 @property (nonatomic, strong) NSArray *searchResult;
 
 @property (nonatomic, strong) UIWindow *pipWindow;
@@ -151,69 +146,20 @@
     NSArray *reversed = [[array reverseObjectEnumerator] allObjects];
     
     self.messages = [[NSMutableArray alloc] initWithArray:reversed];
-    
-    self.users = @[@"Allen", @"Anna", @"Alicia", @"Arnold", @"Armando", @"Antonio", @"Brad", @"Catalaya", @"Christoph", @"Emerson", @"Eric", @"Everyone", @"Steve"];
-    self.channels = @[@"General", @"Random", @"iOS", @"Bugs", @"Sports", @"Android", @"UI", @"SSB"];
-    self.emojis = @[@"-1", @"m", @"man", @"machine", @"block-a", @"block-b", @"bowtie", @"boar", @"boat", @"book", @"bookmark", @"neckbeard", @"metal", @"fu", @"feelsgood"];
-    self.commands = @[@"msg", @"call", @"text", @"skype", @"kick", @"invite"];
 }
 
 - (void)configureActionItems
 {
-    UIBarButtonItem *arrowItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn_arrow_down"]
-                                                                  style:UIBarButtonItemStylePlain
-                                                                 target:self
-                                                                 action:@selector(hideOrShowTextInputbar:)];
-    
-    UIBarButtonItem *editItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn_editing"]
-                                                                 style:UIBarButtonItemStylePlain
-                                                                target:self
-                                                                action:@selector(editRandomMessage:)];
-    
     UIBarButtonItem *typeItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn_typing"]
                                                                  style:UIBarButtonItemStylePlain
                                                                 target:self
                                                                 action:@selector(simulateUserTyping:)];
     
-    UIBarButtonItem *appendItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn_append"]
-                                                                   style:UIBarButtonItemStylePlain
-                                                                  target:self
-                                                                  action:@selector(fillWithText:)];
-    
-    UIBarButtonItem *pipItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn_pic"]
-                                                                style:UIBarButtonItemStylePlain
-                                                               target:self
-                                                               action:@selector(togglePIPWindow:)];
-    
-    self.navigationItem.rightBarButtonItems = @[arrowItem, pipItem, editItem, appendItem, typeItem];
+    self.navigationItem.rightBarButtonItems = @[typeItem];
 }
 
 
 #pragma mark - Action Methods
-
-- (void)hideOrShowTextInputbar:(id)sender
-{
-    BOOL hide = !self.textInputbarHidden;
-    
-    UIImage *image = hide ? [UIImage imageNamed:@"icn_arrow_up"] : [UIImage imageNamed:@"icn_arrow_down"];
-    UIBarButtonItem *buttonItem = (UIBarButtonItem *)sender;
-    
-    [self setTextInputbarHidden:hide animated:YES];
-    [buttonItem setImage:image];
-}
-
-- (void)fillWithText:(id)sender
-{
-    if (self.textView.text.length == 0)
-    {
-        int sentences = (arc4random() % 4);
-        if (sentences <= 1) sentences = 1;
-        self.textView.text = [LoremIpsum sentencesWithNumber:sentences];
-    }
-    else {
-        [self.textView slk_insertTextAtCaretRange:[NSString stringWithFormat:@" %@", [LoremIpsum word]]];
-    }
-}
 
 - (void)simulateUserTyping:(id)sender
 {
@@ -235,112 +181,6 @@
         [self.typingIndicatorView insertUsername:[LoremIpsum name]];
 #endif
     }
-}
-
-- (void)didLongPressCell:(UIGestureRecognizer *)gesture
-{
-    if (gesture.state != UIGestureRecognizerStateBegan) {
-        return;
-    }
-    
-#ifdef __IPHONE_8_0
-    if (SLK_IS_IOS8_AND_HIGHER && [UIAlertController class]) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-        alertController.modalPresentationStyle = UIModalPresentationPopover;
-        alertController.popoverPresentationController.sourceView = gesture.view.superview;
-        alertController.popoverPresentationController.sourceRect = gesture.view.frame;
-        
-        [alertController addAction:[UIAlertAction actionWithTitle:@"Edit Message" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            [self editCellMessage:gesture];
-        }]];
-        
-        [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:NULL]];
-        
-        [self.navigationController presentViewController:alertController animated:YES completion:nil];
-    }
-    else {
-        [self editCellMessage:gesture];
-    }
-#else
-    [self editCellMessage:gesture];
-#endif
-}
-
-- (void)editCellMessage:(UIGestureRecognizer *)gesture
-{
-    ChatTableViewCell *cell = (ChatTableViewCell *)gesture.view;
-    
-    self.editingMessage = self.messages[cell.indexPath.row];
-    
-    [self editText:self.editingMessage.text];
-    
-    [self.tableView scrollToRowAtIndexPath:cell.indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-}
-
-- (void)editRandomMessage:(id)sender
-{
-    int sentences = (arc4random() % 10);
-    if (sentences <= 1) sentences = 1;
-    
-    [self editText:[LoremIpsum sentencesWithNumber:sentences]];
-}
-
-- (void)editLastMessage:(id)sender
-{
-    if (self.textView.text.length > 0) {
-        return;
-    }
-    
-    NSInteger lastSectionIndex = [self.tableView numberOfSections]-1;
-    NSInteger lastRowIndex = [self.tableView numberOfRowsInSection:lastSectionIndex]-1;
-    
-    Message *lastMessage = [self.messages objectAtIndex:lastRowIndex];
-    
-    [self editText:lastMessage.text];
-    
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:lastRowIndex inSection:lastSectionIndex] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-}
-
-- (void)togglePIPWindow:(id)sender
-{
-    if (!_pipWindow) {
-        [self showPIPWindow:sender];
-    }
-    else {
-        [self hidePIPWindow:sender];
-    }
-}
-
-- (void)showPIPWindow:(id)sender
-{
-    CGRect frame = CGRectMake(CGRectGetWidth(self.view.frame) - 60.0, 0.0, 50.0, 50.0);
-    frame.origin.y = CGRectGetMinY(self.textInputbar.frame) - 60.0;
-    
-    _pipWindow = [[UIWindow alloc] initWithFrame:frame];
-    _pipWindow.backgroundColor = [UIColor blackColor];
-    _pipWindow.layer.cornerRadius = 10.0;
-    _pipWindow.layer.masksToBounds = YES;
-    _pipWindow.hidden = NO;
-    _pipWindow.alpha = 0.0;
-    
-    [[UIApplication sharedApplication].keyWindow addSubview:_pipWindow];
-    
-    [UIView animateWithDuration:0.25
-                     animations:^{
-                         _pipWindow.alpha = 1.0;
-                     }];
-}
-
-- (void)hidePIPWindow:(id)sender
-{
-    [UIView animateWithDuration:0.3
-                     animations:^{
-                         _pipWindow.alpha = 0.0;
-                     }
-                     completion:^(BOOL finished) {
-                         _pipWindow.hidden = YES;
-                         _pipWindow = nil;
-                     }];
 }
 
 - (void)textInputbarDidMove:(NSNotification *)note
@@ -443,12 +283,7 @@
 
 - (void)didPressArrowKey:(UIKeyCommand *)keyCommand
 {
-    if ([keyCommand.input isEqualToString:UIKeyInputUpArrow] && self.textView.text.length == 0) {
-        [self editLastMessage:nil];
-    }
-    else {
-        [super didPressArrowKey:keyCommand];
-    }
+    [super didPressArrowKey:keyCommand];
 }
 
 - (NSString *)keyForTextCaching
@@ -509,46 +344,6 @@
 - (BOOL)shouldProcessTextForAutoCompletion:(NSString *)text
 {
     return [super shouldProcessTextForAutoCompletion:text];
-}
-
-- (void)didChangeAutoCompletionPrefix:(NSString *)prefix andWord:(NSString *)word
-{
-    NSArray *array = nil;
-    
-    self.searchResult = nil;
-    
-    if ([prefix isEqualToString:@"@"]) {
-        if (word.length > 0) {
-            array = [self.users filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self BEGINSWITH[c] %@", word]];
-        }
-        else {
-            array = self.users;
-        }
-    }
-    else if ([prefix isEqualToString:@"#"] && word.length > 0) {
-        array = [self.channels filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self BEGINSWITH[c] %@", word]];
-    }
-    else if (([prefix isEqualToString:@":"] || [prefix isEqualToString:@"+:"]) && word.length > 1) {
-        array = [self.emojis filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self BEGINSWITH[c] %@", word]];
-    }
-    else if ([prefix isEqualToString:@"/"] && self.foundPrefixRange.location == 0) {
-        if (word.length > 0) {
-            array = [self.commands filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self BEGINSWITH[c] %@", word]];
-        }
-        else {
-            array = self.commands;
-        }
-    }
-    
-    if (array.count > 0) {
-        array = [array sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    }
-    
-    self.searchResult = [[NSMutableArray alloc] initWithArray:array];
-    
-    BOOL show = (self.searchResult.count > 0);
-    
-    [self showAutoCompletionView:show];
 }
 
 - (CGFloat)heightForAutoCompletionView
@@ -631,11 +426,6 @@
 - (ChatTableViewCell *)messageCellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ChatTableViewCell *cell = (ChatTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:MessengerCellIdentifier];
-    
-    if (cell.gestureRecognizers.count == 0) {
-        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(didLongPressCell:)];
-        [cell addGestureRecognizer:longPress];
-    }
     
     Message *message = self.messages[indexPath.row];
     
