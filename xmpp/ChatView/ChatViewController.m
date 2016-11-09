@@ -70,8 +70,10 @@
 {
     [super viewDidLoad];
     
+    [self.chatBusinessController setJid:[self.dataRoster valueForKey:@"jid"]];
+    [self.chatBusinessController setHandler:self];
+    
     // Example's configuration
-    [self configureDataSource];
     [self configureActionItems];
     
     // SLKTVC's configuration
@@ -113,6 +115,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.messagesReceived = [[NSMutableArray alloc]
+                             initWithArray: [self.chatBusinessController getMessages]];
+    [self configureDataSource];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -120,21 +125,49 @@
     [super viewDidAppear:animated];
 }
 
+- (void) from: (NSArray *) messages added: (NSDictionary *) message {
+    // TODO: Update view model and refresh table
+    NSLog(@"Added new message: %@", message);
+    Message * newMessage = [Message new];
+    newMessage.username = [self.dataRoster valueForKey:@"name"];
+    newMessage.text = [message valueForKey:@"body"];
+    [self updateView:newMessage];
+}
 
 #pragma mark - Example's Configuration
 
 - (void)configureDataSource
 {
-    NSMutableArray *array = [[NSMutableArray alloc] init];
+    NSMutableArray *dataMessages = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < 2; i++) {
+    [self.messagesReceived enumerateObjectsUsingBlock:^(id detailMessage,
+                                                        NSUInteger idx,
+                                                        BOOL * stop) {
         Message *message = [Message new];
-        message.username = @"Estefania";
-        message.text = @"hola";
-        [array addObject:message];
-    }
+        message.username = [self.dataRoster valueForKey:@"name"];
+        message.text = [detailMessage valueForKey:@"body"];
+        [dataMessages addObject:message];
+    }];
     
-    self.messages = [[NSMutableArray alloc] initWithArray:array];
+    self.messages = [[NSMutableArray alloc] initWithArray:dataMessages];
+}
+
+- (void) updateView: (Message*) message{
+
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    UITableViewRowAnimation rowAnimation = self.inverted ? UITableViewRowAnimationBottom : UITableViewRowAnimationTop;
+    UITableViewScrollPosition scrollPosition = self.inverted ? UITableViewScrollPositionBottom : UITableViewScrollPositionTop;
+    
+    [self.tableView beginUpdates];
+    [self.messages insertObject:message atIndex:0];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:rowAnimation];
+    [self.tableView endUpdates];
+    
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:scrollPosition animated:YES];
+    
+    // Fixes the cell from blinking (because of the transform, when using translucent cells)
+    // See https://github.com/slackhq/SlackTextViewController/issues/94#issuecomment-69929927
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)configureActionItems

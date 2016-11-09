@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "SLKTextViewController.h"
 
-@interface ChatViewController : SLKTextViewController
+#import "XMPPFramework.h"
+#import "ChatBusinessController.h"
+#import "IChatRepresentationHandler.h"
+
+@interface ChatViewController : SLKTextViewController <IChatRepresentationHandler>
+
+@property (strong) ChatBusinessController * chatBusinessController;
+@property (strong) NSDictionary * dataRoster;
+@property (strong) NSMutableArray * messagesReceived;
 
 @end

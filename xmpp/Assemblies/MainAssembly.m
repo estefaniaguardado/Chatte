@@ -12,6 +12,7 @@
 #import "LoginViewController.h"
 #import "RosterViewController.h"
 #import "ChatTableViewController.h"
+#import "ChatViewController.h"
 
 #import "XMPPBusinessController.h"
 #import "RosterBusinessController.h"
@@ -201,6 +202,17 @@
 
             definition.scope = TyphoonScopePrototype;
                           
+                          }];
+}
+
+- (ChatViewController *) chatViewController{
+    return [TyphoonDefinition withClass:[ChatViewController class]
+                          configuration:^(TyphoonDefinition *definition){
+                              
+        [definition injectProperty:@selector(chatBusinessController)
+                                                    with:[self chatBusinessController]];
+                              
+        definition.scope = TyphoonScopePrototype;
                           }];
 }
 

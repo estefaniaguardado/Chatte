@@ -149,7 +149,7 @@
         [chatTableViewController setDataRoster:sender];
     }else if ([segue.identifier isEqualToString:@"test"]){
         ChatViewController * chatViewController = (ChatViewController *)segue.destinationViewController;
-        //[chatViewController setDataRoster:sender];
+        [chatViewController setDataRoster:sender];
     }
 }
 
