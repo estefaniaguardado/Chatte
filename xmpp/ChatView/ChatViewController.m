@@ -81,9 +81,6 @@
     self.shouldScrollToBottomAfterKeyboardShows = NO;
     self.inverted = YES;
     
-    [self.leftButton setImage:[UIImage imageNamed:@"icn_upload"] forState:UIControlStateNormal];
-    [self.leftButton setTintColor:[UIColor grayColor]];
-    
     [self.rightButton setTitle:NSLocalizedString(@"Send", nil) forState:UIControlStateNormal];
     
     self.textInputbar.autoHideRightButton = YES;
@@ -231,19 +228,6 @@
     [super textDidUpdate:animated];
 }
 
-- (void)didPressLeftButton:(id)sender
-{
-    // Notifies the view controller when the left button's action has been triggered, manually.
-    
-    [super didPressLeftButton:sender];
-    
-    UIViewController *vc = [UIViewController new];
-    vc.view.backgroundColor = [UIColor whiteColor];
-    vc.title = @"Details";
-    
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
 - (void)didPressRightButton:(id)sender
 {
     // Notifies the view controller when the right button's action has been triggered, manually or by using the keyboard return key.
@@ -288,13 +272,6 @@
     // Notifies the view controller when a user did shake the device to undo the typed text
     
     [super willRequestUndo];
-}
-
-- (void)didCancelTextEditing:(id)sender
-{
-    // Notifies the view controller when tapped on the left "Cancel" button
-    
-    [super didCancelTextEditing:sender];
 }
 
 - (BOOL)canPressRightButton
