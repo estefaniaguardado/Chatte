@@ -1,6 +1,5 @@
 PODS:
   - DZNEmptyDataSet (1.8.1)
-  - LoremIpsum (1.0.0)
   - Realm (2.0.1):
     - Realm/Headers (= 2.0.1)
   - Realm/Headers (2.0.1)
@@ -11,7 +10,6 @@ PODS:
 
 DEPENDENCIES:
   - DZNEmptyDataSet
-  - LoremIpsum (~> 1.0)
   - Realm
   - Realm/Headers
   - SlackTextViewController
@@ -19,11 +17,10 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  LoremIpsum: 9029c55d36501b2ee0b05cc9ecda11d3a0479160
   Realm: 0557ee0e4ab4f0936c90e370056d1ed6265f93d6
   SlackTextViewController: fbcdadbb8090673f604484ff5b6eb8d77baed42a
   Typhoon: c0950bb9f2e835eb8a7dc6983160109b6baf2dda
 
-PODFILE CHECKSUM: 76f3ee71c0063960af74e931859182c538b4272b
+PODFILE CHECKSUM: 586f08d58c7a81276be8aa8dac1abbf496fa1c90
 
 COCOAPODS: 1.1.0.rc.2

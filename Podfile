@@ -9,7 +9,6 @@ target 'xmpp' do
     pod 'DZNEmptyDataSet'
     pod 'Typhoon'
     pod 'SlackTextViewController'
-    pod 'LoremIpsum', '~> 1.0'
     
 end
 

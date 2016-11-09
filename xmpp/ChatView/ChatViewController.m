@@ -12,8 +12,6 @@
 #import "TypingIndicatorView.h"
 #import "Message.h"
 
-#import <LoremIpsum/LoremIpsum.h>
-
 #define DEBUG_CUSTOM_TYPING_INDICATOR 0
 
 @interface ChatViewController ()
@@ -134,18 +132,14 @@
 {
     NSMutableArray *array = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < 100; i++) {
-        NSInteger words = (arc4random() % 40)+1;
-        
+    for (int i = 0; i < 2; i++) {
         Message *message = [Message new];
-        message.username = [LoremIpsum name];
-        message.text = [LoremIpsum wordsWithNumber:words];
+        message.username = @"Estefania";
+        message.text = @"hola";
         [array addObject:message];
     }
     
-    NSArray *reversed = [[array reverseObjectEnumerator] allObjects];
-    
-    self.messages = [[NSMutableArray alloc] initWithArray:reversed];
+    self.messages = [[NSMutableArray alloc] initWithArray:array];
 }
 
 - (void)configureActionItems
@@ -178,7 +172,7 @@
                                            [view presentIndicatorWithName:[LoremIpsum name] image:thumbnail];
                                        }];
 #else
-        [self.typingIndicatorView insertUsername:[LoremIpsum name]];
+        [self.typingIndicatorView insertUsername:@"Estefania"];
 #endif
     }
 }
@@ -260,7 +254,7 @@
     [self.textView refreshFirstResponder];
     
     Message *message = [Message new];
-    message.username = [LoremIpsum name];
+    message.username = @"Estefania";
     message.text = [self.textView.text copy];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];

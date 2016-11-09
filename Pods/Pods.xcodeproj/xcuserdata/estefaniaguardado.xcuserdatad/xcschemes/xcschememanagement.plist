@@ -9,11 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>LoremIpsum.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-xmpp.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,7 +37,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>26B22C1A4301A68C22DA87D5821D45BE</key>
+		<key>2F8F45D8857428F22BA3DFDF6F0B326B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,27 +47,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>69087ED57DDC59D701D0F4361F9A0B71</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>736E57AD5AEFAAF68D47AE4E8FCB8F68</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7CE9DCB939D8D4D9995CD32E73DA472F</key>
+		<key>783CACB69210A32F01CBC4D8109C7F6F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D302A4C45741884C0F17816784845B9A</key>
+		<key>7F934A34DDD05047B7B0F9890F31205F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FF4CD1F3E032495F766B60AFCCF68420</key>
+		<key>F68F2EF62ACBFA36A6B90ECD896A5251</key>
 		<dict>
 			<key>primary</key>
 			<true/>
