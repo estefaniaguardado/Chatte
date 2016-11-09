@@ -20,9 +20,7 @@
 
 @property (nonatomic, strong) NSArray *searchResult;
 
-@property (nonatomic, strong) UIWindow *pipWindow;
-
-@property (nonatomic, weak) Message *editingMessage;
+@property (nonatomic, strong) UIWindow *textInputWindow;
 
 @end
 
@@ -179,14 +177,14 @@
 
 - (void)textInputbarDidMove:(NSNotification *)note
 {
-    if (!_pipWindow) {
+    if (!_textInputWindow) {
         return;
     }
     
-    CGRect frame = self.pipWindow.frame;
+    CGRect frame = self.textInputWindow.frame;
     frame.origin.y = [note.userInfo[@"origin"] CGPointValue].y - 60.0;
     
-    self.pipWindow.frame = frame;
+    self.textInputWindow.frame = frame;
 }
 
 
@@ -302,16 +300,6 @@
     // Notifies the view controller when a user did shake the device to undo the typed text
     
     [super willRequestUndo];
-}
-
-- (void)didCommitTextEditing:(id)sender
-{
-    // Notifies the view controller when tapped on the right "Accept" button for commiting the edited text
-    self.editingMessage.text = [self.textView.text copy];
-    
-    [self.tableView reloadData];
-    
-    [super didCommitTextEditing:sender];
 }
 
 - (void)didCancelTextEditing:(id)sender
