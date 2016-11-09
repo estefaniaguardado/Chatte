@@ -283,18 +283,6 @@
     return [[NSBundle mainBundle] bundleIdentifier];
 }
 
-- (void)didPasteMediaContent:(NSDictionary *)userInfo
-{
-    // Notifies the view controller when the user has pasted a media (image, video, etc) inside of the text view.
-    [super didPasteMediaContent:userInfo];
-    
-    SLKPastableMediaType mediaType = [userInfo[SLKTextViewPastedItemMediaType] integerValue];
-    NSString *contentType = userInfo[SLKTextViewPastedItemContentType];
-    id data = userInfo[SLKTextViewPastedItemData];
-    
-    NSLog(@"%s : %@ (type = %ld) | data : %@",__FUNCTION__, contentType, (unsigned long)mediaType, data);
-}
-
 - (void)willRequestUndo
 {
     // Notifies the view controller when a user did shake the device to undo the typed text
