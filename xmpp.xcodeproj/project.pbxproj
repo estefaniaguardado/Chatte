@@ -170,6 +170,11 @@
 		7CD284141D7EF2650036437D /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD284121D7EF2650036437D /* MessageTableViewCell.m */; };
 		7CD284151D7EF2650036437D /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CD284131D7EF2650036437D /* MessageTableViewCell.xib */; };
 		CA2B5BE41DC0DAB80062BEC0 /* MainAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2B5BE31DC0DAB80062BEC0 /* MainAssembly.m */; };
+		CA5BF5291DD21BE200B6144F /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF51E1DD21BE200B6144F /* ChatViewController.m */; };
+		CA5BF52A1DD21BE200B6144F /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF5221DD21BE200B6144F /* Message.m */; };
+		CA5BF52B1DD21BE200B6144F /* ChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF5241DD21BE200B6144F /* ChatTableViewCell.m */; };
+		CA5BF52C1DD21BE200B6144F /* MessageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF5261DD21BE200B6144F /* MessageTextView.m */; };
+		CA5BF52D1DD21BE200B6144F /* TypingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF5281DD21BE200B6144F /* TypingIndicatorView.m */; };
 		CA74862E1DAF7E8A00BA556D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CA74862D1DAF7E8A00BA556D /* User.m */; };
 		CA919C5B1DC494880094F6E8 /* DAOUserRLM.m in Sources */ = {isa = PBXBuildFile; fileRef = CA919C5A1DC494880094F6E8 /* DAOUserRLM.m */; };
 		CA919C5E1DC495E60094F6E8 /* UserRLM.m in Sources */ = {isa = PBXBuildFile; fileRef = CA919C5D1DC495E60094F6E8 /* UserRLM.m */; };
@@ -528,6 +533,17 @@
 		CA2B5BE21DC0DAB80062BEC0 /* MainAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainAssembly.h; path = Assemblies/MainAssembly.h; sourceTree = "<group>"; };
 		CA2B5BE31DC0DAB80062BEC0 /* MainAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainAssembly.m; path = Assemblies/MainAssembly.m; sourceTree = "<group>"; };
 		CA2B5BE51DC1258D0062BEC0 /* IDAOUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDAOUser.h; path = Protocols/IDAOUser.h; sourceTree = "<group>"; };
+		CA5BF51E1DD21BE200B6144F /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChatViewController.m; path = ChatView/ChatViewController.m; sourceTree = "<group>"; };
+		CA5BF51F1DD21BE200B6144F /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChatViewController.h; path = ChatView/ChatViewController.h; sourceTree = "<group>"; };
+		CA5BF5201DD21BE200B6144F /* Bridge-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridge-Header.h"; path = "ChatView/Bridge-Header.h"; sourceTree = "<group>"; };
+		CA5BF5211DD21BE200B6144F /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Message.h; path = ChatView/Message.h; sourceTree = "<group>"; };
+		CA5BF5221DD21BE200B6144F /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Message.m; path = ChatView/Message.m; sourceTree = "<group>"; };
+		CA5BF5231DD21BE200B6144F /* ChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChatTableViewCell.h; path = ChatView/ChatTableViewCell.h; sourceTree = "<group>"; };
+		CA5BF5241DD21BE200B6144F /* ChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChatTableViewCell.m; path = ChatView/ChatTableViewCell.m; sourceTree = "<group>"; };
+		CA5BF5251DD21BE200B6144F /* MessageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageTextView.h; path = ChatView/MessageTextView.h; sourceTree = "<group>"; };
+		CA5BF5261DD21BE200B6144F /* MessageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageTextView.m; path = ChatView/MessageTextView.m; sourceTree = "<group>"; };
+		CA5BF5271DD21BE200B6144F /* TypingIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TypingIndicatorView.h; path = ChatView/TypingIndicatorView.h; sourceTree = "<group>"; };
+		CA5BF5281DD21BE200B6144F /* TypingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TypingIndicatorView.m; path = ChatView/TypingIndicatorView.m; sourceTree = "<group>"; };
 		CA74862C1DAF7E8A00BA556D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Models/User.h; sourceTree = "<group>"; };
 		CA74862D1DAF7E8A00BA556D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Models/User.m; sourceTree = "<group>"; };
 		CA919C591DC494880094F6E8 /* DAOUserRLM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAOUserRLM.h; path = Models/DAOUserRLM.h; sourceTree = "<group>"; };
@@ -612,6 +628,7 @@
 		7C6FB1B11D74295C00BAB1C6 /* xmpp */ = {
 			isa = PBXGroup;
 			children = (
+				CA5BF51A1DD21B0200B6144F /* ChatView */,
 				CA9653BD1DC9EDFB005E654F /* BusinessController */,
 				CA2B5BE11DC0DAA10062BEC0 /* Assemblies */,
 				CA7486281DAF7E5100BA556D /* Models */,
@@ -1584,6 +1601,24 @@
 			name = Assemblies;
 			sourceTree = "<group>";
 		};
+		CA5BF51A1DD21B0200B6144F /* ChatView */ = {
+			isa = PBXGroup;
+			children = (
+				CA5BF51F1DD21BE200B6144F /* ChatViewController.h */,
+				CA5BF51E1DD21BE200B6144F /* ChatViewController.m */,
+				CA5BF5211DD21BE200B6144F /* Message.h */,
+				CA5BF5221DD21BE200B6144F /* Message.m */,
+				CA5BF5231DD21BE200B6144F /* ChatTableViewCell.h */,
+				CA5BF5241DD21BE200B6144F /* ChatTableViewCell.m */,
+				CA5BF5251DD21BE200B6144F /* MessageTextView.h */,
+				CA5BF5261DD21BE200B6144F /* MessageTextView.m */,
+				CA5BF5271DD21BE200B6144F /* TypingIndicatorView.h */,
+				CA5BF5281DD21BE200B6144F /* TypingIndicatorView.m */,
+				CA5BF5201DD21BE200B6144F /* Bridge-Header.h */,
+			);
+			name = ChatView;
+			sourceTree = "<group>";
+		};
 		CA7486281DAF7E5100BA556D /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1835,9 +1870,11 @@
 				7C7E70421D75FE9F007BDB38 /* XMPPRoomOccupantHybridMemoryStorageObject.m in Sources */,
 				7C7E70411D75FE9F007BDB38 /* XMPPRoomMessageHybridCoreDataStorageObject.m in Sources */,
 				7C7E70811D75FE9F007BDB38 /* XMPPMessageCarbons.m in Sources */,
+				CA5BF52D1DD21BE200B6144F /* TypingIndicatorView.m in Sources */,
 				7C7E703F1D75FE9F007BDB38 /* XMPPRoomHybrid.xcdatamodeld in Sources */,
 				7C7E70331D75FE9F007BDB38 /* XMPPRoster.m in Sources */,
 				7C7E704C1D75FE9F007BDB38 /* XMPPvCardCoreDataStorageObject.m in Sources */,
+				CA5BF5291DD21BE200B6144F /* ChatViewController.m in Sources */,
 				7C7E70931D75FE9F007BDB38 /* DDContextFilterLogFormatter.m in Sources */,
 				7C7E70731D75FE9F007BDB38 /* XMPPMessageDeliveryReceipts.m in Sources */,
 				7C7E70461D75FE9F007BDB38 /* XMPPMessage+XEP0045.m in Sources */,
@@ -1874,6 +1911,7 @@
 				7C7E70981D75FE9F007BDB38 /* DDXMLDocument.m in Sources */,
 				7C7E707C1D75FE9F007BDB38 /* NSXMLElement+XEP_0203.m in Sources */,
 				7C7E701B1D75FE9F007BDB38 /* XMPPElement.m in Sources */,
+				CA5BF52B1DD21BE200B6144F /* ChatTableViewCell.m in Sources */,
 				7C7E707E1D75FE9F007BDB38 /* XMPPAttentionModule.m in Sources */,
 				7C7E70771D75FE9F007BDB38 /* XMPPStreamManagement.m in Sources */,
 				7C7E70551D75FE9F007BDB38 /* XMPPvCardTempTel.m in Sources */,
@@ -1896,6 +1934,7 @@
 				7C7E705C1D75FE9F007BDB38 /* XMPPMessage+XEP_0066.m in Sources */,
 				7C7E70641D75FE9F007BDB38 /* XMPPCapabilities.xcdatamodel in Sources */,
 				7C7E70631D75FE9F007BDB38 /* NSString+XEP_0106.m in Sources */,
+				CA5BF52A1DD21BE200B6144F /* Message.m in Sources */,
 				7C7E70701D75FE9F007BDB38 /* XMPPMessage+XEP_0172.m in Sources */,
 				7C7E70941D75FE9F007BDB38 /* DDDispatchQueueLogFormatter.m in Sources */,
 				7C73CB8F1D7827C10092D33C /* RosterViewController.m in Sources */,
@@ -1958,6 +1997,7 @@
 				7C7E706D1D75FE9F007BDB38 /* XMPPMessageArchiving.m in Sources */,
 				7C7E70271D75FE9F007BDB38 /* XMPPOutgoingFileTransfer.m in Sources */,
 				7C7E70521D75FE9F007BDB38 /* XMPPvCardTempEmail.m in Sources */,
+				CA5BF52C1DD21BE200B6144F /* MessageTextView.m in Sources */,
 				7C11417D1D82F9DC00231EC6 /* ContactTableViewCell.m in Sources */,
 				7C7E70511D75FE9F007BDB38 /* XMPPvCardTempBase.m in Sources */,
 				7C7E70141D75FE9F007BDB38 /* XMPPSCRAMSHA1Authentication.m in Sources */,

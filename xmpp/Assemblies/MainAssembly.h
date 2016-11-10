@@ -14,6 +14,7 @@
 @class LoginViewController;
 @class RosterViewController;
 @class ChatTableViewController;
+@class ChatViewController;
 
 @interface MainAssembly : TyphoonAssembly
     
@@ -21,6 +22,7 @@
 - (LoginViewController *) loginViewController;
 - (RosterViewController *) rosterViewController;
 - (ChatTableViewController *) chatTableViewController;
+- (ChatViewController *) chatViewController;
 - (UIWindow *) mainWindow;
 
 @end
