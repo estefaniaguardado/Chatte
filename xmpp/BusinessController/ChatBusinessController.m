@@ -45,4 +45,9 @@
     return [self.messages copy];
 }
 
+- (void) sendMessageOfUser: (NSString *) message{
+    NSLog(@"%@", message);
+}
+
+
 @end

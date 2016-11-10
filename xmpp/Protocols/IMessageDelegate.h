@@ -11,5 +11,6 @@
 @protocol IMessageDelegate <NSObject>
 
 - (NSArray *) getMessages;
+- (void) sendMessageOfUser: (NSDictionary *) message;
 
 @end
