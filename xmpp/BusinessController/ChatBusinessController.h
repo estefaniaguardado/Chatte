@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XMPPBusinessController.h"
 #import "IMessageDelegate.h"
 #import "IChatRepresentationHandler.h"
 
 @interface ChatBusinessController : NSObject <IMessageDelegate>
+
+@property (weak) XMPPBusinessController * xmppBusinessController;
 
 @property (strong, atomic) NSArray * messages;
 @property (strong) NSString *jid;

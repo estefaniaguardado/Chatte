@@ -110,6 +110,18 @@
              };
 }
 
+- (void) sendMessage:(NSString *) bodyMessage to: (NSString *) receiver{
+    NSXMLElement * body = [NSXMLElement elementWithName:@"body"
+                                            stringValue:bodyMessage];
+    
+    NSXMLElement *xmppMessage = [NSXMLElement elementWithName:@"message"];
+    [xmppMessage addAttributeWithName:@"type" stringValue:@"chat"];
+    [xmppMessage addAttributeWithName:@"to" stringValue:receiver];
+    [xmppMessage addChild:body];
+    
+    [self.xmppStream sendElement:xmppMessage];
+}
+
 - (void)xmppStream:(XMPPStream *)sender didSendMessage:(XMPPMessage *)message{
     NSLog(@"Did receive message: %@", message);
 }

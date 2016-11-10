@@ -46,7 +46,7 @@
 }
 
 - (void) sendMessageOfUser: (NSString *) message{
-    NSLog(@"%@", message);
+    [self.xmppBusinessController sendMessage:message to:self.jid];
 }
 
 

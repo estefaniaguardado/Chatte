@@ -269,7 +269,7 @@
     [self.chatBusinessController sendMessageOfUser:[self.textView.text copy]];
     
     Message *message = [Message new];
-    message.username = @"Estefania";
+    message.username = @"Fanny";
     message.text = [self.textView.text copy];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
