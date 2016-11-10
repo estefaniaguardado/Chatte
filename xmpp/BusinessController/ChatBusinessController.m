@@ -45,4 +45,9 @@
     return [self.messages copy];
 }
 
+- (void) sendMessageOfUser: (NSString *) message{
+    [self.xmppBusinessController sendMessage:message to:self.jid];
+}
+
+
 @end

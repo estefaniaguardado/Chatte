@@ -14,9 +14,10 @@
 #import "IQueryDelegate.h"
 
 #import "../Protocols/IDAOUser.h"
+#import "../Protocols/IXMPPDelegate.h"
 
 @interface XMPPBusinessController : NSObject
-<XMPPRosterDelegate, XMPPStreamDelegate>
+<XMPPRosterDelegate, XMPPStreamDelegate, IXMPPDelegate>
 
 @property (strong, nonatomic) NSString * userPassword;
 

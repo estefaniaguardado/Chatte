@@ -199,7 +199,9 @@
 - (ChatBusinessController *) chatBusinessController{
     return [TyphoonDefinition withClass:[ChatBusinessController class]
                           configuration:^(TyphoonDefinition *definition) {
-
+                              
+            [definition injectProperty:@selector(xmppBusinessController)
+                                  with:[self xmppBusinessController]];
             definition.scope = TyphoonScopePrototype;
                           
                           }];
