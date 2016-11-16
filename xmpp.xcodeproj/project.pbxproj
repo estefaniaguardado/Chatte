@@ -176,6 +176,8 @@
 		CA5BF52C1DD21BE200B6144F /* MessageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF5261DD21BE200B6144F /* MessageTextView.m */; };
 		CA5BF52D1DD21BE200B6144F /* TypingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF5281DD21BE200B6144F /* TypingIndicatorView.m */; };
 		CA74862E1DAF7E8A00BA556D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CA74862D1DAF7E8A00BA556D /* User.m */; };
+		CA78A6151DDC516800ED7920 /* ContactRLM.m in Sources */ = {isa = PBXBuildFile; fileRef = CA78A6141DDC516800ED7920 /* ContactRLM.m */; };
+		CA78A6181DDC545B00ED7920 /* DAOContactsRLM.m in Sources */ = {isa = PBXBuildFile; fileRef = CA78A6171DDC545B00ED7920 /* DAOContactsRLM.m */; };
 		CA919C5B1DC494880094F6E8 /* DAOUserRLM.m in Sources */ = {isa = PBXBuildFile; fileRef = CA919C5A1DC494880094F6E8 /* DAOUserRLM.m */; };
 		CA919C5E1DC495E60094F6E8 /* UserRLM.m in Sources */ = {isa = PBXBuildFile; fileRef = CA919C5D1DC495E60094F6E8 /* UserRLM.m */; };
 		CA9653C01DC9EE62005E654F /* ChatBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9653BF1DC9EE62005E654F /* ChatBusinessController.m */; };
@@ -546,6 +548,11 @@
 		CA5BF5281DD21BE200B6144F /* TypingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TypingIndicatorView.m; path = ChatView/TypingIndicatorView.m; sourceTree = "<group>"; };
 		CA74862C1DAF7E8A00BA556D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Models/User.h; sourceTree = "<group>"; };
 		CA74862D1DAF7E8A00BA556D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Models/User.m; sourceTree = "<group>"; };
+		CA78A6131DDC516800ED7920 /* ContactRLM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactRLM.h; path = Models/ContactRLM.h; sourceTree = "<group>"; };
+		CA78A6141DDC516800ED7920 /* ContactRLM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactRLM.m; path = Models/ContactRLM.m; sourceTree = "<group>"; };
+		CA78A6161DDC545B00ED7920 /* DAOContactsRLM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAOContactsRLM.h; path = Models/DAOContactsRLM.h; sourceTree = "<group>"; };
+		CA78A6171DDC545B00ED7920 /* DAOContactsRLM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAOContactsRLM.m; path = Models/DAOContactsRLM.m; sourceTree = "<group>"; };
+		CA78A6191DDC547800ED7920 /* IDAOContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDAOContact.h; path = Protocols/IDAOContact.h; sourceTree = "<group>"; };
 		CA919C591DC494880094F6E8 /* DAOUserRLM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAOUserRLM.h; path = Models/DAOUserRLM.h; sourceTree = "<group>"; };
 		CA919C5A1DC494880094F6E8 /* DAOUserRLM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAOUserRLM.m; path = Models/DAOUserRLM.m; sourceTree = "<group>"; };
 		CA919C5C1DC495E60094F6E8 /* UserRLM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserRLM.h; path = Models/UserRLM.h; sourceTree = "<group>"; };
@@ -1561,6 +1568,7 @@
 				CA9653BC1DC9EDDC005E654F /* IMessageDelegate.h */,
 				CAB9C5231DCE1DBB00AD91D9 /* IChatRepresentationHandler.h */,
 				CAF181561DD4BC7200CD9505 /* IXMPPDelegate.h */,
+				CA78A6191DDC547800ED7920 /* IDAOContact.h */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
@@ -1632,6 +1640,10 @@
 				CA919C5D1DC495E60094F6E8 /* UserRLM.m */,
 				CA919C591DC494880094F6E8 /* DAOUserRLM.h */,
 				CA919C5A1DC494880094F6E8 /* DAOUserRLM.m */,
+				CA78A6131DDC516800ED7920 /* ContactRLM.h */,
+				CA78A6141DDC516800ED7920 /* ContactRLM.m */,
+				CA78A6161DDC545B00ED7920 /* DAOContactsRLM.h */,
+				CA78A6171DDC545B00ED7920 /* DAOContactsRLM.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1643,8 +1655,8 @@
 				CA9653C11DC9EEC7005E654F /* XMPPBusinessController.m */,
 				CA9653C31DC9EEC7005E654F /* RosterBusinessController.h */,
 				CA9653C41DC9EEC7005E654F /* RosterBusinessController.m */,
-				CA9653C51DC9EEC7005E654F /* QueriesBusinessController.m */,
 				CA9653C61DC9EEC7005E654F /* QueriesBusinessController.h */,
+				CA9653C51DC9EEC7005E654F /* QueriesBusinessController.m */,
 				CA9653BE1DC9EE62005E654F /* ChatBusinessController.h */,
 				CA9653BF1DC9EE62005E654F /* ChatBusinessController.m */,
 			);
@@ -1929,6 +1941,7 @@
 				7C7E702E1D75FE9F007BDB38 /* XMPPRosterCoreDataStorage.m in Sources */,
 				7C7E706B1D75FE9F007BDB38 /* XMPPMessageArchiving_Message_CoreDataObject.m in Sources */,
 				7C7E70121D75FE9F007BDB38 /* XMPPDigestMD5Authentication.m in Sources */,
+				CA78A6151DDC516800ED7920 /* ContactRLM.m in Sources */,
 				7C7E70781D75FE9F007BDB38 /* XMPPAutoPing.m in Sources */,
 				7C7E70891D75FE9F007BDB38 /* XMPPIDTracker.m in Sources */,
 				7C7E70991D75FE9F007BDB38 /* DDXMLElement.m in Sources */,
@@ -1984,6 +1997,7 @@
 				7C7E70351D75FE9F007BDB38 /* XMPPIQ+JabberRPC.m in Sources */,
 				7C7E70881D75FE9F007BDB38 /* RFImageToDataTransformer.m in Sources */,
 				7C7E70671D75FE9F007BDB38 /* XMPPCapsResourceCoreDataStorageObject.m in Sources */,
+				CA78A6181DDC545B00ED7920 /* DAOContactsRLM.m in Sources */,
 				7C7E70481D75FE9F007BDB38 /* XMPPRoom.m in Sources */,
 				7C7E70711D75FE9F007BDB38 /* XMPPPresence+XEP_0172.m in Sources */,
 				7C7E708C1D75FE9F007BDB38 /* XMPPTimer.m in Sources */,

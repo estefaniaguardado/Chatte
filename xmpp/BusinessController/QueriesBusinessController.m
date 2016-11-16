@@ -40,6 +40,7 @@
 }
 
 - (NSMutableArray*) getRoster{
+    [self.daoContact updateValues:self.contactRoster];
     return self.contactRoster;
 }
 

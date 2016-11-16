@@ -21,6 +21,7 @@
 
 #import "DAOUserDefaults.h"
 #import "DAOUserRLM.h"
+#import "DAOContactsRLM.h"
 
 @implementation MainAssembly
     
@@ -172,6 +173,7 @@
     return [TyphoonDefinition withClass:[QueriesBusinessController class]
                           configuration:^(TyphoonDefinition *definition) {
                               
+        [definition injectProperty:@selector(daoContact) with:[self daoContactsRLM]];
         [definition injectProperty:@selector(xmppBusinessController)
                               with:[self xmppBusinessController]];
         [definition injectProperty:@selector(rosterBusinessController)
@@ -185,6 +187,17 @@
     return [TyphoonDefinition withClass:[DAOUserRLM class]
                           configuration:^(TyphoonDefinition *definition) {
 
+                              [definition injectProperty:@selector(realm)
+                                                    with:[self rlmRealm]];
+                              
+                              definition.scope = TyphoonScopeLazySingleton;
+                          }];
+}
+
+- (DAOContactsRLM *) daoContactsRLM {
+    return [TyphoonDefinition withClass:[DAOContactsRLM class]
+                          configuration:^(TyphoonDefinition *definition) {
+                              
                               [definition injectProperty:@selector(realm)
                                                     with:[self rlmRealm]];
                               

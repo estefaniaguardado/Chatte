@@ -12,7 +12,11 @@
 #import "XMPPBusinessController.h"
 #import "RosterBusinessController.h"
 
+#import "../Protocols/IDAOContact.h"
+
 @interface QueriesBusinessController : NSObject <IQueryDelegate, IQueryDataSource>
+
+@property (weak) id<IDAOContact> daoContact;
 
 @property (weak) XMPPBusinessController * xmppBusinessController;
 @property (strong) RosterBusinessController * rosterBusinessController;
