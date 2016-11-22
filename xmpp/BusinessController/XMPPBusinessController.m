@@ -91,7 +91,11 @@
     NSXMLElement *query = [NSXMLElement elementWithName:@"query" xmlns:@"jabber:iq:roster"];
     
     if (query) { //TODO: validate kind of iq
-        [self.daoContact updateValues:[self getArrayOfContactsFromStanza:iq]];
+        NSDictionary * contacts = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [self getArrayOfContactsFromStanza:iq], @"contacts", nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"IQroster"
+                                                            object:nil
+                                                          userInfo:contacts];
     }
     return YES;
 }

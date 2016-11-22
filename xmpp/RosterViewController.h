@@ -12,6 +12,7 @@
 
 #import "XMPPBusinessController.h"
 #import "RosterBusinessController.h"
+#import "ContactBusinessController.h"
 
 #import "Protocols/IDAOUser.h"
 #import "Protocols/IDAOContact.h"
@@ -27,6 +28,7 @@
 @property (weak) id<IDAOContact> daoContact;
 
 @property (weak) XMPPBusinessController *xmppBusinessController;
+@property (strong) ContactBusinessController * contactBusinessController;
 @property (strong) RosterBusinessController * rosterBusinessController;
 
 @end

@@ -12,7 +12,6 @@
 
 #import "IRosterDelegate.h"
 #import "../Protocols/IDAOUser.h"
-#import "../Protocols/IDAOContact.h"
 #import "../Protocols/IXMPPDelegate.h"
 
 @interface XMPPBusinessController : NSObject
@@ -26,7 +25,6 @@
 
 @property (weak) id<IDAOUser> daoUser;
 @property (weak) id<IRosterDelegate> infoRoster;
-@property (weak) id<IDAOContact> daoContact;
 
 - (BOOL) connectUser:(NSDictionary *) user;
 - (void) disconnect;

@@ -175,6 +175,7 @@
 		CA5BF52B1DD21BE200B6144F /* ChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF5241DD21BE200B6144F /* ChatTableViewCell.m */; };
 		CA5BF52C1DD21BE200B6144F /* MessageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF5261DD21BE200B6144F /* MessageTextView.m */; };
 		CA5BF52D1DD21BE200B6144F /* TypingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF5281DD21BE200B6144F /* TypingIndicatorView.m */; };
+		CA5F87D91DE48D040004B3C8 /* ContactBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5F87D81DE48D040004B3C8 /* ContactBusinessController.m */; };
 		CA74862E1DAF7E8A00BA556D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CA74862D1DAF7E8A00BA556D /* User.m */; };
 		CA78A6151DDC516800ED7920 /* ContactRLM.m in Sources */ = {isa = PBXBuildFile; fileRef = CA78A6141DDC516800ED7920 /* ContactRLM.m */; };
 		CA78A6181DDC545B00ED7920 /* DAOContactsRLM.m in Sources */ = {isa = PBXBuildFile; fileRef = CA78A6171DDC545B00ED7920 /* DAOContactsRLM.m */; };
@@ -544,6 +545,9 @@
 		CA5BF5261DD21BE200B6144F /* MessageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageTextView.m; path = ChatView/MessageTextView.m; sourceTree = "<group>"; };
 		CA5BF5271DD21BE200B6144F /* TypingIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TypingIndicatorView.h; path = ChatView/TypingIndicatorView.h; sourceTree = "<group>"; };
 		CA5BF5281DD21BE200B6144F /* TypingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TypingIndicatorView.m; path = ChatView/TypingIndicatorView.m; sourceTree = "<group>"; };
+		CA5F87D71DE48D040004B3C8 /* ContactBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactBusinessController.h; path = BusinessController/ContactBusinessController.h; sourceTree = "<group>"; };
+		CA5F87D81DE48D040004B3C8 /* ContactBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactBusinessController.m; path = BusinessController/ContactBusinessController.m; sourceTree = "<group>"; };
+		CA5F87DA1DE48D990004B3C8 /* IContactRepresentationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IContactRepresentationHandler.h; path = Protocols/IContactRepresentationHandler.h; sourceTree = "<group>"; };
 		CA74862C1DAF7E8A00BA556D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Models/User.h; sourceTree = "<group>"; };
 		CA74862D1DAF7E8A00BA556D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Models/User.m; sourceTree = "<group>"; };
 		CA78A6131DDC516800ED7920 /* ContactRLM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactRLM.h; path = Models/ContactRLM.h; sourceTree = "<group>"; };
@@ -1562,6 +1566,7 @@
 				CAB9C5231DCE1DBB00AD91D9 /* IChatRepresentationHandler.h */,
 				CAF181561DD4BC7200CD9505 /* IXMPPDelegate.h */,
 				CA78A6191DDC547800ED7920 /* IDAOContact.h */,
+				CA5F87DA1DE48D990004B3C8 /* IContactRepresentationHandler.h */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
@@ -1650,6 +1655,8 @@
 				CA9653C41DC9EEC7005E654F /* RosterBusinessController.m */,
 				CA9653BE1DC9EE62005E654F /* ChatBusinessController.h */,
 				CA9653BF1DC9EE62005E654F /* ChatBusinessController.m */,
+				CA5F87D71DE48D040004B3C8 /* ContactBusinessController.h */,
+				CA5F87D81DE48D040004B3C8 /* ContactBusinessController.m */,
 			);
 			name = BusinessController;
 			sourceTree = "<group>";
@@ -1915,6 +1922,7 @@
 				7C7E70981D75FE9F007BDB38 /* DDXMLDocument.m in Sources */,
 				7C7E707C1D75FE9F007BDB38 /* NSXMLElement+XEP_0203.m in Sources */,
 				7C7E701B1D75FE9F007BDB38 /* XMPPElement.m in Sources */,
+				CA5F87D91DE48D040004B3C8 /* ContactBusinessController.m in Sources */,
 				CA5BF52B1DD21BE200B6144F /* ChatTableViewCell.m in Sources */,
 				7C7E707E1D75FE9F007BDB38 /* XMPPAttentionModule.m in Sources */,
 				7C7E70771D75FE9F007BDB38 /* XMPPStreamManagement.m in Sources */,

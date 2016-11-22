@@ -16,6 +16,7 @@
 
 #import "XMPPBusinessController.h"
 #import "RosterBusinessController.h"
+#import "ContactBusinessController.h"
 #import "ChatBusinessController.h"
 
 #import "DAOUserDefaults.h"
@@ -59,7 +60,6 @@
         [definition injectProperty:@selector(xmppRoster) with:[self xmppRoster]];
         
         [definition injectProperty:@selector(daoUser) with:[self daoUserRLM]];
-        [definition injectProperty:@selector(daoContact) with:[self daoContactsRLM]];
         [definition injectProperty:@selector(infoRoster)
                               with:[self rosterBusinessController]];
         
@@ -132,6 +132,8 @@
                               with:[self xmppBusinessController]];
         [definition injectProperty:@selector(rosterBusinessController)
                               with:[self rosterBusinessController]];
+        [definition injectProperty:@selector(contactBusinessController)
+                              with:[self contactBusinessController]];
 
         definition.scope = TyphoonScopeLazySingleton;
     }];
@@ -157,6 +159,16 @@
 
         definition.scope = TyphoonScopeLazySingleton;
     }];
+}
+
+- (ContactBusinessController *) contactBusinessController{
+    return [TyphoonDefinition withClass:[ContactBusinessController class]
+                          configuration:^(TyphoonDefinition *definition) {
+
+         [definition injectProperty:@selector(daoContact) with:[self daoContactsRLM]];
+                              
+          definition.scope = TyphoonScopeLazySingleton;
+                          }];
 }
 
 - (XMPPMessage *) xmppMessage{
