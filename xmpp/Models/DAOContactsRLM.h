@@ -14,5 +14,7 @@
 @interface DAOContactsRLM : NSObject <IDAOContact>
 
 @property (strong) RLMRealm * realm;
+@property (strong) NSMutableSet * updateDa;
+@property (strong) NSMutableSet * oldData;
 
 @end
