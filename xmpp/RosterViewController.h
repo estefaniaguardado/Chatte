@@ -12,7 +12,6 @@
 
 #import "XMPPBusinessController.h"
 #import "RosterBusinessController.h"
-#import "QueriesBusinessController.h"
 
 #import "Protocols/IDAOUser.h"
 #import "Protocols/IDAOContact.h"
@@ -29,6 +28,5 @@
 
 @property (weak) XMPPBusinessController *xmppBusinessController;
 @property (strong) RosterBusinessController * rosterBusinessController;
-@property (strong) QueriesBusinessController * queriesBusinessController;
 
 @end

@@ -11,13 +11,10 @@
 
 @implementation RosterBusinessController
 
-- (void) getContactRoster: (NSArray*) roster{
-    self.roster = [NSMutableArray arrayWithArray:roster];
-}
-
 -(void)handler:(XMPPMessage *)message{
     if ([message isChatMessageWithBody]){
         self.message = message;
+        self.roster = [NSMutableArray arrayWithArray:[self.daoContact getContacts]];
         [self updateBadgesInRoster];
     }
 }

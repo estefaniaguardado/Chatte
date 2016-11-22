@@ -19,9 +19,7 @@
     [super viewDidLoad];
     
     [self.rosterBusinessController addObserver:self forKeyPath:@"isNewBadge" options:NSKeyValueObservingOptionNew context:nil];
-    
-    [self.queriesBusinessController sendIQToGetRoster];
-    
+        
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
     

@@ -183,7 +183,6 @@
 		CA9653C01DC9EE62005E654F /* ChatBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9653BF1DC9EE62005E654F /* ChatBusinessController.m */; };
 		CA9653C71DC9EEC7005E654F /* XMPPBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9653C11DC9EEC7005E654F /* XMPPBusinessController.m */; };
 		CA9653C81DC9EEC7005E654F /* RosterBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9653C41DC9EEC7005E654F /* RosterBusinessController.m */; };
-		CA9653C91DC9EEC7005E654F /* QueriesBusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9653C51DC9EEC7005E654F /* QueriesBusinessController.m */; };
 		CAFA62181DB24C1400A8A23A /* DAOUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFA62171DB24C1400A8A23A /* DAOUserDefaults.m */; };
 		D6552306F68024C8B5ECC765 /* libPods-xmpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8C13E86C1915FBB7C1F1C3F /* libPods-xmpp.a */; };
 /* End PBXBuildFile section */
@@ -213,7 +212,6 @@
 		7C545E7C1D8AC26D0094586A /* IRosterDatasource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IRosterDatasource.h; path = Protocols/IRosterDatasource.h; sourceTree = "<group>"; };
 		7C66FD541D82EBAA00D2B897 /* ChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewController.h; sourceTree = "<group>"; };
 		7C66FD551D82EBAA00D2B897 /* ChatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewController.m; sourceTree = "<group>"; };
-		7C66FD571D82ED6100D2B897 /* IQueryDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IQueryDelegate.h; path = Protocols/IQueryDelegate.h; sourceTree = "<group>"; };
 		7C6FB1AF1D74295C00BAB1C6 /* xmpp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xmpp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C6FB1B31D74295D00BAB1C6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7C6FB1B51D74295D00BAB1C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -565,10 +563,7 @@
 		CA9653C21DC9EEC7005E654F /* XMPPBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMPPBusinessController.h; path = BusinessController/XMPPBusinessController.h; sourceTree = "<group>"; };
 		CA9653C31DC9EEC7005E654F /* RosterBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RosterBusinessController.h; path = BusinessController/RosterBusinessController.h; sourceTree = "<group>"; };
 		CA9653C41DC9EEC7005E654F /* RosterBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RosterBusinessController.m; path = BusinessController/RosterBusinessController.m; sourceTree = "<group>"; };
-		CA9653C51DC9EEC7005E654F /* QueriesBusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QueriesBusinessController.m; path = BusinessController/QueriesBusinessController.m; sourceTree = "<group>"; };
-		CA9653C61DC9EEC7005E654F /* QueriesBusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QueriesBusinessController.h; path = BusinessController/QueriesBusinessController.h; sourceTree = "<group>"; };
 		CAB9C5231DCE1DBB00AD91D9 /* IChatRepresentationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IChatRepresentationHandler.h; path = Protocols/IChatRepresentationHandler.h; sourceTree = "<group>"; };
-		CAEAD5C01DA368DB00390086 /* IQueryDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IQueryDataSource.h; path = Protocols/IQueryDataSource.h; sourceTree = "<group>"; };
 		CAF181561DD4BC7200CD9505 /* IXMPPDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IXMPPDelegate.h; path = Protocols/IXMPPDelegate.h; sourceTree = "<group>"; };
 		CAFA62161DB24C1400A8A23A /* DAOUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAOUserDefaults.h; path = Models/DAOUserDefaults.h; sourceTree = "<group>"; };
 		CAFA62171DB24C1400A8A23A /* DAOUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAOUserDefaults.m; path = Models/DAOUserDefaults.m; sourceTree = "<group>"; };
@@ -1561,8 +1556,6 @@
 			children = (
 				7C545E7C1D8AC26D0094586A /* IRosterDatasource.h */,
 				7CD2840F1D7EBC580036437D /* IRosterDelegate.h */,
-				7C66FD571D82ED6100D2B897 /* IQueryDelegate.h */,
-				CAEAD5C01DA368DB00390086 /* IQueryDataSource.h */,
 				CA2B5BE51DC1258D0062BEC0 /* IDAOUser.h */,
 				CA9653BB1DC9EDC2005E654F /* IMessageDatasource.h */,
 				CA9653BC1DC9EDDC005E654F /* IMessageDelegate.h */,
@@ -1655,8 +1648,6 @@
 				CA9653C11DC9EEC7005E654F /* XMPPBusinessController.m */,
 				CA9653C31DC9EEC7005E654F /* RosterBusinessController.h */,
 				CA9653C41DC9EEC7005E654F /* RosterBusinessController.m */,
-				CA9653C61DC9EEC7005E654F /* QueriesBusinessController.h */,
-				CA9653C51DC9EEC7005E654F /* QueriesBusinessController.m */,
 				CA9653BE1DC9EE62005E654F /* ChatBusinessController.h */,
 				CA9653BF1DC9EE62005E654F /* ChatBusinessController.m */,
 			);
@@ -1878,7 +1869,6 @@
 				7C7E70111D75FE9F007BDB38 /* XMPPDeprecatedPlainAuthentication.m in Sources */,
 				CA9653C71DC9EEC7005E654F /* XMPPBusinessController.m in Sources */,
 				7C7E707D1D75FE9F007BDB38 /* XEP_0223.m in Sources */,
-				CA9653C91DC9EEC7005E654F /* QueriesBusinessController.m in Sources */,
 				7C7E704A1D75FE9F007BDB38 /* XMPPvCardAvatarCoreDataStorageObject.m in Sources */,
 				7C7E707B1D75FE9F007BDB38 /* XMPPTime.m in Sources */,
 				7C7E70421D75FE9F007BDB38 /* XMPPRoomOccupantHybridMemoryStorageObject.m in Sources */,
