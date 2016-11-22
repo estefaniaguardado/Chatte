@@ -23,6 +23,4 @@
 
 @property (strong) NSMutableArray * contactRoster;
 
-@property (nonatomic, assign) BOOL didReceivedIQRoster;
-
 @end

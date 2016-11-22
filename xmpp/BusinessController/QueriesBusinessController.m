@@ -33,9 +33,8 @@
     
     NSXMLElement *query = [NSXMLElement elementWithName:@"query" xmlns:@"jabber:iq:roster"];
     
-    if (query && !self.didReceivedIQRoster) {
+    if (query) {
         [self formatToReceivedRoster: iq];
-        self.didReceivedIQRoster = YES;
     }
 }
 
