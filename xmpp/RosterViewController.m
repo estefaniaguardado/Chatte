@@ -58,7 +58,7 @@
         self.updatedBagesInRoster = YES;
         self.contactRoster = [NSMutableArray arrayWithArray:[self.rosterBusinessController rosterWithUpdatedBadges]];
     } else if ([keyPath isEqualToString:@"didReceivedIQRoster"]){
-        self.contactRoster = [self.queriesBusinessController getRoster];
+        self.contactRoster = [NSMutableArray arrayWithArray:[self.daoContact getContacts]];
     }
     
     [self updateViewModel];

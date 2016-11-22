@@ -15,6 +15,7 @@
 #import "QueriesBusinessController.h"
 
 #import "Protocols/IDAOUser.h"
+#import "Protocols/IDAOContact.h"
 
 @interface RosterViewController : UITableViewController
 <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
@@ -24,6 +25,7 @@
 @property (nonatomic, assign) BOOL updatedBagesInRoster;
 
 @property (weak) id<IDAOUser> daoUser;
+@property (weak) id<IDAOContact> daoContact;
 
 @property (weak) XMPPBusinessController *xmppBusinessController;
 @property (strong) RosterBusinessController * rosterBusinessController;

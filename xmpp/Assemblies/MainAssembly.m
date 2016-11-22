@@ -129,6 +129,7 @@
                           configuration:^(TyphoonDefinition *definition){
                               
         [definition injectProperty:@selector(daoUser) with:[self daoUserRLM]];
+        [definition injectProperty:@selector(daoContact) with:[self daoContactsRLM]];
         [definition injectProperty:@selector(xmppBusinessController)
                               with:[self xmppBusinessController]];
         [definition injectProperty:@selector(rosterBusinessController)
