@@ -10,49 +10,6 @@
 
 @implementation DAOContactsRLM
 
-- (id)init {
-    self = [super init];
-    self.oldData = [NSMutableSet setWithArray:@[
-                                                @{
-                                                    @"jid" : @"3pfmzjffz9tm32viob36a0e5le@public.talk.google.com",
-                                                    @"name" : @"Estefania Guardado"
-                                                    },
-                                                @{
-                                                    @"jid" : @"0z8d21t7wzim42ux8h14ol260e@public.talk.google.com",
-                                                    @"name" : @"Luis Alejandro Sánchez"
-                                                    },
-                                                @{
-                                                    @"jid" : @"0070s1ke5udxn0rwrs568oc9e1@public.talk.google.com",
-                                                    @"name" : @"Rita Guardado"
-                                                    },
-                                                @{
-                                                    @"jid" : @"1xnqzhessnhla3jv587c8qb9o9@public.talk.google.com",
-                                                    @"name" : @"Maria de Lourdes Pacheco"
-                                                    }
-                                                ]];
-    
-    self.updateDa = [NSMutableSet setWithArray:@[
-                                                   @{
-                                                       @"jid" : @"0z8d21t7wzim42ux8h14ol260e@public.talk.google.com",
-                                                       @"name" : @"Luis Alejandro Rangel Sanchez"
-                                                       },
-                                                   @{
-                                                       @"jid" : @"0070s1ke5udxn0rwrs568oc9e1@public.talk.google.com",
-                                                       @"name" : @"Rita Guardado"
-                                                       },
-                                                   @{
-                                                       @"jid" : @"1xnqzhessnhla3jv587c8qb9o9@public.talk.google.com",
-                                                       @"name" : @"María de Lourdes Pacheco"
-                                                       }
-                                                   ]];
-    
-    if (!self) {
-        return nil;
-    }
-    
-    return self;
-}
-
 - (void)updateValues:(NSArray *)contacts{
     
     if (![self getContacts]) {
@@ -97,9 +54,7 @@
 - (void) newUpdatesInDataContacts: (NSArray *) newDataContacts {
     
     NSMutableSet * oldSetData = [NSMutableSet setWithArray:[self getContacts]];
-    NSMutableSet * newSetData = [NSMutableSet setWithSet:[self.updateDa copy]];
-    
-    //NSMutableSet * newSetData = [NSMutableSet setWithArray:newDataContacts];
+    NSMutableSet * newSetData = [NSMutableSet setWithArray:newDataContacts];
     
     [oldSetData minusSet:newSetData];
     [newSetData minusSet:[NSMutableSet setWithArray:[self getContacts]]];
