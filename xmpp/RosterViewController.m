@@ -17,14 +17,15 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
-    [self.rosterBusinessController addObserver:self forKeyPath:@"isNewBadge" options:NSKeyValueObservingOptionNew context:nil];
         
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
     
     self.tableView.tableFooterView = [UIView new];
     
+    [self.rosterBusinessController addObserver:self forKeyPath:@"isNewBadge" options:NSKeyValueObservingOptionNew context:nil];
+    
+    [self.contactBusinessController setHandler: self];
     self.contactRoster = [NSMutableArray arrayWithArray:[self.daoContact getContacts]];
     
     [self updateViewModel];
@@ -59,6 +60,10 @@
     }
     
     [self updateViewModel];
+}
+
+- (void)updateValues:(NSArray *)oldDataContact With:(NSArray *)newDataContact{
+    //TODO: updateviewModel
 }
 
 - (void) updateViewModel {

@@ -16,9 +16,12 @@
 
 #import "Protocols/IDAOUser.h"
 #import "Protocols/IDAOContact.h"
+#import "Protocols/IContactRepresentationHandler.h"
 
 @interface RosterViewController : UITableViewController
-<UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
+<UITableViewDelegate, UITableViewDataSource,
+DZNEmptyDataSetDelegate, DZNEmptyDataSetSource,
+IContactRepresentationHandler>
 
 @property (strong) NSArray *viewModel;
 @property (strong) NSMutableArray * contactRoster;

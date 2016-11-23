@@ -31,12 +31,20 @@
 
 - (void) handlerIQ:(NSNotification*) notification{
     self.contacts = [self.daoContact getContacts];
+    NSMutableSet * oldSetData = [NSMutableSet setWithArray:self.contacts];
     
     NSArray * updateContacts = [[notification userInfo] objectForKey:@"contacts"];
     
     [self.daoContact updateValues:updateContacts];
     
-    [self.handler updateValues:self.contacts With:[self.daoContact getContacts]];
+    NSMutableSet * newSetData = [NSMutableSet setWithArray:updateContacts];
+    
+    [oldSetData minusSet:newSetData];
+    [newSetData minusSet:[NSMutableSet setWithArray:self.contacts]];
+    
+    if ([oldSetData count] || [newSetData count]) {
+        [self.handler updateValues:self.contacts With:updateContacts];
+    }
 }
 
 @end
