@@ -13,7 +13,6 @@
 
 @optional
 
-- (void) getContactRoster: (NSArray*) roster;
 - (NSArray*) rosterWithUpdatedBadges;
 - (NSNumber *) getIdxContactOfNewBadge;
 

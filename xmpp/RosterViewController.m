@@ -17,18 +17,18 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
-    [self.rosterBusinessController addObserver:self forKeyPath:@"isNewBadge" options:NSKeyValueObservingOptionNew context:nil];
-    
-    [self.queriesBusinessController sendIQToGetRoster];
-    [self.queriesBusinessController addObserver:self forKeyPath:@"didReceivedIQRoster" options:NSKeyValueObservingOptionNew context:nil];
-    
-    self.contactRoster = [NSMutableArray array];
-    
+        
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
     
     self.tableView.tableFooterView = [UIView new];
+    
+    [self.rosterBusinessController addObserver:self forKeyPath:@"isNewBadge" options:NSKeyValueObservingOptionNew context:nil];
+    
+    [self.contactBusinessController setHandler: self];
+    self.contactRoster = [NSMutableArray arrayWithArray:[self.daoContact getContacts]];
+    
+    [self updateViewModel];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -57,11 +57,13 @@
     if ([keyPath isEqualToString:@"isNewBadge"]) {
         self.updatedBagesInRoster = YES;
         self.contactRoster = [NSMutableArray arrayWithArray:[self.rosterBusinessController rosterWithUpdatedBadges]];
-    } else if ([keyPath isEqualToString:@"didReceivedIQRoster"]){
-        self.contactRoster = [self.queriesBusinessController getRoster];
     }
     
     [self updateViewModel];
+}
+
+- (void)updateValues:(NSArray *)oldDataContact With:(NSArray *)newDataContact{
+    //TODO: updateviewModel
 }
 
 - (void) updateViewModel {

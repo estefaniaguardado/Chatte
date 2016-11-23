@@ -16,11 +16,12 @@
 
 #import "XMPPBusinessController.h"
 #import "RosterBusinessController.h"
-#import "QueriesBusinessController.h"
+#import "ContactBusinessController.h"
 #import "ChatBusinessController.h"
 
 #import "DAOUserDefaults.h"
 #import "DAOUserRLM.h"
+#import "DAOContactsRLM.h"
 
 @implementation MainAssembly
     
@@ -61,8 +62,6 @@
         [definition injectProperty:@selector(daoUser) with:[self daoUserRLM]];
         [definition injectProperty:@selector(infoRoster)
                               with:[self rosterBusinessController]];
-        [definition injectProperty:@selector(resultIQ)
-                              with:[self queriesBusinessController]];
         
         definition.scope = TyphoonScopeLazySingleton;
     }];
@@ -128,12 +127,13 @@
                           configuration:^(TyphoonDefinition *definition){
                               
         [definition injectProperty:@selector(daoUser) with:[self daoUserRLM]];
+        [definition injectProperty:@selector(daoContact) with:[self daoContactsRLM]];
         [definition injectProperty:@selector(xmppBusinessController)
                               with:[self xmppBusinessController]];
         [definition injectProperty:@selector(rosterBusinessController)
                               with:[self rosterBusinessController]];
-        [definition injectProperty:@selector(queriesBusinessController)
-                              with:[self queriesBusinessController]];
+        [definition injectProperty:@selector(contactBusinessController)
+                              with:[self contactBusinessController]];
 
         definition.scope = TyphoonScopeLazySingleton;
     }];
@@ -155,9 +155,20 @@
                           configuration:^(TyphoonDefinition *definition) {
                               
         [definition injectProperty:@selector(message) with:[self xmppMessage]];
+        [definition injectProperty:@selector(daoContact) with:[self daoContactsRLM]];
 
         definition.scope = TyphoonScopeLazySingleton;
     }];
+}
+
+- (ContactBusinessController *) contactBusinessController{
+    return [TyphoonDefinition withClass:[ContactBusinessController class]
+                          configuration:^(TyphoonDefinition *definition) {
+
+         [definition injectProperty:@selector(daoContact) with:[self daoContactsRLM]];
+                              
+          definition.scope = TyphoonScopeLazySingleton;
+                          }];
 }
 
 - (XMPPMessage *) xmppMessage{
@@ -168,23 +179,21 @@
     }];
 }
 
-- (QueriesBusinessController *) queriesBusinessController{
-    return [TyphoonDefinition withClass:[QueriesBusinessController class]
-                          configuration:^(TyphoonDefinition *definition) {
-                              
-        [definition injectProperty:@selector(xmppBusinessController)
-                              with:[self xmppBusinessController]];
-        [definition injectProperty:@selector(rosterBusinessController)
-                              with:[self rosterBusinessController]];
-                              
-        definition.scope = TyphoonScopeLazySingleton;
-        }];
-}
-
 - (DAOUserRLM *) daoUserRLM {
     return [TyphoonDefinition withClass:[DAOUserRLM class]
                           configuration:^(TyphoonDefinition *definition) {
 
+                              [definition injectProperty:@selector(realm)
+                                                    with:[self rlmRealm]];
+                              
+                              definition.scope = TyphoonScopeLazySingleton;
+                          }];
+}
+
+- (DAOContactsRLM *) daoContactsRLM {
+    return [TyphoonDefinition withClass:[DAOContactsRLM class]
+                          configuration:^(TyphoonDefinition *definition) {
+                              
                               [definition injectProperty:@selector(realm)
                                                     with:[self rlmRealm]];
                               

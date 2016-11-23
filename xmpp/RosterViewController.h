@@ -12,21 +12,26 @@
 
 #import "XMPPBusinessController.h"
 #import "RosterBusinessController.h"
-#import "QueriesBusinessController.h"
+#import "ContactBusinessController.h"
 
 #import "Protocols/IDAOUser.h"
+#import "Protocols/IDAOContact.h"
+#import "Protocols/IContactRepresentationHandler.h"
 
 @interface RosterViewController : UITableViewController
-<UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
+<UITableViewDelegate, UITableViewDataSource,
+DZNEmptyDataSetDelegate, DZNEmptyDataSetSource,
+IContactRepresentationHandler>
 
 @property (strong) NSArray *viewModel;
 @property (strong) NSMutableArray * contactRoster;
 @property (nonatomic, assign) BOOL updatedBagesInRoster;
 
 @property (weak) id<IDAOUser> daoUser;
+@property (weak) id<IDAOContact> daoContact;
 
 @property (weak) XMPPBusinessController *xmppBusinessController;
+@property (strong) ContactBusinessController * contactBusinessController;
 @property (strong) RosterBusinessController * rosterBusinessController;
-@property (strong) QueriesBusinessController * queriesBusinessController;
 
 @end

@@ -10,6 +10,8 @@
 #import "IRosterDelegate.h"
 #import "IRosterDatasource.h"
 
+#import "IDAOContact.h"
+
 @interface RosterBusinessController : NSObject <IRosterDatasource, IRosterDelegate>
 
 @property (nonatomic, strong) NSMutableArray * roster;
@@ -18,5 +20,7 @@
 
 @property (nonatomic, assign) BOOL isNewBadge;
 @property (nonatomic, strong) NSNumber * idxContact;
+
+@property (weak) id<IDAOContact> daoContact;
 
 @end

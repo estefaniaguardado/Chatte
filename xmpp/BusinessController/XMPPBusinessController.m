@@ -30,6 +30,7 @@
     }
     
     [self.daoUser updateValues:user];
+    [self sendIQToGetRoster];
     NSLog(@"connected");
     return YES;
 }
@@ -87,7 +88,15 @@
 }
 
 - (BOOL) xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq{
-    [self.resultIQ handler:iq];
+    NSXMLElement *query = [NSXMLElement elementWithName:@"query" xmlns:@"jabber:iq:roster"];
+    
+    if (query) { //TODO: validate kind of iq
+        NSDictionary * contacts = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [self getArrayOfContactsFromStanza:iq], @"contacts", nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"IQroster"
+                                                            object:nil
+                                                          userInfo:contacts];
+    }
     return YES;
 }
 
@@ -129,5 +138,43 @@
 - (void)xmppStream:(XMPPStream *)sender didReceivePresence:(XMPPPresence *)presence{
     
 }
+
+- (void) sendIQToGetRoster {
+    
+    NSXMLElement *xmlns = [NSXMLElement elementWithName:@"query"];
+    [xmlns addAttributeWithName:@"xmlns" stringValue:@"jabber:iq:roster"];
+    [xmlns addAttributeWithName:@"xmlns:gr" stringValue:@"google:roster"];
+    [xmlns addAttributeWithName:@"gr:ext" stringValue:@"2"];
+    
+    
+    NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
+    [iq addAttributeWithName:@"from"
+                 stringValue:[[self.xmppStream myJID] full]];
+    [iq addAttributeWithName:@"id" stringValue:@"v1"];
+    [iq addAttributeWithName:@"type" stringValue:@"get"];
+    [iq addChild:xmlns];
+    
+    [self.xmppStream sendElement:iq];
+}
+
+-(NSArray*) getArrayOfContactsFromStanza: (XMPPIQ*) iq{
+    
+    NSMutableArray * contacts = [NSMutableArray array];
+    
+    NSXMLElement * query = [iq elementForName:@"query"];
+    NSArray *items = [query elementsForName:@"item"];
+    
+    for (NSXMLElement * value in items) {
+        NSDictionary * contact = @{
+                                   @"name" : [[value attributeForName:@"name"] stringValue],
+                                   @"jid" : [[value attributeForName:@"jid"] stringValue]
+                                   };
+        //XMPPJID *jid = [XMPPJID jidWithString:jidString];
+        [contacts addObject:contact];
+    }
+    
+    return [NSArray arrayWithArray:contacts];
+}
+
 
 @end
