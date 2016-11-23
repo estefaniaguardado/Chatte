@@ -15,6 +15,7 @@ end
 target 'xmppTests' do
     
     pod 'Realm/Headers'
+    pod 'Kiwi'
 
 end
 
