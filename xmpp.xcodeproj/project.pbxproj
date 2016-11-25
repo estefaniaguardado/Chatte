@@ -21,7 +21,7 @@
 		7C6FB1BD1D74295D00BAB1C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C6FB1BB1D74295D00BAB1C6 /* Main.storyboard */; };
 		7C6FB1BF1D74295D00BAB1C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C6FB1BE1D74295D00BAB1C6 /* Assets.xcassets */; };
 		7C6FB1C21D74295D00BAB1C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C6FB1C01D74295D00BAB1C6 /* LaunchScreen.storyboard */; };
-		7C6FB1CD1D74295D00BAB1C6 /* xmppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6FB1CC1D74295D00BAB1C6 /* xmppTests.m */; };
+		7C6FB1CD1D74295D00BAB1C6 /* UpdateValuesHandlerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6FB1CC1D74295D00BAB1C6 /* UpdateValuesHandlerTest.m */; };
 		7C73CB8F1D7827C10092D33C /* RosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C73CB8E1D7827C10092D33C /* RosterViewController.m */; };
 		7C7E700F1D75FE9F007BDB38 /* XMPPAnonymousAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E6E9F1D75FE9E007BDB38 /* XMPPAnonymousAuthentication.m */; };
 		7C7E70101D75FE9F007BDB38 /* XMPPDeprecatedDigestAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E6EA21D75FE9E007BDB38 /* XMPPDeprecatedDigestAuthentication.m */; };
@@ -170,6 +170,7 @@
 		7CD284141D7EF2650036437D /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD284121D7EF2650036437D /* MessageTableViewCell.m */; };
 		7CD284151D7EF2650036437D /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CD284131D7EF2650036437D /* MessageTableViewCell.xib */; };
 		CA2B5BE41DC0DAB80062BEC0 /* MainAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2B5BE31DC0DAB80062BEC0 /* MainAssembly.m */; };
+		CA4A1C861DE86DD500910A21 /* UpdateValuesHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4A1C851DE86DD500910A21 /* UpdateValuesHandler.m */; };
 		CA5BF5291DD21BE200B6144F /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF51E1DD21BE200B6144F /* ChatViewController.m */; };
 		CA5BF52A1DD21BE200B6144F /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF5221DD21BE200B6144F /* Message.m */; };
 		CA5BF52B1DD21BE200B6144F /* ChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF5241DD21BE200B6144F /* ChatTableViewCell.m */; };
@@ -224,7 +225,7 @@
 		7C6FB1C11D74295D00BAB1C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C6FB1C31D74295D00BAB1C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C6FB1C81D74295D00BAB1C6 /* xmppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xmppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C6FB1CC1D74295D00BAB1C6 /* xmppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xmppTests.m; sourceTree = "<group>"; };
+		7C6FB1CC1D74295D00BAB1C6 /* UpdateValuesHandlerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateValuesHandlerTest.m; sourceTree = "<group>"; };
 		7C6FB1CE1D74295D00BAB1C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C73CB8C1D7728590092D33C /* CocoaLumberjack_Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CocoaLumberjack_Constants.h; sourceTree = "<group>"; };
 		7C73CB8D1D7827C10092D33C /* RosterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RosterViewController.h; sourceTree = "<group>"; };
@@ -534,6 +535,8 @@
 		CA2B5BE21DC0DAB80062BEC0 /* MainAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainAssembly.h; path = Assemblies/MainAssembly.h; sourceTree = "<group>"; };
 		CA2B5BE31DC0DAB80062BEC0 /* MainAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainAssembly.m; path = Assemblies/MainAssembly.m; sourceTree = "<group>"; };
 		CA2B5BE51DC1258D0062BEC0 /* IDAOUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDAOUser.h; path = Protocols/IDAOUser.h; sourceTree = "<group>"; };
+		CA4A1C841DE86DD500910A21 /* UpdateValuesHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UpdateValuesHandler.h; path = Utilities/UpdateValuesHandler.h; sourceTree = "<group>"; };
+		CA4A1C851DE86DD500910A21 /* UpdateValuesHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdateValuesHandler.m; path = Utilities/UpdateValuesHandler.m; sourceTree = "<group>"; };
 		CA5BF51E1DD21BE200B6144F /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChatViewController.m; path = ChatView/ChatViewController.m; sourceTree = "<group>"; };
 		CA5BF51F1DD21BE200B6144F /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChatViewController.h; path = ChatView/ChatViewController.h; sourceTree = "<group>"; };
 		CA5BF5201DD21BE200B6144F /* Bridge-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridge-Header.h"; path = "ChatView/Bridge-Header.h"; sourceTree = "<group>"; };
@@ -641,6 +644,7 @@
 				CA7486281DAF7E5100BA556D /* Models */,
 				7CD284101D7EF1CE0036437D /* Artifacts */,
 				7CD2840D1D7EBBFC0036437D /* Protocol */,
+				CA4A1C831DE86D8800910A21 /* Utilities */,
 				7C6FB1B51D74295D00BAB1C6 /* AppDelegate.h */,
 				7C6FB1B61D74295D00BAB1C6 /* AppDelegate.m */,
 				7C6FB1B81D74295D00BAB1C6 /* LoginViewController.h */,
@@ -670,7 +674,7 @@
 		7C6FB1CB1D74295D00BAB1C6 /* xmppTests */ = {
 			isa = PBXGroup;
 			children = (
-				7C6FB1CC1D74295D00BAB1C6 /* xmppTests.m */,
+				7C6FB1CC1D74295D00BAB1C6 /* UpdateValuesHandlerTest.m */,
 				7C6FB1CE1D74295D00BAB1C6 /* Info.plist */,
 			);
 			path = xmppTests;
@@ -1609,6 +1613,15 @@
 			name = Assemblies;
 			sourceTree = "<group>";
 		};
+		CA4A1C831DE86D8800910A21 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				CA4A1C841DE86DD500910A21 /* UpdateValuesHandler.h */,
+				CA4A1C851DE86DD500910A21 /* UpdateValuesHandler.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		CA5BF51A1DD21B0200B6144F /* ChatView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1918,6 +1931,7 @@
 				7C7E706F1D75FE9F007BDB38 /* XMPPvCardAvatarModule.m in Sources */,
 				7C7E703B1D75FE9F007BDB38 /* XMPPRoom.xcdatamodeld in Sources */,
 				7C7E70471D75FE9F007BDB38 /* XMPPMUC.m in Sources */,
+				CA4A1C861DE86DD500910A21 /* UpdateValuesHandler.m in Sources */,
 				7C7E70371D75FE9F007BDB38 /* XMPPJabberRPCModule.m in Sources */,
 				7C7E70981D75FE9F007BDB38 /* DDXMLDocument.m in Sources */,
 				7C7E707C1D75FE9F007BDB38 /* NSXMLElement+XEP_0203.m in Sources */,
@@ -2033,7 +2047,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C6FB1CD1D74295D00BAB1C6 /* xmppTests.m in Sources */,
+				7C6FB1CD1D74295D00BAB1C6 /* UpdateValuesHandlerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
