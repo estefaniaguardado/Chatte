@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IContactRepresentationHandler.h"
 
-@interface UpdateValuesHandler : NSObject <IContactRepresentationHandler>
+@interface UpdateValuesHandler : NSObject
 
 @property (strong) NSMutableArray * oldContacts;
 @property (strong) NSMutableArray * recentContacts;

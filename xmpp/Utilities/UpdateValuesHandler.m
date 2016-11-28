@@ -30,7 +30,7 @@
     self.updateContacts = [NSMutableArray array];
     
     if ([oldSetData count] && [newSetData count]) {
-        //[self compareSetContacts:oldSetData And:newSetData];
+        [self compareSetContacts:oldSetData And:newSetData];
         
     } else {
         for (int index = 1; index <= newSetData.count; index++){
@@ -54,33 +54,21 @@
     return self.updateContacts;
 }
 
-//- (void) compareSetContacts: (NSSet*) oldContacts And: (NSSet*) newContacts{
-//    NSMutableSet* copyNewContacts = [NSMutableSet setWithSet:newContacts];
-//    NSMutableSet* copyOldContacts = [NSMutableSet setWithSet:oldContacts];
-//
-//
-//    for (NSDictionary * oldContact in oldContacts) {
-//        for (NSDictionary * newContact in newContacts) {
-//            if ([self equalJid:[oldContact valueForKey:@"jid"]
-//                           And:[newContact valueForKey:@"jid"]]) {
-//                //edit contact with new data
-//
-//                [copyNewContacts minusSet:[NSSet setWithObject:newContact]];
-//                [copyOldContacts minusSet:[NSSet setWithObject:oldContact]];
-//            }
-//        }
-//        if (![copyNewContacts count] || ![copyOldContacts count]) {
-//            break;
-//        }
-//    }
-//
-//    for (NSDictionary * contact in copyNewContacts) {
-//        //add new contact
-//    }
-//    for (NSDictionary * contact in copyOldContacts) {
-//        //delete old contact
-//    }
-//}
+- (void) compareSetContacts: (NSSet*) oldContacts And: (NSSet*) newContacts{
+
+    for (int index = 0; index < oldContacts.count; index++) {
+        for (NSDictionary * newContact in newContacts) {
+            
+            NSString * jidOldContact = [self.oldContacts[index] valueForKey:@"jid"];
+            
+            if ([self equalJid:jidOldContact And:[newContact valueForKey:@"jid"]]) {
+                NSNumber * number = [NSNumber numberWithInt:index];
+                [self.updateContacts addObject:number];
+                break;
+            }
+        }
+    }
+}
 
 - (BOOL) equalJid: (NSString*)firstJid And: (NSString*) secondJid{
     return [firstJid isEqualToString:secondJid];
