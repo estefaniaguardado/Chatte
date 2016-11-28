@@ -11,15 +11,17 @@
 
 @interface UpdateValuesHandler : NSObject <IContactRepresentationHandler>
 
-@property (weak) NSArray * oldContacts;
-@property (weak) NSArray * recentContacts;
+@property (strong) NSMutableArray * oldContacts;
+@property (strong) NSMutableArray * recentContacts;
 
-@property (weak) NSMutableArray * updateContacts;
-@property (weak) NSMutableArray * deleteContacts;
-@property (weak) NSMutableArray * addNewContacts;
+@property (strong) NSMutableArray * updateContacts;
+@property (strong) NSMutableArray * deleteContacts;
+@property (strong) NSMutableArray * addNewContacts;
 
 - (NSArray *) getContactsForDelete;
 - (NSArray *) getContactsForAdd;
 - (NSArray *) getContactsForRefresh;
+
+-(void) calculateArrayIndexOfContacts:(NSArray*)oldContacts And:(NSArray*)newContacts;
 
 @end
