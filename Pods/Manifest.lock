@@ -1,5 +1,6 @@
 PODS:
   - DZNEmptyDataSet (1.8.1)
+  - Kiwi (2.4.0)
   - Realm (2.0.1):
     - Realm/Headers (= 2.0.1)
   - Realm/Headers (2.0.1)
@@ -10,6 +11,7 @@ PODS:
 
 DEPENDENCIES:
   - DZNEmptyDataSet
+  - Kiwi
   - Realm
   - Realm/Headers
   - SlackTextViewController
@@ -17,10 +19,11 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
   Realm: 0557ee0e4ab4f0936c90e370056d1ed6265f93d6
   SlackTextViewController: fbcdadbb8090673f604484ff5b6eb8d77baed42a
   Typhoon: c0950bb9f2e835eb8a7dc6983160109b6baf2dda
 
-PODFILE CHECKSUM: 586f08d58c7a81276be8aa8dac1abbf496fa1c90
+PODFILE CHECKSUM: d569182968d460cdf2a18c0a6ea90edff069f0c6
 
 COCOAPODS: 1.1.0.rc.2

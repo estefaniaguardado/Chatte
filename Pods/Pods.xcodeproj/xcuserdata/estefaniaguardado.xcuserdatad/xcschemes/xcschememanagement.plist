@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Kiwi.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-xmpp.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,7 +47,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>64F683D20F45BC56F2758442838C151A</key>
+		<key>41D07B8E927F660A2224550F2FBD81FA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4CB3F7F46945EE16A19F86EAB6FC5CAF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
