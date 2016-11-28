@@ -56,15 +56,20 @@
 
 - (void) compareSetContacts: (NSSet*) oldContacts And: (NSSet*) newContacts{
 
-    for (int index = 0; index < oldContacts.count; index++) {
+    for (NSDictionary *oldContact in oldContacts) {
         for (NSDictionary * newContact in newContacts) {
             
-            NSString * jidOldContact = [self.oldContacts[index] valueForKey:@"jid"];
-            
-            if ([self equalJid:jidOldContact And:[newContact valueForKey:@"jid"]]) {
-                NSNumber * number = [NSNumber numberWithInt:index];
-                [self.updateContacts addObject:number];
-                break;
+            if ([self equalJid:[oldContact valueForKey:@"jid"] And:[newContact valueForKey:@"jid"]]) {
+                
+                for (int index = 0; index < self.oldContacts.count; index++) {
+                    NSString * jidOld = [self.oldContacts[index] valueForKey:@"jid"];
+                    
+                    if ([self equalJid:jidOld And:[newContact valueForKey:@"jid"]]) {
+                        NSNumber * number = [NSNumber numberWithInt:index];
+                        [self.updateContacts addObject:number];
+                        break;
+                    }
+                }
             }
         }
     }

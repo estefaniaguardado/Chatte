@@ -19,20 +19,20 @@ describe(@"UpdateValuesHandler", ^{
         context(@"when don't have new data Contacts", ^{
             NSArray * oldContacts = @[
                                       @{
-                                          @"jid" : @"3pfmzjffz9tm32viob36a0e5le@public.talk.google.com",
-                                          @"name" : @"Estefania Guardado"
+                                          @"jid" : @"CONTACT_ID1@public.talk.google.com",
+                                          @"name" : @"NAME_ID1"
                                           },
                                       @{
-                                          @"jid" : @"0z8d21t7wzim42ux8h14ol260e@public.talk.google.com",
-                                          @"name" : @"Luis Alejandro Sánchez"
+                                          @"jid" : @"CONTACT_ID2@public.talk.google.com",
+                                          @"name" : @"NAME_ID2"
                                           },
                                       @{
-                                          @"jid" : @"0070s1ke5udxn0rwrs568oc9e1@public.talk.google.com",
-                                          @"name" : @"Rita Guardado"
+                                          @"jid" : @"CONTACT_ID3@public.talk.google.com",
+                                          @"name" : @"NAME_ID3"
                                           },
                                       @{
-                                          @"jid" : @"1xnqzhessnhla3jv587c8qb9o9@public.talk.google.com",
-                                          @"name" : @"Maria de Lourdes Pacheco"
+                                          @"jid" : @"CONTACT_ID4@public.talk.google.com",
+                                          @"name" : @"NAME_ID4"
                                           }
                                       ];
             
@@ -61,35 +61,35 @@ describe(@"UpdateValuesHandler", ^{
         context(@"when exist new Contact ", ^{
             NSArray * oldContacts = @[
                                       @{
-                                          @"jid" : @"0z8d21t7wzim42ux8h14ol260e@public.talk.google.com",
-                                          @"name" : @"Luis Alejandro Sánchez"
+                                          @"jid" : @"CONTACT_ID1@public.talk.google.com",
+                                          @"name" : @"NAME_ID1"
                                           },
                                       @{
-                                          @"jid" : @"0070s1ke5udxn0rwrs568oc9e1@public.talk.google.com",
-                                          @"name" : @"Rita Guardado"
+                                          @"jid" : @"CONTACT_ID2@public.talk.google.com",
+                                          @"name" : @"NAME_ID2"
                                           },
                                       @{
-                                          @"jid" : @"1xnqzhessnhla3jv587c8qb9o9@public.talk.google.com",
-                                          @"name" : @"Maria de Lourdes Pacheco"
+                                          @"jid" : @"CONTACT_ID3@public.talk.google.com",
+                                          @"name" : @"NAME_ID3"
                                           }
                                       ];
             
             NSArray * newContacts = @[
                                       @{
-                                          @"jid" : @"3pfmzjffz9tm32viob36a0e5le@public.talk.google.com",
-                                          @"name" : @"Estefania Guardado"
+                                          @"jid" : @"CONTACT_ID1@public.talk.google.com",
+                                          @"name" : @"NAME_ID1"
                                           },
                                       @{
-                                          @"jid" : @"0z8d21t7wzim42ux8h14ol260e@public.talk.google.com",
-                                          @"name" : @"Luis Alejandro Sánchez"
+                                          @"jid" : @"CONTACT_ID2@public.talk.google.com",
+                                          @"name" : @"NAME_ID2"
                                           },
                                       @{
-                                          @"jid" : @"0070s1ke5udxn0rwrs568oc9e1@public.talk.google.com",
-                                          @"name" : @"Rita Guardado"
+                                          @"jid" : @"CONTACT_ID3@public.talk.google.com",
+                                          @"name" : @"NAME_ID3"
                                           },
                                       @{
-                                          @"jid" : @"1xnqzhessnhla3jv587c8qb9o9@public.talk.google.com",
-                                          @"name" : @"Maria de Lourdes Pacheco"
+                                          @"jid" : @"CONTACT_ID4@public.talk.google.com",
+                                          @"name" : @"NAME_ID4"
                                           }
                                       ];
             
@@ -118,31 +118,31 @@ describe(@"UpdateValuesHandler", ^{
         context(@"when exist update of Contact ", ^{
             NSArray * oldContacts = @[
                                       @{
-                                          @"jid" : @"0z8d21t7wzim42ux8h14ol260e@public.talk.google.com",
-                                          @"name" : @"Luis Alejandro Sánchez"
+                                          @"jid" : @"CONTACT_ID1@public.talk.google.com",
+                                          @"name" : @"NAME_ID1"
                                           },
                                       @{
-                                          @"jid" : @"0070s1ke5udxn0rwrs568oc9e1@public.talk.google.com",
-                                          @"name" : @"Rita Guardado"
+                                          @"jid" : @"CONTACT_ID2@public.talk.google.com",
+                                          @"name" : @"NAME_ID2"
                                           },
                                       @{
-                                          @"jid" : @"1xnqzhessnhla3jv587c8qb9o9@public.talk.google.com",
-                                          @"name" : @"Maria de Lourdes Pacheco"
+                                          @"jid" : @"CONTACT_ID3@public.talk.google.com",
+                                          @"name" : @"NAME_ID3"
                                           }
                                       ];
             
             NSArray * newContacts = @[
                                       @{
-                                          @"jid" : @"0070s1ke5udxn0rwrs568oc9e1@public.talk.google.com",
-                                          @"name" : @"Rita Guardado"
+                                          @"jid" : @"CONTACT_ID1@public.talk.google.com",
+                                          @"name" : @"NAME_ID1"
                                           },
                                       @{
-                                          @"jid" : @"0z8d21t7wzim42ux8h14ol260e@public.talk.google.com",
-                                          @"name" : @"Luis Alejandro Rangel Sánchez"
+                                          @"jid" : @"CONTACT_ID2@public.talk.google.com",
+                                          @"name" : @"NAME_ID2"
                                           },
                                       @{
-                                          @"jid" : @"1xnqzhessnhla3jv587c8qb9o9@public.talk.google.com",
-                                          @"name" : @"Maria de Lourdes Pacheco"
+                                          @"jid" : @"CONTACT_ID3@public.talk.google.com",
+                                          @"name" : @"NAME_UPDATE_ID3"
                                           }
                                       ];
             
@@ -160,7 +160,7 @@ describe(@"UpdateValuesHandler", ^{
             
             it(@"should return empty array for update", ^{
                 NSArray * contacts = [handler getContactsForRefresh];
-                [[contacts should] equal:@[ @0 ]];
+                [[contacts should] equal:@[ @2 ]];
             });
         });
     });
