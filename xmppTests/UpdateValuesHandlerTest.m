@@ -209,6 +209,55 @@ describe(@"UpdateValuesHandler", ^{
             });
         });
     });
+    
+    context(@"when exist changes in data Contacts", ^{
+        UpdateValuesHandler * handler = [UpdateValuesHandler new];
+        
+        context(@"when exist update in one Contact and delete one Contact", ^{
+            NSArray * oldContacts = @[
+                                      @{
+                                          @"jid" : @"CONTACT_ID1@public.talk.google.com",
+                                          @"name" : @"NAME_ID1"
+                                          },
+                                      @{
+                                          @"jid" : @"CONTACT_ID2@public.talk.google.com",
+                                          @"name" : @"NAME_ID2"
+                                          },
+                                      @{
+                                          @"jid" : @"CONTACT_ID3@public.talk.google.com",
+                                          @"name" : @"NAME_ID3"
+                                          }
+                                      ];
+            
+            NSArray * newContacts = @[
+                                      @{
+                                          @"jid" : @"CONTACT_ID1@public.talk.google.com",
+                                          @"name" : @"NAME_ID1"
+                                          },
+                                      @{
+                                          @"jid" : @"CONTACT_ID3@public.talk.google.com",
+                                          @"name" : @"NAME_UPDATE_ID3"
+                                          }
+                                      ];
+            
+            [handler calculateArrayIndexOfContacts:oldContacts And:newContacts];
+            
+            it(@"should return empty array for add", ^{
+                NSArray * contacts = [handler getContactsForAdd];
+                [[contacts should] beEmpty];
+            });
+            
+            it(@"should return return index 1 of contact to delete", ^{
+                NSArray * contacts = [handler getContactsForDelete];
+                [[contacts should] equal:@[ @1 ]];
+            });
+            
+            it(@"should return index 2 of contact to update", ^{
+                NSArray * contacts = [handler getContactsForRefresh];
+                [[contacts should] equal:@[ @2 ]];
+            });
+        });
+    });
 });
 
 SPEC_END

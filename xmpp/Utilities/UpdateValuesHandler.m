@@ -33,16 +33,19 @@
         [self compareSetContacts:oldSetData And:newSetData];
         
     } else {
-        for (int index = 1; index <= newSetData.count; index++){
-            //add new contact
-            NSNumber * number = [NSNumber numberWithInt:(int)self.oldContacts.count + index];
-            [self.addNewContacts addObject:number];
-        }
+        [self compareOldDataWith:newSetData];
         
         NSMutableSet * oldContacts = [NSMutableSet setWithArray:self.oldContacts];
         if ([oldSetData count] && ![oldContacts isEqualToSet:oldSetData]) {
-            [self evalueOldDataContactsWith:oldSetData];
+            [self compareOldDataContactsWith:oldSetData];
         }
+    }
+}
+
+- (void) compareOldDataWith:(NSSet *) newSetData{
+    for (int index = 1; index <= newSetData.count; index++){
+        NSNumber * number = [NSNumber numberWithInt:(int)self.oldContacts.count + index];
+        [self.addNewContacts addObject:number];
     }
 }
 
@@ -59,6 +62,8 @@
 }
 
 - (void) compareSetContacts: (NSSet*) oldContacts And: (NSSet*) newContacts{
+    NSMutableSet * copyOldContacts = [NSMutableSet setWithSet:oldContacts];
+    NSMutableSet * copyNewContacts = [NSMutableSet setWithSet:newContacts];
     
     for (NSDictionary *oldContact in oldContacts) {
         for (NSDictionary * newContact in newContacts) {
@@ -71,19 +76,27 @@
                     if ([self equalJid:jidOld And:[newContact valueForKey:@"jid"]]) {
                         NSNumber * number = [NSNumber numberWithInt:index];
                         [self.updateContacts addObject:number];
+                        [copyOldContacts minusSet:[NSSet setWithObject:oldContact]];
+                        [copyNewContacts minusSet:[NSSet setWithObject:newContact]];
                         break;
                     }
                 }
             }
         }
+        if (![copyOldContacts count] || ![copyNewContacts count]) {
+            break;
+        }
     }
+    
+    [self compareOldDataContactsWith:copyOldContacts];
+    [self compareOldDataWith:copyNewContacts];
 }
 
 - (BOOL) equalJid: (NSString*)firstJid And: (NSString*) secondJid{
     return [firstJid isEqualToString:secondJid];
 }
 
-- (void) evalueOldDataContactsWith: (NSSet*) oldSetData{
+- (void) compareOldDataContactsWith: (NSSet*) oldSetData{
     
     for (NSDictionary * contact in oldSetData){
         for (int index = 0; index < self.oldContacts.count; index++) {
