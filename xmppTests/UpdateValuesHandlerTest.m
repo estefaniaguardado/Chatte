@@ -12,9 +12,9 @@
 SPEC_BEGIN(UpdateValuesHandlerTest)
 
 describe(@"UpdateValuesHandler", ^{
+    UpdateValuesHandler * handler = [UpdateValuesHandler new];
     
     context(@"when exist data of Contacts", ^{
-        UpdateValuesHandler * handler = [UpdateValuesHandler new];
         
         context(@"when don't have new data Contacts", ^{
             NSArray * oldContacts = @[
@@ -36,27 +36,27 @@ describe(@"UpdateValuesHandler", ^{
                                           }
                                       ];
             
-            [handler calculateArrayIndexOfContacts:oldContacts And:@[]];
+            NSDictionary * indexOfContacts = [NSDictionary dictionaryWithDictionary:
+                                              [handler calculateArrayIndexOfContacts:oldContacts And:@[]]];
             
             it(@"should return empty array for add", ^{
-                NSArray * contacts = [handler getContactsForAdd];
+                NSArray * contacts = [indexOfContacts valueForKey:@"add"];
                 [[contacts should] beEmpty];
             });
             
             it(@"should return empty array for delete", ^{
-                NSArray * contacts = [handler getContactsForDelete];
+                NSArray * contacts = [indexOfContacts valueForKey:@"delete"];
                 [[contacts should] beEmpty];
             });
             
             it(@"should return empty array for update", ^{
-                NSArray * contacts = [handler getContactsForRefresh];
+                NSArray * contacts = [indexOfContacts valueForKey:@"update"];
                 [[contacts should] beEmpty];
             });
         });
     });
     
     context(@"when exist new data of Contacts", ^{
-        UpdateValuesHandler * handler = [UpdateValuesHandler new];
         
         context(@"when exist new Contact ", ^{
             NSArray * oldContacts = @[
@@ -93,27 +93,27 @@ describe(@"UpdateValuesHandler", ^{
                                           }
                                       ];
             
-            [handler calculateArrayIndexOfContacts:oldContacts And:newContacts];
+            NSDictionary * indexOfContacts = [NSDictionary dictionaryWithDictionary:
+                                              [handler calculateArrayIndexOfContacts:oldContacts And:newContacts]];
             
             it(@"should return index 4 by the new contact", ^{
-                NSArray * contacts = [handler getContactsForAdd];
+                NSArray * contacts = [indexOfContacts valueForKey:@"add"];
                 [[contacts should] equal:@[ @4 ]];
             });
             
             it(@"should return empty array for delete", ^{
-                NSArray * contacts = [handler getContactsForDelete];
+                NSArray * contacts = [indexOfContacts valueForKey:@"delete"];
                 [[contacts should] beEmpty];
             });
             
             it(@"should return empty array for update", ^{
-                NSArray * contacts = [handler getContactsForRefresh];
+                NSArray * contacts = [indexOfContacts valueForKey:@"update"];
                 [[contacts should] beEmpty];
             });
         });
     });
     
     context(@"when exist changes in data Contacts", ^{
-        UpdateValuesHandler * handler = [UpdateValuesHandler new];
         
         context(@"when exist update in one Contact ", ^{
             NSArray * oldContacts = @[
@@ -146,27 +146,27 @@ describe(@"UpdateValuesHandler", ^{
                                           }
                                       ];
             
-            [handler calculateArrayIndexOfContacts:oldContacts And:newContacts];
+            NSDictionary * indexOfContacts = [NSDictionary dictionaryWithDictionary:
+                                              [handler calculateArrayIndexOfContacts:oldContacts And:newContacts]];
             
             it(@"should return empty array for add", ^{
-                NSArray * contacts = [handler getContactsForAdd];
+                NSArray * contacts = [indexOfContacts valueForKey:@"add"];
                 [[contacts should] beEmpty];
             });
             
             it(@"should return empty array for delete", ^{
-                NSArray * contacts = [handler getContactsForDelete];
+                NSArray * contacts = [indexOfContacts valueForKey:@"delete"];
                 [[contacts should] beEmpty];
             });
             
             it(@"should return index 2 of contact to update", ^{
-                NSArray * contacts = [handler getContactsForRefresh];
+                NSArray * contacts = [indexOfContacts valueForKey:@"update"];
                 [[contacts should] equal:@[ @2 ]];
             });
         });
     });
     
     context(@"when exist update in data Contacts", ^{
-        UpdateValuesHandler * handler = [UpdateValuesHandler new];
         
         context(@"when delete olds Contacts ", ^{
             NSArray * oldContacts = @[
@@ -191,27 +191,27 @@ describe(@"UpdateValuesHandler", ^{
                                           }
                                       ];
             
-            [handler calculateArrayIndexOfContacts:oldContacts And:newContacts];
+            NSDictionary * indexOfContacts = [NSDictionary dictionaryWithDictionary:
+                                              [handler calculateArrayIndexOfContacts:oldContacts And:newContacts]];
             
             it(@"should return empty array for add", ^{
-                NSArray * contacts = [handler getContactsForAdd];
+                NSArray * contacts = [indexOfContacts valueForKey:@"add"];
                 [[contacts should] beEmpty];
             });
             
             it(@"should return index 0 and 2 of the contacts to delete", ^{
-                NSArray * contacts = [handler getContactsForDelete];
+                NSArray * contacts = [indexOfContacts valueForKey:@"delete"];
                 [[contacts should] equal:@[ @2, @0 ]];
             });
             
             it(@"should return empty array for update", ^{
-                NSArray * contacts = [handler getContactsForRefresh];
+                NSArray * contacts = [indexOfContacts valueForKey:@"update"];
                 [[contacts should] beEmpty];
             });
         });
     });
     
     context(@"when exist changes in data Contacts", ^{
-        UpdateValuesHandler * handler = [UpdateValuesHandler new];
         
         context(@"when exist update in one Contact and delete one Contact", ^{
             NSArray * oldContacts = @[
@@ -240,20 +240,21 @@ describe(@"UpdateValuesHandler", ^{
                                           }
                                       ];
             
-            [handler calculateArrayIndexOfContacts:oldContacts And:newContacts];
+            NSDictionary * indexOfContacts = [NSDictionary dictionaryWithDictionary:
+                                              [handler calculateArrayIndexOfContacts:oldContacts And:newContacts]];
             
             it(@"should return empty array for add", ^{
-                NSArray * contacts = [handler getContactsForAdd];
+                NSArray * contacts = [indexOfContacts valueForKey:@"add"];
                 [[contacts should] beEmpty];
             });
             
             it(@"should return return index 1 of contact to delete", ^{
-                NSArray * contacts = [handler getContactsForDelete];
+                NSArray * contacts = [indexOfContacts valueForKey:@"delete"];
                 [[contacts should] equal:@[ @1 ]];
             });
             
             it(@"should return index 2 of contact to update", ^{
-                NSArray * contacts = [handler getContactsForRefresh];
+                NSArray * contacts = [indexOfContacts valueForKey:@"update"];
                 [[contacts should] equal:@[ @2 ]];
             });
         });
