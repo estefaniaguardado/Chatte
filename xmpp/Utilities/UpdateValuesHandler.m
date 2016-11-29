@@ -39,6 +39,10 @@
             [self.addNewContacts addObject:number];
         }
         
+        NSMutableSet * oldContacts = [NSMutableSet setWithArray:self.oldContacts];
+        if ([oldSetData count] && ![oldContacts isEqualToSet:oldSetData]) {
+            [self evalueOldDataContactsWith:oldSetData];
+        }
     }
 }
 
@@ -55,7 +59,7 @@
 }
 
 - (void) compareSetContacts: (NSSet*) oldContacts And: (NSSet*) newContacts{
-
+    
     for (NSDictionary *oldContact in oldContacts) {
         for (NSDictionary * newContact in newContacts) {
             
@@ -77,6 +81,21 @@
 
 - (BOOL) equalJid: (NSString*)firstJid And: (NSString*) secondJid{
     return [firstJid isEqualToString:secondJid];
+}
+
+- (void) evalueOldDataContactsWith: (NSSet*) oldSetData{
+    
+    for (NSDictionary * contact in oldSetData){
+        for (int index = 0; index < self.oldContacts.count; index++) {
+            
+            NSString * jidOld = [self.oldContacts[index] valueForKey:@"jid"];
+            
+            if ([self equalJid:jidOld And:[contact valueForKey:@"jid"]]) {
+                [self.deleteContacts addObject:[NSNumber numberWithInt:index]];
+                break;
+            }
+        }
+    }
 }
 
 @end
