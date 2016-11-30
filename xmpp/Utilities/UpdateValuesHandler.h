@@ -10,17 +10,6 @@
 
 @interface UpdateValuesHandler : NSObject
 
-@property (strong) NSMutableArray * oldContacts;
-@property (strong) NSMutableArray * recentContacts;
-
-@property (strong) NSMutableArray * updateContacts;
-@property (strong) NSMutableArray * deleteContacts;
-@property (strong) NSMutableArray * addNewContacts;
-
-- (NSArray *) getContactsForDelete;
-- (NSArray *) getContactsForAdd;
-- (NSArray *) getContactsForRefresh;
-
--(void) calculateArrayIndexOfContacts:(NSArray*)oldContacts And:(NSArray*)newContacts;
+-(NSDictionary*) calculateArrayIndexOfContacts:(NSArray*)oldContacts And:(NSArray*)newContacts;
 
 @end
