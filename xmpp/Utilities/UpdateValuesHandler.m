@@ -10,11 +10,6 @@
 
 @implementation UpdateValuesHandler
 
-- (void)updateValues:(NSArray *)oldDataContact With:(NSArray *)newDataContact{
-    
-    [self calculateArrayIndexOfContacts:oldDataContact And:newDataContact];
-}
-
 -(NSDictionary*) calculateArrayIndexOfContacts:(NSArray*)oldContacts And:(NSArray*)newContacts{
     
     NSMutableSet * oldSetData = [NSMutableSet setWithArray:oldContacts];

@@ -27,6 +27,10 @@ IContactRepresentationHandler>
 @property (strong) NSMutableArray * contactRoster;
 @property (nonatomic, assign) BOOL updatedBagesInRoster;
 
+@property (strong) NSMutableArray * indexPathAdd;
+@property (strong) NSMutableArray * indexPathDelete;
+@property (strong) NSMutableArray * indexPathUpdate;
+
 @property (weak) id<IDAOUser> daoUser;
 @property (weak) id<IDAOContact> daoContact;
 
