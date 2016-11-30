@@ -62,8 +62,8 @@
     [self updateViewModel];
 }
 
-- (void)updateValues:(NSArray *)oldDataContact With:(NSArray *)newDataContact{
-    //TODO: updateviewModel
+- (void)updateValuesWith:(NSDictionary *)indexContacts{
+
 }
 
 - (void) updateViewModel {

@@ -12,10 +12,12 @@
 #import "../protocols/IContactRepresentationHandler.h"
 #import "../protocols/IDAOContact.h"
 
+#import "../Utilities/UpdateValuesHandler.h"
+
 @interface ContactBusinessController : NSObject
 
-@property (strong, atomic) NSArray * contacts;
 @property (weak) id<IContactRepresentationHandler> handler;
 @property (weak) id<IDAOContact> daoContact;
+@property (weak) UpdateValuesHandler * updateValuesHandler;
 
 @end

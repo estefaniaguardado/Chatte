@@ -23,6 +23,8 @@
 #import "DAOUserRLM.h"
 #import "DAOContactsRLM.h"
 
+#import "UpdateValuesHandler.h"
+
 @implementation MainAssembly
     
 -(AppDelegate *)appDelegate{
@@ -166,6 +168,7 @@
                           configuration:^(TyphoonDefinition *definition) {
 
          [definition injectProperty:@selector(daoContact) with:[self daoContactsRLM]];
+         [definition injectProperty:@selector(updateValuesHandler) with:[self updateValuesHandler]];
                               
           definition.scope = TyphoonScopeLazySingleton;
                           }];
@@ -224,6 +227,14 @@
                                                     with:[self chatBusinessController]];
                               
         definition.scope = TyphoonScopePrototype;
+                          }];
+}
+
+- (UpdateValuesHandler *) updateValuesHandler{
+    return [TyphoonDefinition withClass:[UpdateValuesHandler class]
+                          configuration:^(TyphoonDefinition *definition) {
+                              
+            definition.scope = TyphoonScopeLazySingleton;
                           }];
 }
 

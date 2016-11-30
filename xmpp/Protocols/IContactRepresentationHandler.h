@@ -10,6 +10,6 @@
 
 @protocol IContactRepresentationHandler <NSObject>
 
-- (void) updateValues:(NSArray *) oldDataContact With: (NSArray *) newDataContact;
+- (void) updateValuesWith:(NSDictionary*) indexContacts;
 
 @end
