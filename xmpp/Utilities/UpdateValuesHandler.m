@@ -46,7 +46,7 @@
 - (NSArray*) compare: (NSArray*)oldContacts With:(NSSet *) newSetData{
     NSMutableArray * addNewContacts = [NSMutableArray array];
     
-    for (int index = 1; index <= newSetData.count; index++){
+    for (int index = 0; index < newSetData.count; index++){
         NSNumber * number = [NSNumber numberWithInt:(int)oldContacts.count + index];
         [addNewContacts addObject:number];
     }
