@@ -17,6 +17,10 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    self.indexPathAdd = [NSMutableArray array];
+    self.indexPathDelete = [NSMutableArray array];
+    self.indexPathUpdate = [NSMutableArray array];
         
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
@@ -62,11 +66,41 @@
     [self updateViewModel];
 }
 
-- (void)updateValuesWith:(NSDictionary *)indexContacts{
-
+- (void) updateViewModel {
+    [self createAndRegisterViewModel];
+    
+    [self.tableView beginUpdates];
+    if (self.updatedBagesInRoster) {
+        NSNumber *idxContact = [self.rosterBusinessController getIdxContactOfNewBadge];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:
+                                                [NSIndexPath indexPathForRow:[idxContact integerValue]
+                                                                   inSection:0]]
+                              withRowAnimation:UITableViewRowAnimationAutomatic];
+    } else{
+        [self.tableView insertRowsAtIndexPaths:[self returnArrayIndexPaths]
+                              withRowAnimation:UITableViewRowAnimationTop];
+    }
+    [self.tableView endUpdates];
 }
 
-- (void) updateViewModel {
+- (void)updateValuesWith:(NSDictionary *)indexContacts{
+    self.contactRoster = [NSMutableArray arrayWithArray:[self.daoContact getContacts]];
+    
+    [self createIndexPathsWith:indexContacts];
+    
+    [self createAndRegisterViewModel];
+    
+    [self.tableView beginUpdates];
+    [self.tableView reloadRowsAtIndexPaths:self.indexPathUpdate
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView deleteRowsAtIndexPaths:self.indexPathDelete
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView insertRowsAtIndexPaths:self.indexPathAdd
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView endUpdates];
+}
+
+- (void) createAndRegisterViewModel{
     NSMutableArray * viewModel = [NSMutableArray array];
     [self.contactRoster enumerateObjectsUsingBlock:^(id contact, NSUInteger idx, BOOL * stop) {
         
@@ -83,19 +117,25 @@
     self.viewModel = [NSArray arrayWithArray:viewModel];
     
     [self registerNibs];
-    
-    [self.tableView beginUpdates];
-    if (self.updatedBagesInRoster) {
-        NSNumber *idxContact = [self.rosterBusinessController getIdxContactOfNewBadge];
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:
-                                                [NSIndexPath indexPathForRow:[idxContact integerValue]
-                                                                   inSection:0]]
-                              withRowAnimation:UITableViewRowAnimationAutomatic];
-    } else{
-        [self.tableView insertRowsAtIndexPaths:[self returnArrayIndexPaths]
-                              withRowAnimation:UITableViewRowAnimationTop];
+}
+
+- (void) createIndexPathsWith:(NSDictionary *) indexOfContacts{
+    NSArray * addContact = [indexOfContacts valueForKey:@"add"];
+    NSArray * deleteContact = [indexOfContacts valueForKey:@"delete"];
+    NSArray * updateContact = [indexOfContacts valueForKey:@"update"];
+
+    for (NSNumber* idxContact in addContact) {
+        [self.indexPathAdd addObject:[NSIndexPath indexPathForRow:[idxContact integerValue]
+                                                        inSection:0]];
     }
-    [self.tableView endUpdates];
+    for (NSNumber* idxContact in deleteContact) {
+        [self.indexPathDelete addObject:[NSIndexPath indexPathForRow:[idxContact integerValue]
+                                                           inSection:0]];
+    }
+    for (NSNumber* idxContact in updateContact) {
+        [self.indexPathUpdate addObject:[NSIndexPath indexPathForRow:[idxContact integerValue]
+                                                           inSection:0]];
+    }
 }
 
 - (NSMutableArray *) returnArrayIndexPaths{
