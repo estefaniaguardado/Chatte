@@ -88,9 +88,9 @@
 }
 
 - (BOOL) xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq{
-    NSXMLElement *query = [NSXMLElement elementWithName:@"query" xmlns:@"jabber:iq:roster"];
+    NSString *xmlns = [[[iq childElement] namespaceForPrefix:nil] stringValue];
     
-    if (query) { //TODO: validate kind of iq
+    if ([xmlns isEqualToString:@"jabber:iq:roster"] && [iq isResultIQ]) {
         NSDictionary * contacts = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [self getArrayOfContactsFromStanza:iq], @"contacts", nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"IQroster"
