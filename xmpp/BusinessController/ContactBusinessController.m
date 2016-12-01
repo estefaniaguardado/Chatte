@@ -21,6 +21,10 @@
                                              selector:@selector(handlerIQ:)
                                                  name:@"IQroster" object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handlerPresence:)
+                                                 name:@"presenceContact" object:nil];
+    
     return self;
 }
 
@@ -46,6 +50,22 @@
         NSDictionary * indexContacts = [self.updateValuesHandler
                                         calculateArrayIndexOfContacts:contacts And:updateContacts];
         [self.handler updateValuesWith:indexContacts];
+    }
+}
+
+- (void) handlerPresence:(NSNotification*) notification{
+    NSDictionary * presenceContact = [notification userInfo];
+    NSArray * allContacts = [self.daoContact getContacts];
+    
+    NSMutableArray * contactsWithStatus = [NSMutableArray array];
+
+    for (NSDictionary * contact in allContacts) {
+        if ([[contact valueForKey:@"jid"] isEqualToString:[presenceContact valueForKey:@"from"]]) {
+            NSMutableDictionary * copyContact = [NSMutableDictionary dictionaryWithDictionary:contact];
+            [copyContact setValue:[presenceContact valueForKey:@"status"] forKey:@"status"];
+            [contactsWithStatus addObject:copyContact];
+            break;
+        }
     }
 }
 
