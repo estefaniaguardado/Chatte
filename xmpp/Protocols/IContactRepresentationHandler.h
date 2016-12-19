@@ -11,5 +11,6 @@
 @protocol IContactRepresentationHandler <NSObject>
 
 - (void) updateValuesWith:(NSDictionary*) indexContacts;
+- (void) updateStatus:(NSArray*)indexUpdates ofContacts: (NSArray*) contacts;
 
 @end

@@ -138,6 +138,23 @@
     }
 }
 
+- (void)updateStatus:(NSArray *)indexUpdates ofContacts:(NSArray *)contacts{
+    [self.contactRoster removeAllObjects];
+    [self.contactRoster setArray:contacts];
+    
+    [self.indexPathUpdate removeAllObjects];
+    [self.indexPathUpdate arrayByAddingObjectsFromArray:indexUpdates];
+    
+    [self createAndRegisterViewModel];
+        
+    [self.tableView beginUpdates];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+                  withRowAnimation:UITableViewRowAnimationAutomatic];
+//    [self.tableView reloadRowsAtIndexPaths:self.indexPathUpdate
+//                          withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView endUpdates];
+}
+
 - (NSMutableArray *) returnArrayIndexPaths{
     NSMutableArray *indexPaths = [NSMutableArray array];
     for (int index = 0; index < self.viewModel.count; index++) {

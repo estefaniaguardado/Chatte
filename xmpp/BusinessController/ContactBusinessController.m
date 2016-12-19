@@ -54,16 +54,31 @@
 }
 
 - (void) handlerPresence:(NSNotification*) notification{
-    NSDictionary * presenceContact = [notification userInfo];
-    NSArray * allContacts = [self.daoContact getContacts];
+    NSArray *contacts = [self.daoContact getContacts];
     
-    NSMutableArray * contactsWithStatus = [NSMutableArray array];
-
-    for (NSDictionary * contact in allContacts) {
-        if ([[contact valueForKey:@"jid"] isEqualToString:[presenceContact valueForKey:@"from"]]) {
-            NSMutableDictionary * copyContact = [NSMutableDictionary dictionaryWithDictionary:contact];
+    NSDictionary * presenceContact = [notification userInfo];
+    NSMutableArray * newContacts = [NSMutableArray arrayWithArray:contacts];
+    
+    for (int index = 0; index < contacts.count; index++) {
+        if ([[contacts[index] valueForKey:@"jid"] isEqualToString:[presenceContact valueForKey:@"from"]]) {
+            NSMutableDictionary * copyContact = [NSMutableDictionary dictionaryWithDictionary:contacts[index]];
             [copyContact setValue:[presenceContact valueForKey:@"status"] forKey:@"status"];
-            [contactsWithStatus addObject:copyContact];
+            
+            [newContacts removeObjectAtIndex:[[NSNumber numberWithInt:index] integerValue]];
+            [newContacts insertObject:copyContact atIndex:[[NSNumber numberWithInt:index] integerValue]];
+            
+            NSMutableSet * oldSetData = [NSMutableSet setWithArray:contacts];
+            
+            //[self.daoContact updateValues:[NSArray arrayWithArray:newContacts]];
+            NSMutableSet * newSetData = [NSMutableSet setWithArray:newContacts];
+            
+            [oldSetData minusSet:newSetData];
+            [newSetData minusSet:[NSMutableSet setWithArray:contacts]];
+
+            NSDictionary * indexContacts = [self.updateValuesHandler
+                                            calculateArrayIndexOfContacts:contacts And:newContacts];
+            [self.handler updateStatus:[indexContacts valueForKey:@"update"] ofContacts:newContacts];
+            
             break;
         }
     }
