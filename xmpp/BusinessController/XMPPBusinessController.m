@@ -136,7 +136,14 @@
 }
 
 - (void)xmppStream:(XMPPStream *)sender didReceivePresence:(XMPPPresence *)presence{
+    XMPPJID * jidPresence = [XMPPJID jidWithString:[[presence attributeForName:@"from"] stringValue]];
+    NSString * from = [jidPresence bare];
+    NSString * show = [[presence childAtIndex:0] stringValue];
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"presenceContact"
+                                                        object:nil
+                                                      userInfo:@{@"from": from,
+                                                                 @"status":show}];
 }
 
 - (void) sendIQToGetRoster {

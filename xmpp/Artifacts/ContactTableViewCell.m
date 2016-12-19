@@ -25,6 +25,21 @@
     _data = data;
     
     [self.nameContact setText: _data[@"name"]];
+    NSString * status = [NSString string];
+    status = _data[@"status"];
+    if (status) {
+        if ([status isEqualToString:@"online"]) {
+            [self.contactStatus setImage:[UIImage imageNamed:@"online"]];
+        } else if ([status isEqualToString:@"away"]) {
+            [self.contactStatus setImage:[UIImage imageNamed:@"away"]];
+        } else if ([status isEqualToString:@"busy"]) {
+            [self.contactStatus setImage:[UIImage imageNamed:@"busy"]];
+        } else if ([status isEqualToString:@"offline"]) {
+            [self.contactStatus setImage:[UIImage imageNamed:@"offline"]];
+        }
+    } else{
+        [self.contactStatus setImage:[UIImage imageNamed:@"offline"]];
+    }
 }
 
 @end
