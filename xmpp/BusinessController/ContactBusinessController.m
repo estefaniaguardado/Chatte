@@ -77,7 +77,7 @@
 
             NSDictionary * indexContacts = [self.updateValuesHandler
                                             calculateArrayIndexOfContacts:contacts And:newContacts];
-            [self.handler updateStatus:[indexContacts valueForKey:@"update"] ofContacts:newContacts];
+            [self.handler updateStatus:[indexContacts valueForKey:@"update"] ofContact:copyContact];
             
             break;
         }

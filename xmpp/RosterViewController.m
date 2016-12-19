@@ -138,9 +138,14 @@
     }
 }
 
-- (void)updateStatus:(NSArray *)indexUpdates ofContacts:(NSArray *)contacts{
-    [self.contactRoster removeAllObjects];
-    [self.contactRoster setArray:contacts];
+- (void)updateStatus:(NSArray *)indexUpdates ofContact:(NSDictionary *)infoContact{
+    
+    for (int index = 0; index < self.contactRoster.count; index++) {
+        if ([[self.contactRoster[index] valueForKey:@"jid"] isEqualToString:[infoContact valueForKey:@"jid"]]) {
+            [self.contactRoster removeObjectAtIndex:[[NSNumber numberWithInt:index] integerValue]];
+            [self.contactRoster insertObject:infoContact atIndex:[[NSNumber numberWithInt:index] integerValue]];
+        }
+    }
     
     [self.indexPathUpdate removeAllObjects];
     [self.indexPathUpdate arrayByAddingObjectsFromArray:indexUpdates];
