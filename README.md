@@ -14,9 +14,9 @@ Initially, the first features was developed in a [repository](https://bitbucket.
 ## Wiki
 For more detail about the project please take a look at the wiki.
 
-- [Basic architecture]()
-- [Database model definition]()
-- [References]()
+- [Basic architecture](https://github.com/EstefaniaGuardado/Chatte/wiki/Basic-architecture)
+- [Database model definition](https://github.com/EstefaniaGuardado/Chatte/wiki/Database-model-definition)
+- [References](https://github.com/EstefaniaGuardado/Chatte/wiki/References)
 
 ## License
-[MIT]()
+[MIT](https://github.com/EstefaniaGuardado/Chatte/wiki/MIT-License)
