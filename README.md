@@ -26,4 +26,3 @@ For more detail about the project please take a look at the wiki.
 - [SlackTextViewController](https://github.com/slackhq/SlackTextViewController) - MIT License
 - [Kiwi](https://github.com/kiwi-bdd/Kiwi) - MIT License
 - [DZNEmptyDataSet](https://github.com/dzenbot/DZNEmptyDataSet) - MIT License
-
