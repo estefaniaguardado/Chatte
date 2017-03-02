@@ -4,7 +4,7 @@ Extensible Messaging and Presence Protocol (XMPP) is an open XML technology for 
 
 Chatte is a client iOS that enables you to connect to an XMPP for instant messaging with other people like Google G-Talk.
 
-Initially, the first features was developed in a [repository](https://bitbucket.org/fachinota/example-xmpp-client) of Bitbucket.
+Initially, the first features was developed in a [repository](https://bitbucket.org/fachinota/chatte) of Bitbucket.
 
 ## Installation
 - Install [cocoapods](https://guides.cocoapods.org/using/getting-started.html).
